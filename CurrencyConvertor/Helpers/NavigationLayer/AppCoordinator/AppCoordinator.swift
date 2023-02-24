@@ -16,9 +16,10 @@ class AppCoordinator: Coordinator {
         splashViewController.coordinator = self
         navigationController.pushViewController(splashViewController, animated: true)
     }
-    func showCurrencyViewController(viewController: UIViewController) {
+    func showCurrencyViewController() {
         let viewModel = CurrencyConvertorViewModel()
-        let viewController = CurrencyConvertorViewController(viewModel: viewModel, coordinator: self, nibName: Constants.currencyViewNib)
+        let viewController = CurrencyConvertorViewController(viewModel: viewModel, nibName: Constants.currencyViewNib)
+        viewController.coordinator = self
         viewController.title = Constants.currencyViewTitle
         viewController.navigationItem.hidesBackButton = true
         viewController.navigationItem.largeTitleDisplayMode = .always
@@ -27,7 +28,8 @@ class AppCoordinator: Coordinator {
     }
     func showCurrencyDetailsViewController() {
         let viewModel = CurrencyDetailsViewModel()
-        let viewController = CurrencyDetailsViewController(viewModel: viewModel, coordinator: self, nibName: Constants.currencyDetailsViewNib)
+        let viewController = CurrencyDetailsViewController(viewModel: viewModel, nibName: Constants.currencyDetailsViewNib)
+        viewController.coordinator = self
         viewController.title = Constants.currencyDetailsViewtitle
         navigationController.pushViewController(viewController, animated: true)
     }

@@ -12,6 +12,7 @@ public class NetworkingManger {
     func performRequest<T: Codable>(router: BaseRouter, model: T.Type, shouldCache: Bool = false) -> Observable<T> {
         //  Creating observable
         return Observable.create { [unowned self] observer in
+            // Send error if network is no reachable
             guard NetworkReachability.isConnectedToNetwork() else {
                 observer.onError(APIError(.noConnetion))
                 return Disposables.create()
@@ -28,8 +29,7 @@ public class NetworkingManger {
                             let dataResponse = try self.jsonDecoder.decode(T.self, from: _data)
                             observer.onNext(dataResponse)
                         } else if (400..<499) ~= statusCode {
-                            let errorResponse = try self.jsonDecoder.decode(APIError.self, from: _data)
-                            observer.onError(errorResponse)
+                            self.decodeAPIError(jsonDecoder: self.jsonDecoder, _data: _data, observer: observer)
                         } else if statusCode < 500 {
                             observer.onError(APIError(.serverError))
                         } else {
@@ -37,7 +37,7 @@ public class NetworkingManger {
                         }
                     } catch {
                         // Observer onError event
-                        observer.onError(APIError(.general))
+                        self.decodeAPIError(jsonDecoder: self.jsonDecoder, _data: _data, observer: observer)
                     }
                 // Observer onCompleted event
                 observer.onCompleted()
@@ -47,6 +47,15 @@ public class NetworkingManger {
             return Disposables.create {
                   task.cancel()
             }
+        }
+    }
+    // MARK: - Error Handling
+    private func decodeAPIError<T: Decodable>(jsonDecoder: JSONDecoder, _data: Data, observer: AnyObserver<T>) {
+        do {
+            let errorResponse = try jsonDecoder.decode(APIError.self, from: _data)
+            observer.onError(errorResponse)
+        } catch {
+            observer.onError(APIError(.general))
         }
     }
     // MARK: - URLRequest Components Builder

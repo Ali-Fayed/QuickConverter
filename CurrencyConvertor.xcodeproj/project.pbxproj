@@ -42,6 +42,9 @@
 		EAB21A1429A8516A007570E3 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1329A8516A007570E3 /* EmptyResponse.swift */; };
 		EAB21A1929A85EC6007570E3 /* CurrencySympols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1829A85EC6007570E3 /* CurrencySympols.swift */; };
 		EAB21A1B29A85EE5007570E3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1A29A85EE4007570E3 /* APIError.swift */; };
+		EAB21A1E29A8D1D2007570E3 /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1D29A8D1D2007570E3 /* TableView+Ext.swift */; };
+		EAB21A2029A8D7DD007570E3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1F29A8D7DD007570E3 /* UIAlert+Ext.swift */; };
+		EAB21A2329A8E47B007570E3 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A2229A8E47B007570E3 /* CommonViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,9 @@
 		EAB21A1329A8516A007570E3 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		EAB21A1829A85EC6007570E3 /* CurrencySympols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySympols.swift; sourceTree = "<group>"; };
 		EAB21A1A29A85EE4007570E3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		EAB21A1D29A8D1D2007570E3 /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
+		EAB21A1F29A8D7DD007570E3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
+		EAB21A2229A8E47B007570E3 /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +217,8 @@
 		EAB219A729A7A582007570E3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EAB219D529A832EC007570E3 /* BaseVC */,
+				EAB21A1D29A8D1D2007570E3 /* TableView+Ext.swift */,
+				EAB21A1F29A8D7DD007570E3 /* UIAlert+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 		EAB219A829A7A595007570E3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EAB21A2129A8E472007570E3 /* CommonViews */,
 				EAB219F829A83C53007570E3 /* Constants */,
 				EAB219A629A7A577007570E3 /* NavigationLayer */,
 				EAB219A529A7A56E007570E3 /* NetworkLayer */,
@@ -563,6 +571,15 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		EAB21A2129A8E472007570E3 /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219D529A832EC007570E3 /* BaseVC */,
+				EAB21A2229A8E47B007570E3 /* CommonViews.swift */,
+			);
+			path = CommonViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -717,6 +734,8 @@
 				EAB21A0A29A84768007570E3 /* RouterTypes.swift in Sources */,
 				EAB219CC29A7A7BA007570E3 /* CurrencyConvertorViewModel.swift in Sources */,
 				EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */,
+				EAB21A2029A8D7DD007570E3 /* UIAlert+Ext.swift in Sources */,
+				EAB21A2329A8E47B007570E3 /* CommonViews.swift in Sources */,
 				EAB219FA29A83C5D007570E3 /* Constants.swift in Sources */,
 				EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */,
 				EAB219DF29A8339A007570E3 /* Coordinator.swift in Sources */,
@@ -726,6 +745,7 @@
 				EAB219F029A8355A007570E3 /* CurrencyDetailsViewController.swift in Sources */,
 				EAB21A1929A85EC6007570E3 /* CurrencySympols.swift in Sources */,
 				EAB219D729A832F8007570E3 /* BaseViewController.swift in Sources */,
+				EAB21A1E29A8D1D2007570E3 /* TableView+Ext.swift in Sources */,
 				EAB2197C29A7A55A007570E3 /* CurrencyConvertor.xcdatamodeld in Sources */,
 				EAB21A1B29A85EE5007570E3 /* APIError.swift in Sources */,
 			);

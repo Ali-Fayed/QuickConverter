@@ -4,15 +4,12 @@
 //
 //  Created by AliFayed on 24/02/2023.
 //
-
 import Foundation
 import UIKit
 import RxSwift
-class BaseViewController<T, F>:UIViewController, BaseVC {
+class BaseViewController<T>: CommonViews, BaseVC {
     typealias V = T
-    typealias C = F
     var viewModel: V?
-    var coordinator: C?
     let disposeBag = DisposeBag()
     convenience init() {
         fatalError("init() has not been implemented")
@@ -20,12 +17,11 @@ class BaseViewController<T, F>:UIViewController, BaseVC {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    required init(viewModel: V?, coordinator: C?, nibName: String? = nil) {
+    required init(viewModel: V?, nibName: String? = nil) {
          super.init(nibName: nibName, bundle: nil)
-         initDependencies(viewModel: viewModel, coordinator: coordinator)
+         initDependencies(viewModel: viewModel)
     }
-    func initDependencies(viewModel: V?, coordinator: C?) {
+    func initDependencies(viewModel: V?) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
     }
 }

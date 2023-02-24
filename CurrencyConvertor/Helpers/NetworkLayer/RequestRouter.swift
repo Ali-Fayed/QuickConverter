@@ -20,19 +20,15 @@ enum RequestRouter: BaseRouter {
     //MARK: - HTTPMethod
     var method: HttpMethod {
         switch self {
-        case .symbols:
-            return .get
-        case .latest:
+        case .symbols, .latest:
             return .get
         }
     }
     //MARK: - Parameters or Body
     var parameter: HttpParameters? {
         switch self {
-        case .symbols:
-            return nil
-        case .latest:
-            return nil
+        case .symbols, .latest:
+            return ["access_key": ""]
         }
     }
 }

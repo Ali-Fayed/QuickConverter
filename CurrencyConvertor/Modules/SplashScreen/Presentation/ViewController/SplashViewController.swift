@@ -15,6 +15,6 @@ class SplashViewController: UIViewController {
     }
     // MARK: - Main Methods
     func navigateToCurrencyViewController() {
-        coordinator?.showCurrencyViewController(viewController: self)
+        coordinator?.showCurrencyViewController()
     }
 }

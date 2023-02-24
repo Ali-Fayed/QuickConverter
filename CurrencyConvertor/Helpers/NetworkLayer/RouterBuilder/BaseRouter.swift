@@ -21,7 +21,6 @@ extension BaseRouter {
     var baseURL: String {
         return "data.fixer.io"
     }
-    
     var headers: HttpHeaders? {
         return ["Accept": "application/json"]
     }
