@@ -7,13 +7,13 @@
 
 import Foundation
 import UIKit
-import Combine
+import RxSwift
 class BaseViewController<T, F>:UIViewController, BaseVC {
     typealias V = T
     typealias C = F
     var viewModel: V?
     var coordinator: C?
-    var subscriptions: Set<AnyCancellable> = []
+    let disposeBag = DisposeBag()
     convenience init() {
         fatalError("init() has not been implemented")
     }
