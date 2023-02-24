@@ -21,7 +21,8 @@ class AppCoordinator: Coordinator {
         let repository = CurrencyConvertorRepository(currencySymbolService: remote)
         let useCase = CurrencyConvertorUseCase(currencySymbolRepository: repository)
         let viewModel = CurrencyConvertorViewModel(currencySymbolsUseCase: useCase)
-        let viewController = CurrencyConvertorViewController(viewModel: viewModel, nibName: Constants.currencyViewNib)
+        let viewController = CurrencyConvertorViewController.instaintiate(on: .main)
+        viewController.initDependencies(viewModel: viewModel)
         viewController.coordinator = self
         viewController.title = Constants.currencyViewTitle
         viewController.navigationItem.hidesBackButton = true

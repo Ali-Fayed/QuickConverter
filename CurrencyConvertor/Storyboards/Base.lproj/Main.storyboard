@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,8 +25,97 @@
             </objects>
             <point key="canvasLocation" x="30" y="-2"/>
         </scene>
+        <!--Currency Convertor View Controller-->
+        <scene sceneID="VoZ-1j-F1N">
+            <objects>
+                <viewController storyboardIdentifier="CurrencyConvertorViewController" id="1Qa-IY-y8U" customClass="CurrencyConvertorViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c7v-xX-hCc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NID-a9-p96">
+                                <rect key="frame" x="20" y="129.33333333333334" width="353" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EGP" borderStyle="roundedRect" placeholder="From" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2O-Xy-SBl" customClass="CustomTextFieldPicker" customModule="CurrencyConverterApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="131.66666666666666" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUd-wO-H0c">
+                                        <rect key="frame" x="151.66666666666666" y="0.0" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Vkq-eA-c8j"/>
+                                            <constraint firstAttribute="height" constant="44" id="aCi-5e-o9V"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="fibrechannel" catalog="system"/>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="INR" borderStyle="roundedRect" placeholder="To" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shd-eH-oi3" customClass="CustomTextFieldPicker" customModule="CurrencyConverterApp" customModuleProvider="target">
+                                        <rect key="frame" x="221.66666666666663" y="0.0" width="131.33333333333337" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="h2O-Xy-SBl" firstAttribute="width" secondItem="Shd-eH-oi3" secondAttribute="width" id="Yxp-pi-ZEr"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-ef-Y2H">
+                                <rect key="frame" x="20" y="203.33333333333334" width="131.66666666666666" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDy-n2-I9K">
+                                <rect key="frame" x="241.66666666666663" y="203.33333333333334" width="131.33333333333337" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-IQ-mNZ">
+                                <rect key="frame" x="146.66666666666666" y="267.33333333333337" width="100" height="35"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aGy-07-ZF6"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Details"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kYp-7H-Afc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="width" secondItem="h2O-Xy-SBl" secondAttribute="width" id="42d-hG-LAq"/>
+                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="leading" secondItem="h2O-Xy-SBl" secondAttribute="leading" id="BWI-xr-5fz"/>
+                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="top" secondItem="NID-a9-p96" secondAttribute="bottom" constant="30" id="UYv-fM-ZvG"/>
+                            <constraint firstItem="HAH-IQ-mNZ" firstAttribute="top" secondItem="tyX-ef-Y2H" secondAttribute="bottom" constant="30" id="ZZ9-ee-6f5"/>
+                            <constraint firstItem="kYp-7H-Afc" firstAttribute="trailing" secondItem="NID-a9-p96" secondAttribute="trailing" constant="20" id="cPt-1I-LDe"/>
+                            <constraint firstItem="UDy-n2-I9K" firstAttribute="width" secondItem="tyX-ef-Y2H" secondAttribute="width" id="e4E-Af-IeF"/>
+                            <constraint firstItem="UDy-n2-I9K" firstAttribute="leading" secondItem="Shd-eH-oi3" secondAttribute="leading" id="fcG-KS-ESW"/>
+                            <constraint firstItem="UDy-n2-I9K" firstAttribute="centerY" secondItem="tyX-ef-Y2H" secondAttribute="centerY" id="mp3-z5-h1p"/>
+                            <constraint firstItem="NID-a9-p96" firstAttribute="leading" secondItem="kYp-7H-Afc" secondAttribute="leading" constant="20" id="oJK-Fx-2gJ"/>
+                            <constraint firstItem="HAH-IQ-mNZ" firstAttribute="centerX" secondItem="c7v-xX-hCc" secondAttribute="centerX" id="tbF-pS-gsM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zyZ-zK-UUR"/>
+                    <connections>
+                        <outlet property="convertedCurrencyTextField" destination="UDy-n2-I9K" id="4MN-20-lSf"/>
+                        <outlet property="detailsButton" destination="HAH-IQ-mNZ" id="Z5B-tX-zRt"/>
+                        <outlet property="fromSympolTextField" destination="h2O-Xy-SBl" id="3vL-WB-usH"/>
+                        <outlet property="inputCurrencyTextField" destination="tyX-ef-Y2H" id="fDF-Ke-o3g"/>
+                        <outlet property="swapRatedButton" destination="xUd-wO-H0c" id="6mN-Ef-22Q"/>
+                        <outlet property="toSympolTextField" destination="Shd-eH-oi3" id="qw6-5N-4zL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxJ-Pt-JpV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873" y="-2"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="fibrechannel" catalog="system" width="128" height="92"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
