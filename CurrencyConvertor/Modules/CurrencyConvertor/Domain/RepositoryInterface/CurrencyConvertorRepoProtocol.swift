@@ -8,4 +8,5 @@ import Foundation
 import RxSwift
 protocol CurrencyConvertorRepoProtocol {
     func getCurrencySymbols() -> Observable<CurrencySympolsEntity>
+    func getLatestCurrencyConvertedRates(from: String, to: String) -> Observable<CurrencyRatesEntity>
 }

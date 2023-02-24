@@ -28,6 +28,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func configureViewModel() {
         guard let viewModel = viewModel else {return}
         viewModel.fetchCurrencySympols()
+        viewModel.fetchLatestRates()
     }
     // MARK: - Error Handling
     private func subscribeOnError() {
@@ -59,8 +60,14 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     }
     // MARK: - Test
     func testForGettingData() {
-        viewModel!.currencySympolsSubject.subscribe { model in
-            print(model.sympol.keys)
+        guard let viewModel = viewModel else {return}
+        viewModel.currencySympolsSubject.subscribe { model in
+            print("Sympols Here")
+        }.disposed(by: disposeBag)
+        
+        viewModel.latestRatesSubject.subscribe { model in
+            print("Rates Here")
+            print(viewModel.convertCurrency(fromValue: 32.461254, toValue: 1.0, valueToConvert: 1.555))
         }.disposed(by: disposeBag)
     }
 }

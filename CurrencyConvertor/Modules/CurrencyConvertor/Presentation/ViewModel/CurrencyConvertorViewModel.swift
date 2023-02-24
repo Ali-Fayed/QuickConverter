@@ -14,6 +14,7 @@ class CurrencyConvertorViewModel {
     private var disposeBag = DisposeBag()
     let loadingIndicatorRelay = BehaviorRelay<Bool>(value: true)
     let currencySympolsSubject = PublishSubject<SympolsDataModelProtocol>()
+    let latestRatesSubject = PublishSubject<LatestRatesDataModelProtocol>()
     // MARK: - initalizer
     init(currencySymbolsUseCase: CurrencyConvertorUseCaseProtocol) {
         self.currencyConvertorUseCase = currencySymbolsUseCase
@@ -32,5 +33,23 @@ class CurrencyConvertorViewModel {
                 self.loadingIndicatorRelay.accept(false)
                 self.currencySympolsSubject.onError(error)
             }).disposed(by: disposeBag)
+    }
+    func fetchLatestRates() {
+        loadingIndicatorRelay.accept(true)
+        currencyConvertorUseCase.fetchLatestCurrencyRates(from: "EUR", to: "EGP")
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] sympols in
+                guard let self = self else {return}
+                self.loadingIndicatorRelay.accept(false)
+                self.latestRatesSubject.onNext(sympols)
+            }, onError: { [weak self] error in
+                guard let self = self else {return}
+                self.loadingIndicatorRelay.accept(false)
+                self.latestRatesSubject.onError(error)
+            }).disposed(by: disposeBag)
+    }
+    func convertCurrency(fromValue: Double, toValue: Double, valueToConvert: Double) -> String {
+         let convertValue = (toValue * valueToConvert) / fromValue
+        return String(format: "%.3f", convertValue)
     }
 }

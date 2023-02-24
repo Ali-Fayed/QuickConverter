@@ -11,4 +11,8 @@ class CurrencyConvertorRemote: CurrencyConvertorRemoteProtocol {
         let response = NetworkingManger.shared.performRequest(router: RequestRouter.symbols, model: CurrencySympolsEntity.self)
         return response
     }
+    func fetchLatestCurrencyConverts(from: String, to: String) -> Observable<CurrencyRatesEntity> {
+        let response = NetworkingManger.shared.performRequest(router: RequestRouter.latest(from: from, to: to), model: CurrencyRatesEntity.self)
+        return response
+    }
 }

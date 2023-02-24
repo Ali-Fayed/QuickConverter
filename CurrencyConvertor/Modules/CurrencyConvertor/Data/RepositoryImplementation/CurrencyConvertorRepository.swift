@@ -14,4 +14,7 @@ class CurrencyConvertorRepository: CurrencyConvertorRepoProtocol {
     func getCurrencySymbols() -> Observable<CurrencySympolsEntity> {
         return currencySymbolService.fetchCurrencySymbols()
     }
+    func getLatestCurrencyConvertedRates(from: String, to: String) -> Observable<CurrencyRatesEntity> {
+        return currencySymbolService.fetchLatestCurrencyConverts(from: from, to: to)
+    }
 }

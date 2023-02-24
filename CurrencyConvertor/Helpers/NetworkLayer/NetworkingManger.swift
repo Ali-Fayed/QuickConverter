@@ -74,7 +74,6 @@ public class NetworkingManger {
         }
         var urlRequest = URLRequest(url: component.url!, cachePolicy: shouldCache ? .useProtocolCachePolicy : .reloadIgnoringLocalCacheData)
         urlRequest.httpMethod = router.method.rawValue
-        print(urlRequest)
         if router.method == .post {
             confiqureBody(body: router.parameter, request: &urlRequest)
         }
