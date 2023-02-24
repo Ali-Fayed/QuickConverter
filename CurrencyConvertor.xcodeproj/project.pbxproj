@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197129A7A55A007570E3 /* AppDelegate.swift */; };
 		EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197329A7A55A007570E3 /* SceneDelegate.swift */; };
-		EAB2197629A7A55A007570E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197529A7A55A007570E3 /* ViewController.swift */; };
+		EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197529A7A55A007570E3 /* SplashViewController.swift */; };
 		EAB2197929A7A55A007570E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2197729A7A55A007570E3 /* Main.storyboard */; };
 		EAB2197C29A7A55A007570E3 /* CurrencyConvertor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197A29A7A55A007570E3 /* CurrencyConvertor.xcdatamodeld */; };
 		EAB2197E29A7A55C007570E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB2197D29A7A55C007570E3 /* Assets.xcassets */; };
@@ -22,6 +22,17 @@
 		EAB219C729A7A7A2007570E3 /* CurrencyConvertorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219C529A7A7A2007570E3 /* CurrencyConvertorViewController.swift */; };
 		EAB219C829A7A7A2007570E3 /* CurrencyConvertorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB219C629A7A7A2007570E3 /* CurrencyConvertorViewController.xib */; };
 		EAB219CC29A7A7BA007570E3 /* CurrencyConvertorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219CB29A7A7BA007570E3 /* CurrencyConvertorViewModel.swift */; };
+		EAB219D729A832F8007570E3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219D629A832F8007570E3 /* BaseViewController.swift */; };
+		EAB219D929A83308007570E3 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219D829A83308007570E3 /* BaseVC.swift */; };
+		EAB219DB29A83380007570E3 /* AppStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219DA29A83380007570E3 /* AppStoryboards.swift */; };
+		EAB219DD29A8338E007570E3 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219DC29A8338E007570E3 /* Storyboarded.swift */; };
+		EAB219DF29A8339A007570E3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219DE29A8339A007570E3 /* Coordinator.swift */; };
+		EAB219E129A833A8007570E3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219E029A833A8007570E3 /* AppCoordinator.swift */; };
+		EAB219F029A8355A007570E3 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219EE29A8355A007570E3 /* CurrencyDetailsViewController.swift */; };
+		EAB219F129A8355A007570E3 /* CurrencyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB219EF29A8355A007570E3 /* CurrencyDetailsViewController.xib */; };
+		EAB219F329A8356D007570E3 /* CurrencyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219F229A8356D007570E3 /* CurrencyDetailsViewModel.swift */; };
+		EAB219F729A83A66007570E3 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219F629A83A66007570E3 /* SplashViewModel.swift */; };
+		EAB219FA29A83C5D007570E3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB219F929A83C5D007570E3 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +56,7 @@
 		EAB2196E29A7A55A007570E3 /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB2197129A7A55A007570E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB2197329A7A55A007570E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EAB2197529A7A55A007570E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EAB2197529A7A55A007570E3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		EAB2197829A7A55A007570E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAB2197B29A7A55A007570E3 /* CurrencyConvertor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyConvertor.xcdatamodel; sourceTree = "<group>"; };
 		EAB2197D29A7A55C007570E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +70,17 @@
 		EAB219C529A7A7A2007570E3 /* CurrencyConvertorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertorViewController.swift; sourceTree = "<group>"; };
 		EAB219C629A7A7A2007570E3 /* CurrencyConvertorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyConvertorViewController.xib; sourceTree = "<group>"; };
 		EAB219CB29A7A7BA007570E3 /* CurrencyConvertorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertorViewModel.swift; sourceTree = "<group>"; };
+		EAB219D629A832F8007570E3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EAB219D829A83308007570E3 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		EAB219DA29A83380007570E3 /* AppStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboards.swift; sourceTree = "<group>"; };
+		EAB219DC29A8338E007570E3 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		EAB219DE29A8339A007570E3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		EAB219E029A833A8007570E3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		EAB219EE29A8355A007570E3 /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
+		EAB219EF29A8355A007570E3 /* CurrencyDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyDetailsViewController.xib; sourceTree = "<group>"; };
+		EAB219F229A8356D007570E3 /* CurrencyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewModel.swift; sourceTree = "<group>"; };
+		EAB219F629A83A66007570E3 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		EAB219F929A83C5D007570E3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +178,8 @@
 		EAB219A629A7A577007570E3 /* NavigationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				EAB219F429A839F3007570E3 /* Storyboards */,
+				EAB219F529A839FE007570E3 /* AppCoordinator */,
 			);
 			path = NavigationLayer;
 			sourceTree = "<group>";
@@ -163,6 +187,7 @@
 		EAB219A729A7A582007570E3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EAB219D529A832EC007570E3 /* BaseVC */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,10 +195,11 @@
 		EAB219A829A7A595007570E3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EAB219B429A7A652007570E3 /* Resources */,
-				EAB219A529A7A56E007570E3 /* NetworkLayer */,
+				EAB219F829A83C53007570E3 /* Constants */,
 				EAB219A629A7A577007570E3 /* NavigationLayer */,
+				EAB219A529A7A56E007570E3 /* NetworkLayer */,
 				EAB219A729A7A582007570E3 /* Extensions */,
+				EAB219B429A7A652007570E3 /* Resources */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -183,6 +209,7 @@
 			children = (
 				EAB219B329A7A61A007570E3 /* SplashScreen */,
 				EAB219AA29A7A5AC007570E3 /* CurrencyConvertor */,
+				EAB219E229A834A5007570E3 /* CurrencyDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -200,8 +227,9 @@
 		EAB219AF29A7A5E7007570E3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				EAB219FC29A84301007570E3 /* Views */,
 				EAB219CA29A7A7AE007570E3 /* ViewModel */,
-				EAB219C929A7A7A7007570E3 /* View */,
+				EAB219C929A7A7A7007570E3 /* ViewController */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -211,7 +239,7 @@
 			children = (
 				EAB219CD29A7A884007570E3 /* Entities */,
 				EAB219CE29A7A88E007570E3 /* UseCase */,
-				EAB219CF29A7A898007570E3 /* Repositories Interfaces */,
+				EAB219CF29A7A898007570E3 /* RepositoryInterface */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -221,7 +249,7 @@
 			children = (
 				EAB219D129A7A8ED007570E3 /* Local */,
 				EAB219D229A7A8F2007570E3 /* Remote */,
-				EAB219D029A7A8E4007570E3 /* Repositories Implementations  */,
+				EAB219D029A7A8E4007570E3 /* RepositoryImplementation */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -238,7 +266,7 @@
 		EAB219B329A7A61A007570E3 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
-				EAB2197529A7A55A007570E3 /* ViewController.swift */,
+				EAB219FD29A843CD007570E3 /* Presentation */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -252,13 +280,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		EAB219C929A7A7A7007570E3 /* View */ = {
+		EAB219C929A7A7A7007570E3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EAB219C529A7A7A2007570E3 /* CurrencyConvertorViewController.swift */,
 				EAB219C629A7A7A2007570E3 /* CurrencyConvertorViewController.xib */,
 			);
-			path = View;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EAB219CA29A7A7AE007570E3 /* ViewModel */ = {
@@ -283,18 +311,18 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		EAB219CF29A7A898007570E3 /* Repositories Interfaces */ = {
+		EAB219CF29A7A898007570E3 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Repositories Interfaces";
+			path = RepositoryInterface;
 			sourceTree = "<group>";
 		};
-		EAB219D029A7A8E4007570E3 /* Repositories Implementations  */ = {
+		EAB219D029A7A8E4007570E3 /* RepositoryImplementation */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Repositories Implementations ";
+			path = RepositoryImplementation;
 			sourceTree = "<group>";
 		};
 		EAB219D129A7A8ED007570E3 /* Local */ = {
@@ -309,6 +337,179 @@
 			children = (
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		EAB219D529A832EC007570E3 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219D629A832F8007570E3 /* BaseViewController.swift */,
+				EAB219D829A83308007570E3 /* BaseVC.swift */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		EAB219E229A834A5007570E3 /* CurrencyDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219E329A834C9007570E3 /* Domain */,
+				EAB219E429A834D0007570E3 /* Data */,
+				EAB219E529A834D4007570E3 /* Presentation */,
+			);
+			path = CurrencyDetails;
+			sourceTree = "<group>";
+		};
+		EAB219E329A834C9007570E3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219EC29A83502007570E3 /* Entity */,
+				EAB219ED29A83507007570E3 /* UseCase */,
+				EAB219EB29A834FB007570E3 /* RepositoryInterface */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		EAB219E429A834D0007570E3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219E829A834EB007570E3 /* Local */,
+				EAB219E929A834F0007570E3 /* Remote */,
+				EAB219EA29A834F4007570E3 /* RepositoryImplementation */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EAB219E529A834D4007570E3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219FB29A842F4007570E3 /* Views */,
+				EAB219E729A834E3007570E3 /* ViewModel */,
+				EAB219E629A834DA007570E3 /* ViewController */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EAB219E629A834DA007570E3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219EE29A8355A007570E3 /* CurrencyDetailsViewController.swift */,
+				EAB219EF29A8355A007570E3 /* CurrencyDetailsViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EAB219E729A834E3007570E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219F229A8356D007570E3 /* CurrencyDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EAB219E829A834EB007570E3 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		EAB219E929A834F0007570E3 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		EAB219EA29A834F4007570E3 /* RepositoryImplementation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryImplementation;
+			sourceTree = "<group>";
+		};
+		EAB219EB29A834FB007570E3 /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		EAB219EC29A83502007570E3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		EAB219ED29A83507007570E3 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		EAB219F429A839F3007570E3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219DA29A83380007570E3 /* AppStoryboards.swift */,
+				EAB219DC29A8338E007570E3 /* Storyboarded.swift */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EAB219F529A839FE007570E3 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219DE29A8339A007570E3 /* Coordinator.swift */,
+				EAB219E029A833A8007570E3 /* AppCoordinator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		EAB219F829A83C53007570E3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219F929A83C5D007570E3 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		EAB219FB29A842F4007570E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EAB219FC29A84301007570E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EAB219FD29A843CD007570E3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219FF29A843DD007570E3 /* ViewController */,
+				EAB219FE29A843D6007570E3 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EAB219FE29A843D6007570E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAB219F629A83A66007570E3 /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EAB219FF29A843DD007570E3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAB2197529A7A55A007570E3 /* SplashViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAB219C829A7A7A2007570E3 /* CurrencyConvertorViewController.xib in Resources */,
+				EAB219F129A8355A007570E3 /* CurrencyDetailsViewController.xib in Resources */,
 				EAB2198129A7A55C007570E3 /* LaunchScreen.storyboard in Resources */,
 				EAB2197E29A7A55C007570E3 /* Assets.xcassets in Resources */,
 				EAB2197929A7A55A007570E3 /* Main.storyboard in Resources */,
@@ -450,11 +652,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB219E129A833A8007570E3 /* AppCoordinator.swift in Sources */,
 				EAB219C729A7A7A2007570E3 /* CurrencyConvertorViewController.swift in Sources */,
-				EAB2197629A7A55A007570E3 /* ViewController.swift in Sources */,
+				EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */,
+				EAB219DB29A83380007570E3 /* AppStoryboards.swift in Sources */,
+				EAB219F329A8356D007570E3 /* CurrencyDetailsViewModel.swift in Sources */,
 				EAB219CC29A7A7BA007570E3 /* CurrencyConvertorViewModel.swift in Sources */,
 				EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */,
+				EAB219FA29A83C5D007570E3 /* Constants.swift in Sources */,
 				EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */,
+				EAB219DF29A8339A007570E3 /* Coordinator.swift in Sources */,
+				EAB219D929A83308007570E3 /* BaseVC.swift in Sources */,
+				EAB219F729A83A66007570E3 /* SplashViewModel.swift in Sources */,
+				EAB219DD29A8338E007570E3 /* Storyboarded.swift in Sources */,
+				EAB219F029A8355A007570E3 /* CurrencyDetailsViewController.swift in Sources */,
+				EAB219D729A832F8007570E3 /* BaseViewController.swift in Sources */,
 				EAB2197C29A7A55A007570E3 /* CurrencyConvertor.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

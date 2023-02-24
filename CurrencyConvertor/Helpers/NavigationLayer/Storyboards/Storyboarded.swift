@@ -1,0 +1,21 @@
+//
+//  Storyboarded.swift
+//  CurrencyConvertor
+//
+//  Created by AliFayed on 24/02/2023.
+//
+
+import Foundation
+import Foundation
+import UIKit
+protocol Storyboarded {
+    static func instaintiate(on storyboard: AppStoryboards) -> Self
+}
+extension Storyboarded where Self: UIViewController {
+    static func instaintiate(on storyboard: AppStoryboards) -> Self {
+        let vcID = String(describing: self)
+        let storyBoard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return storyBoard.instantiateViewController(identifier: vcID) as! Self
+    }
+}
+extension UIViewController: Storyboarded {}

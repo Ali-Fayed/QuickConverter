@@ -6,5 +6,5 @@
 //
 import Foundation
 class CurrencyConvertorViewModel {
-    
+    var coordinator: Coordinator?
 }
