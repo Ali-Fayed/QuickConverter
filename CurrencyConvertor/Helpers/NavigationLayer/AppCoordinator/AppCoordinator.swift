@@ -17,7 +17,10 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(splashViewController, animated: true)
     }
     func showCurrencyViewController() {
-        let viewModel = CurrencyConvertorViewModel()
+        let remote = CurrencyConvertorRemote()
+        let repository = CurrencyConvertorRepository(currencySymbolService: remote)
+        let useCase = CurrencyConvertorUseCase(currencySymbolRepository: repository)
+        let viewModel = CurrencyConvertorViewModel(currencySymbolsUseCase: useCase)
         let viewController = CurrencyConvertorViewController(viewModel: viewModel, nibName: Constants.currencyViewNib)
         viewController.coordinator = self
         viewController.title = Constants.currencyViewTitle

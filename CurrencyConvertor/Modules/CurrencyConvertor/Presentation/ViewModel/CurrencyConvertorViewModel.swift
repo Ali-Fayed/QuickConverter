@@ -8,22 +8,29 @@ import Foundation
 import RxSwift
 import RxCocoa
 class CurrencyConvertorViewModel {
+    // MARK: - Properties
+    private let currencyConvertorUseCase: CurrencyConvertorUseCaseProtocol
+    // MARK: - Rx Properties
     private var disposeBag = DisposeBag()
     let loadingIndicatorRelay = BehaviorRelay<Bool>(value: true)
-    let currencySympolsSubject = PublishSubject<CurrencySympols>()
+    let currencySympolsSubject = PublishSubject<SympolsDataModelProtocol>()
+    // MARK: - initalizer
+    init(currencySymbolsUseCase: CurrencyConvertorUseCaseProtocol) {
+        self.currencyConvertorUseCase = currencySymbolsUseCase
+    }
+    // MARK: - Methods
     func fetchCurrencySympols() {
         loadingIndicatorRelay.accept(true)
-        let result = NetworkingManger.shared.performRequest(router: RequestRouter.symbols, model: CurrencySympols.self)
-        result
+        currencyConvertorUseCase.fetchCurrencySymbols()
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] model in
+            .subscribe(onNext: { [weak self] sympols in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.currencySympolsSubject.onNext(model)
+                self.currencySympolsSubject.onNext(sympols)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 self.currencySympolsSubject.onError(error)
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
 }

@@ -21,6 +21,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     }
     // MARK: - Main Methods
     private func configureView() {
+        testForGettingData()
         subscribeOnError()
         subscribeOnLoading()
     }
@@ -55,5 +56,11 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         viewModel.loadingIndicatorRelay
             .bind(to: activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
+    }
+    // MARK: - Test
+    func testForGettingData() {
+        viewModel!.currencySympolsSubject.subscribe { model in
+            print(model.sympol.keys)
+        }.disposed(by: disposeBag)
     }
 }
