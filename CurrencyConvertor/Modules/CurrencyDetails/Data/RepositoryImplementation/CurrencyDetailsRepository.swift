@@ -12,14 +12,14 @@ class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
     init(currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol) {
         self.currencyDetailsRemoteProtocol = currencyDetailsRemoteProtocol
     }
-    func getHistoricalConverts(date: String, to: String, from: String) -> Observable<CurrencyDetailsDataModel> {
-        return currencyDetailsRemoteProtocol.fetchHistoricalCurrencyConverts(date: date, to: to, from: from)
-            .map { CurrencyDetails(rates: $0.rates) }
+    func getHistoricalConverts(date: String, symbols: String, base: String) -> Observable<CurrencyDetailsDataModell> {
+        return currencyDetailsRemoteProtocol.fetchHistoricalCurrencyConverts(date: date, symbols: symbols, base: base)
+            .map { CurrencyDetailss(rates: $0.rates) }
             .asObservable()
     }
-    func fetchFamousConvertedCurrency(fromSymbol: String, toSymbol: String, value: String) -> Observable<CurrencyDetailsDataModel> {
-        currencyDetailsRemoteProtocol.fetchFamousConvertedCurrency(fromSymbol: fromSymbol, toSymbol: toSymbol, value: value)
-           .map { CurrencyDetails(rates: $0.rates) }
+    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<CurrencyDetailsDataModel> {
+        currencyDetailsRemoteProtocol.fetchFamousConvertedCurrency(symbols: symbols, base: base)
+            .map { CurrencyDetails(rates: $0.rates!) }
            .asObservable()
     }
 }

@@ -22,6 +22,6 @@ extension BaseRouter {
         return "api.apilayer.com"
     }
     var headers: HttpHeaders? {
-        return ["apikey": "O0Ubr06Mrx4ojCWnpNIGXYum8wv1ZiC7"]
+        return ["apikey": "8UAGmvzbUzGaa1mBwiazzFsw1CffR8RP"]
     }
 }

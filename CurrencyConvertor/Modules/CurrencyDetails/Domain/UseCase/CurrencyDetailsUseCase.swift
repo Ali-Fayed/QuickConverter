@@ -12,10 +12,10 @@ class CurrencyDetailsUseCase: CurrencyDetailsUseCaseProtocol {
     init(currencyDetailsRepoProtocol: CurrencyDetailsRepoProtocol) {
         self.currencyDetailsRepoProtocol = currencyDetailsRepoProtocol
     }
-    func fetchHistoricalDetails(date: String, to: String, from: String) -> Observable<CurrencyDetailsDataModel> {
-        return currencyDetailsRepoProtocol.getHistoricalConverts(date: date, to: to, from: from)
+    func fetchHistoricalDetails(date: String, symbols: String, base: String) -> Observable<CurrencyDetailsDataModell> {
+        return currencyDetailsRepoProtocol.getHistoricalConverts(date: date, symbols: symbols, base: base)
     }
-    func fetchFamousConvertedCurrency(fromSymbol: String, toSymbol: String, value: String) -> Observable<CurrencyDetailsDataModel> {
-        return currencyDetailsRepoProtocol.fetchFamousConvertedCurrency(fromSymbol: fromSymbol, toSymbol: toSymbol, value: value)
+    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<CurrencyDetailsDataModel> {
+        return currencyDetailsRepoProtocol.fetchFamousConvertedCurrency(symbols: symbols, base: base)
     }
 }

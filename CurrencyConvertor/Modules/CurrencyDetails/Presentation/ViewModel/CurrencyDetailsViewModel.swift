@@ -13,87 +13,87 @@ class CurrencyDetailsViewModel {
     // MARK: - Rx Properties
     private var disposeBag = DisposeBag()
     let loadingIndicatorRelay = BehaviorRelay<Bool>(value: true)
-    public let currencyModel: PublishSubject<[CurrencyModel]> = PublishSubject()
-    let currencyHistoricalDetailsSubject = PublishSubject<CurrencyDetailsDataModel>()
+    let currencyModelSubject = PublishSubject<[CurrencyModel]>()
     let convertsLastThreeDaysSubject = PublishSubject<[HistoricalDataModel]>()
     let apiErrorSubject = PublishSubject<APIError>()
-    let convertedCurrencySubject = PublishSubject<String>()
     // MARK: - Properties
+    var historicalModel = [HistoricalDataModel]()
+    var currencyModel = [CurrencyModel]()
     var fromCurrencyValue: String = ""
     var fromCurrencyCode: String = ""
     var toCurrencyCode: String = ""
     var toCurrencyValue: String = ""
-    var historicalModel = [HistoricalDataModel]()
     // MARK: - initalizer
     init(currencyDetailsUseCase: CurrencyDetailsUseCaseProtocol) {
         self.currencyDetailsUseCase = currencyDetailsUseCase
     }
     // MARK: - Methods
-    func fetchHistoricalConverts(date: String, to: String, from: String) {
+    func fetchHistoricalConverts(date: String, symbols: String, base: String) {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchHistoricalDetails(date: date, to: to, from: from)
+        currencyDetailsUseCase.fetchHistoricalDetails(date: date, symbols: symbols, base: base)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
-                guard let self = self else {return}
+              guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 let to = Array(model.rates.values)[0]
-                self.append(dateStr: date, fromValue: self.fromCurrencyValue, toValue: String(to), fromSymbol: self.fromCurrencyCode, toSymbol: self.toCurrencyCode)
+                self.appendLastThreeDaysHistory(dateStr: date, fromValue: self.fromCurrencyValue, toValue: String(to), fromSymbol: self.fromCurrencyCode, toSymbol: self.toCurrencyCode)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 self.apiErrorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func fetchFamousConverts(date: String, to: String, from: String) {
+    func fetchFamousConverts() {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchFamousConvertedCurrency(fromSymbol: from, toSymbol: to, value: "USD")
+        currencyDetailsUseCase.fetchFamousConvertedCurrency(symbols: Constants.famousCurrencies, base: Constants.euroSymbol)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                let to = Array(model.rates.values)[0]
-                self.append(dateStr: date, fromValue: self.fromCurrencyValue, toValue: String(to), fromSymbol: self.fromCurrencyCode, toSymbol: self.toCurrencyCode)
+                let keys = Array(model.rates.keys)
+                let values  = Array(model.rates.values)
+                for (key, value) in zip(keys, values) {
+                    self.currencyModel.append(CurrencyModel(currencySymbol: key, currencyValue: String(value)))
+                }
+                self.currencyModelSubject.onNext(self.currencyModel)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 self.apiErrorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func append(dateStr: String, fromValue: String, toValue: String, fromSymbol: String, toSymbol: String) {
-        historicalModel.append(HistoricalDataModel(fromCurrencySymbol: fromSymbol, fromCurrencyValue: fromValue, toCurrencySymobl: toSymbol, toCurrencyValue: toValue, dateString: dateStr))
-    }
-    func today() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateStr: String = dateFormatter.string(from: NSDate() as Date)
-        fetchHistoricalConverts(date: dateStr, to: toCurrencyCode, from: fromCurrencyCode)
-    }
-    func getLastThreeDaysConverts() {
+    func appendLastThreeDaysHistory(dateStr: String, fromValue: String, toValue: String, fromSymbol: String, toSymbol: String) {
         let dispatchGroup = DispatchGroup()
-        today()
-        let datesArray = getHistoricalDates()
-        for dateString in datesArray {
+        for date in getLastThreeDays() {
             dispatchGroup.enter()
-            fetchHistoricalConverts(date: dateString, to: toCurrencyCode, from: fromCurrencyCode)
+            historicalModel.append(HistoricalDataModel(fromCurrencySymbol: fromSymbol, fromCurrencyValue: fromValue, toCurrencySymobl: toSymbol, toCurrencyValue: toValue, dateString: date))
             dispatchGroup.leave()
+            print(historicalModel)
         }
         dispatchGroup.notify(queue: .main) {
             self.convertsLastThreeDaysSubject.onNext(self.historicalModel)
         }
     }
-    func getHistoricalDates() -> [String] {
+    func getLastThreeDaysConverts() {
+        let dateStringArray = getLastThreeDays()
+        self.fetchHistoricalConverts(date: dateStringArray[0], symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: Constants.euroSymbol)
+    }
+    // MARK: - Other
+    func getLastThreeDays() -> [String] {
         var datesData = [String]()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        for  i in 0...1{
-            let lastWeekDate = NSCalendar.current.date(byAdding: .day, value: -(1+i), to: NSDate() as Date)
+        dateFormatter.dateFormat = Constants.dateFormatString
+        for i in 0...2 {
+            let lastWeekDate = Calendar.current.date(byAdding: .day, value: -i, to: Date())
             let dateStr:String = dateFormatter.string(from: lastWeekDate!)
             datesData.append(dateStr)
         }
         return datesData
     }
-}
-struct CurrencyModel {
-    var currencySymbol: String
-    var currencyValue: String
+    func convertRateDetailsString(fromValue: String, fromSymbol: String, toValue: String, toSymbol: String) -> String {
+        return "\(fromValue) \(fromSymbol) -> \(toValue) \(toSymbol)"
+    }
+    func presenetedDate(dateString: String) -> String {
+        return "\(Constants.onKey) \(dateString)"
+    }
 }

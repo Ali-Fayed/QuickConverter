@@ -8,9 +8,9 @@ import Foundation
 enum RequestRouter: BaseRouter {
     case symbols
     case convert(to: String, from: String, amount: String)
-    case latest(to: String, from: String, base: String)
+    case latest(symbol: String, base: String)
     case timeSeries(startDate: String, endDate: String)
-    case date(date: String, to: String, from: String)
+    case date(date: String, symbols: String, base: String)
     //MARK: - Path
     var path: String {
         switch self {
@@ -40,12 +40,12 @@ enum RequestRouter: BaseRouter {
             return nil
         case .convert(to: let to, from: let from, amount: let amount):
             return ["to": to, "from": from, "amount": amount]
-        case .latest(to: let to, from: let from, base: let base):
-            return ["symbols": "\(from),\(to)", "base": base]
+        case .latest(symbol: let symbol, base: let base):
+            return ["base": base, "symbols": symbol]
         case .timeSeries(startDate: let startDate, endDate: let endDate):
             return ["start_date": startDate, "end_date": endDate]
-        case .date(_ , let to, let from):
-            return ["symbols": "\(from),\(to)", "base": "USD"]
+        case .date(_ , let symbols, let base):
+            return ["symbols": symbols, "base": base]
         }
     }
 }

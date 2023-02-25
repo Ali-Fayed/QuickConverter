@@ -8,6 +8,6 @@ import Foundation
 import RxCocoa
 import RxSwift
 protocol CurrencyDetailsRepoProtocol {
-    func getHistoricalConverts(date: String, to: String, from: String) -> Observable<CurrencyDetailsDataModel>
-    func fetchFamousConvertedCurrency(fromSymbol: String, toSymbol: String, value: String) -> Observable<CurrencyDetailsDataModel>
+    func getHistoricalConverts(date: String, symbols: String, base: String) -> Observable<CurrencyDetailsDataModell>
+    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<CurrencyDetailsDataModel>
 }

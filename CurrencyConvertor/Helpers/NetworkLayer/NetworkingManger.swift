@@ -34,7 +34,9 @@ public class NetworkingManger {
                             observer.onError(APIError(.serverError))
                         } else if statusCode == 104 {
                             observer.onError(APIError(.serverError))
-                        }else {
+                        } else if statusCode == 429 {
+                            self.decodeAPIError(jsonDecoder: self.jsonDecoder, _data: _data, observer: observer)
+                        } else {
                             observer.onNext(EmptyResponse() as! T)
                         }
                     } catch {

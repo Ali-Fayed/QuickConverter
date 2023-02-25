@@ -126,8 +126,8 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .subscribe(onError: { [weak self] error in
             guard let self = self else {return}
             guard let error = error as? APIError else {return}
-            if error.error?.info != nil {
-                self.presentErrorAlert(error: error, message: error.error?.info ?? "")
+            if error.message != nil {
+                self.presentErrorAlert(error: error, message: error.message ?? "")
             } else {
                 self.presentErrorAlert(error: error, message: error.customError?.errorDescription ?? "")
             }

@@ -112,64 +112,52 @@
             <point key="canvasLocation" x="784" y="-2"/>
         </scene>
         <!--Currency Details View Controller-->
-        <scene sceneID="RKn-ox-kwq">
-            <objects>
-                <viewController storyboardIdentifier="CurrencyDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e8I-0L-PJe" customClass="CurrencyDetailsViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WGS-x8-fJ3">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOB-Uo-c78">
-                                <rect key="frame" x="0.0" y="59" width="192.66666666666666" height="759"/>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSi-3d-eaE">
-                                <rect key="frame" x="200.33333333333337" y="59" width="192.66666666666663" height="759"/>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="bk0-NZ-KLR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="BOB-Uo-c78" firstAttribute="leading" secondItem="bk0-NZ-KLR" secondAttribute="leading" id="65J-va-7dn"/>
-                            <constraint firstItem="BOB-Uo-c78" firstAttribute="top" secondItem="bk0-NZ-KLR" secondAttribute="top" id="D0g-x1-Var"/>
-                            <constraint firstItem="aSi-3d-eaE" firstAttribute="top" secondItem="bk0-NZ-KLR" secondAttribute="top" id="Euf-k6-D0C"/>
-                            <constraint firstItem="aSi-3d-eaE" firstAttribute="width" secondItem="WGS-x8-fJ3" secondAttribute="width" multiplier="0.49" id="QSd-OJ-mWw"/>
-                            <constraint firstItem="bk0-NZ-KLR" firstAttribute="bottom" secondItem="BOB-Uo-c78" secondAttribute="bottom" id="Qy9-8G-tdv"/>
-                            <constraint firstItem="bk0-NZ-KLR" firstAttribute="bottom" secondItem="aSi-3d-eaE" secondAttribute="bottom" id="XEP-Hv-Hsy"/>
-                            <constraint firstAttribute="trailing" secondItem="aSi-3d-eaE" secondAttribute="trailing" id="bdJ-vw-7Ha"/>
-                            <constraint firstItem="BOB-Uo-c78" firstAttribute="width" secondItem="WGS-x8-fJ3" secondAttribute="width" multiplier="0.49" id="l7L-jF-iA8"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hjn-p3-4KH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1637" y="-2"/>
-        </scene>
-        <!--Currency Data Table View Controller-->
         <scene sceneID="jBu-0R-8S1">
             <objects>
-                <viewController storyboardIdentifier="CurrencyDataTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7NV-5X-PQP" customClass="CurrencyDataTableViewController" customModule="CurrencyConverterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrencyDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7NV-5X-PQP" customClass="CurrencyDetailsViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g2Q-GF-wCD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uJw-qe-QaP">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="um7-v4-W74">
+                                <rect key="frame" x="16" y="59" width="361" height="759"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g9d-AT-4RD">
+                                        <rect key="frame" x="0.0" y="0.0" width="179" height="759"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="734" id="3aT-WT-RRE"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="6uF-qq-hpX"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-AD-OgG">
+                                        <rect key="frame" x="182" y="0.0" width="179" height="759"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="IIq-9Q-NYI"/>
+                                            <constraint firstAttribute="height" constant="734" id="mLo-1o-XdL"/>
+                                        </constraints>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cdN-N2-Ke0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uJw-qe-QaP" firstAttribute="top" secondItem="g2Q-GF-wCD" secondAttribute="top" id="7DX-aA-bnm"/>
-                            <constraint firstAttribute="bottom" secondItem="uJw-qe-QaP" secondAttribute="bottom" id="Ibd-5e-hsz"/>
-                            <constraint firstAttribute="trailing" secondItem="uJw-qe-QaP" secondAttribute="trailing" id="pLp-9B-VvZ"/>
-                            <constraint firstItem="uJw-qe-QaP" firstAttribute="leading" secondItem="g2Q-GF-wCD" secondAttribute="leading" id="ubk-SD-Sbx"/>
+                            <constraint firstItem="um7-v4-W74" firstAttribute="leading" secondItem="cdN-N2-Ke0" secondAttribute="leading" constant="16" id="C0R-VK-EUD"/>
+                            <constraint firstItem="cdN-N2-Ke0" firstAttribute="trailing" secondItem="um7-v4-W74" secondAttribute="trailing" constant="16" id="mSy-H3-pYd"/>
+                            <constraint firstItem="cdN-N2-Ke0" firstAttribute="bottom" secondItem="um7-v4-W74" secondAttribute="bottom" id="ml9-xR-gLC"/>
+                            <constraint firstItem="um7-v4-W74" firstAttribute="top" secondItem="cdN-N2-Ke0" secondAttribute="top" id="vhr-uj-RNb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="historyTableView" destination="g9d-AT-4RD" id="MP0-2u-wZo"/>
+                        <outlet property="otherCurrenciesTableView" destination="kRY-AD-OgG" id="zhc-Wp-5jj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1E-Vj-y94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471" y="-16"/>
+            <point key="canvasLocation" x="1593" y="13"/>
         </scene>
     </scenes>
     <resources>

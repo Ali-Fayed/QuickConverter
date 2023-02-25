@@ -6,9 +6,9 @@
 //
 import Foundation
 struct CurrencyRatesEntity: Codable {
-    let success: Bool
-    let timestamp: Int
-    let historical: Bool
-    let base, date: String
-    let rates: [String: Double]
+    let success: Bool?
+    let timestamp: Int?
+    let historical: Bool?
+    let base, date: String?
+    let rates: [String: Double]?
 }

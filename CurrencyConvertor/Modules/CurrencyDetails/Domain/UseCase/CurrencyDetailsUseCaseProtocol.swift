@@ -8,6 +8,6 @@ import RxCocoa
 import RxSwift
 import Foundation
 protocol CurrencyDetailsUseCaseProtocol {
-    func fetchHistoricalDetails(date: String, to: String, from: String) -> Observable<CurrencyDetailsDataModel>
-    func fetchFamousConvertedCurrency(fromSymbol: String, toSymbol: String, value: String) -> Observable<CurrencyDetailsDataModel>
+    func fetchHistoricalDetails(date: String, symbols: String, base: String) -> Observable<CurrencyDetailsDataModell>
+    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<CurrencyDetailsDataModel>
 }

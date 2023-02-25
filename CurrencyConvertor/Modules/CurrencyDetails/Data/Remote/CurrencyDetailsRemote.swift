@@ -8,12 +8,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 class CurrencyDetailsRemote: CurrencyDetailsRemoteProtocol {
-    func fetchHistoricalCurrencyConverts(date: String, to: String, from: String) -> Observable<CurrencyRatesEntity> {
-        let response = NetworkingManger.shared.performRequest(router: RequestRouter.date(date: date, to: to, from: from), model: CurrencyRatesEntity.self)
+    func fetchHistoricalCurrencyConverts(date: String, symbols: String, base: String) -> Observable<HistoricalConvertsEntity> {
+        let response = NetworkingManger.shared.performRequest(router: RequestRouter.date(date: date, symbols: symbols, base: base), model: HistoricalConvertsEntity.self)
         return response
     }
-    func fetchFamousConvertedCurrency(fromSymbol: String, toSymbol: String, value: String) -> Observable<CurrencyRatesEntity> {
-        let response = NetworkingManger.shared.performRequest(router: RequestRouter.latest(to: toSymbol, from: fromSymbol, base: value), model: CurrencyRatesEntity.self)
+    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<CurrencyRatesEntity> {
+        let response = NetworkingManger.shared.performRequest(router: RequestRouter.latest(symbol: symbols, base: base), model: CurrencyRatesEntity.self)
         return response
     }
 }
