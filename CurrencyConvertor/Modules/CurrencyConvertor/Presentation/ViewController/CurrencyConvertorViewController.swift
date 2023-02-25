@@ -7,6 +7,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+
 class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewModel> {
     // MARK: - IBOutlets
     @IBOutlet weak var fromSympolTextField: CustomTextFieldPicker!

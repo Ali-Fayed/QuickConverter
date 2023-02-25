@@ -33,6 +33,9 @@
 		EAA29DAC29AA49D300580B53 /* Filee.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DAB29AA49D300580B53 /* Filee.swift */; };
 		EAA29DAE29AA49DB00580B53 /* sss.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DAD29AA49DB00580B53 /* sss.swift */; };
 		EAA29DB329AA778600580B53 /* HistoricalConvertsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DB229AA778600580B53 /* HistoricalConvertsEntity.swift */; };
+		EAA29DB529AA91FD00580B53 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DB429AA91FD00580B53 /* CurrencyChart.swift */; };
+		EAA29DB729AA93E600580B53 /* MyTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DB629AA93E600580B53 /* MyTableViewHeaderView.swift */; };
+		EAA29DB929AA94DF00580B53 /* Measurment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DB829AA94DF00580B53 /* Measurment.swift */; };
 		EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197129A7A55A007570E3 /* AppDelegate.swift */; };
 		EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197329A7A55A007570E3 /* SceneDelegate.swift */; };
 		EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197529A7A55A007570E3 /* SplashViewController.swift */; };
@@ -120,6 +123,9 @@
 		EAA29DAB29AA49D300580B53 /* Filee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filee.swift; sourceTree = "<group>"; };
 		EAA29DAD29AA49DB00580B53 /* sss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sss.swift; sourceTree = "<group>"; };
 		EAA29DB229AA778600580B53 /* HistoricalConvertsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalConvertsEntity.swift; sourceTree = "<group>"; };
+		EAA29DB429AA91FD00580B53 /* CurrencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChart.swift; sourceTree = "<group>"; };
+		EAA29DB629AA93E600580B53 /* MyTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EAA29DB829AA94DF00580B53 /* Measurment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurment.swift; sourceTree = "<group>"; };
 		EAB2196E29A7A55A007570E3 /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB2197129A7A55A007570E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB2197329A7A55A007570E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 		EAA29D9829AA3AB800580B53 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EAA29DBA29AA94E800580B53 /* ChartHeader */,
 				EAA29D9A29AA3AC500580B53 /* OtherCurrenciesCell */,
 				EAA29D9929AA3ABD00580B53 /* HistoricalDataCell */,
 			);
@@ -294,6 +301,16 @@
 				EAA29DAD29AA49DB00580B53 /* sss.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		EAA29DBA29AA94E800580B53 /* ChartHeader */ = {
+			isa = PBXGroup;
+			children = (
+				EAA29DB429AA91FD00580B53 /* CurrencyChart.swift */,
+				EAA29DB629AA93E600580B53 /* MyTableViewHeaderView.swift */,
+				EAA29DB829AA94DF00580B53 /* Measurment.swift */,
+			);
+			path = ChartHeader;
 			sourceTree = "<group>";
 		};
 		EAB2196529A7A55A007570E3 = {
@@ -927,7 +944,9 @@
 				EAA29D7D29A9A2B800580B53 /* CurrencyConvertEntity.swift in Sources */,
 				EAB219C729A7A7A2007570E3 /* CurrencyConvertorViewController.swift in Sources */,
 				EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */,
+				EAA29DB929AA94DF00580B53 /* Measurment.swift in Sources */,
 				EAA29D9029A9A8EC00580B53 /* CurrencyDetails.swift in Sources */,
+				EAA29DB729AA93E600580B53 /* MyTableViewHeaderView.swift in Sources */,
 				EAB21A3429A8EE98007570E3 /* CurrencySympols.swift in Sources */,
 				EAB219DB29A83380007570E3 /* AppStoryboards.swift in Sources */,
 				EAB21A2729A8E973007570E3 /* CurrencyConvertorUseCase.swift in Sources */,
@@ -967,6 +986,7 @@
 				EAB219DD29A8338E007570E3 /* Storyboarded.swift in Sources */,
 				EAA29D9529A9AB8600580B53 /* CurrencyDetailsFactory.swift in Sources */,
 				EAB219F029A8355A007570E3 /* CurrencyDetailsViewController.swift in Sources */,
+				EAA29DB529AA91FD00580B53 /* CurrencyChart.swift in Sources */,
 				EAA29D9D29AA3AD500580B53 /* HistoricalDataTableViewCell.swift in Sources */,
 				EAB21A1929A85EC6007570E3 /* CurrencySympolsEntity.swift in Sources */,
 				EAB219D729A832F8007570E3 /* BaseViewController.swift in Sources */,
