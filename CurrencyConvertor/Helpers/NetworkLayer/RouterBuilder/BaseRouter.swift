@@ -16,12 +16,12 @@ protocol BaseRouter {
 
 extension BaseRouter {
     var scheme: String {
-        return "http"
+        return "https"
     }
     var baseURL: String {
-        return "data.fixer.io"
+        return "api.apilayer.com"
     }
     var headers: HttpHeaders? {
-        return ["Accept": "application/json"]
+        return ["apikey": "6g0O5O3DwXCRM8vNYFyg0NAbO1lXW62N"]
     }
 }

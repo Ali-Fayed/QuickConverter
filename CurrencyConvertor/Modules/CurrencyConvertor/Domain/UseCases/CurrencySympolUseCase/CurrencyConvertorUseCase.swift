@@ -13,12 +13,8 @@ class CurrencyConvertorUseCase: CurrencyConvertorUseCaseProtocol {
     }
     func fetchCurrencySymbols() -> Observable<SympolsDataModelProtocol> {
         return currencySymbolRepository.getCurrencySymbols()
-            .map { CurrencySymbols(sympol: $0.symbols) }
-            .asObservable()
     }
-    func fetchLatestCurrencyRates(from: String, to: String) -> Observable<LatestRatesDataModelProtocol> {
-        return currencySymbolRepository.getLatestCurrencyConvertedRates(from: from, to: to)
-            .map { LatestRates(rates: $0.rates) }
-            .asObservable()
+    func fetchLatestCurrencyRates(from: String, to: String, amount: String) -> Observable<ConvertedCurrencyDataModelProtocol> {
+        return currencySymbolRepository.getLatestCurrencyConvertedRates(from: from, to: to, ammout: amount)
     }
 }

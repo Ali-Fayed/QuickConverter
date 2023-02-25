@@ -7,20 +7,29 @@
 import Foundation
 enum RequestRouter: BaseRouter {
     case symbols
-    case latest(from: String, to: String)
+    case convert(to: String, from: String, amount: String)
+    case latest(sympols: String, base: String)
+    case timeSeries(startDate: String, endDate: String)
+    case date(date: String)
     //MARK: - Path
     var path: String {
         switch self {
         case .symbols:
-            return "/api/symbols"
+            return "/fixer/symbols"
+        case .convert:
+            return "/fixer/convert"
         case .latest:
-            return "/api/2023-02-23"
+            return "/fixer/latest"
+        case .timeSeries:
+            return "/fixer/timeseries"
+        case .date(let date):
+            return "fixer/\(date)"
         }
     }
     //MARK: - HTTPMethod
     var method: HttpMethod {
         switch self {
-        case .symbols, .latest:
+        case .symbols, .convert, .latest, .timeSeries, .date:
             return .get
         }
     }
@@ -28,9 +37,15 @@ enum RequestRouter: BaseRouter {
     var parameter: HttpParameters? {
         switch self {
         case .symbols:
-            return ["access_key": ""]
-        case .latest(let from, let to):
-            return ["access_key": "", "symbols": "\(from),\(to)", "base": "EUR"]
+            return nil
+        case .convert(to: let to, from: let from, amount: let amount):
+            return ["to": to, "from": from, "amount": amount]
+        case .latest(sympols: let sympols, base: let base):
+            return ["symbols": sympols, "base": base]
+        case .timeSeries(startDate: let startDate, endDate: let endDate):
+            return ["start_date": startDate, "end_date": endDate]
+        case .date:
+            return nil
         }
     }
 }

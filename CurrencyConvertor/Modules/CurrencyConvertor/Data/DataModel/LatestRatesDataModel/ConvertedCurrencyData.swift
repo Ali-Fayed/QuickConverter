@@ -5,6 +5,6 @@
 //  Created by AliFayed on 24/02/2023.
 //
 import Foundation
-struct LatestRates: LatestRatesDataModelProtocol {
-    var rates: [String: Double]
+struct ConvertedCurrencyData: ConvertedCurrencyDataModelProtocol {
+    var convertedCurrencyResult: String
 }

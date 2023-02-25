@@ -11,10 +11,14 @@ class CurrencyConvertorRepository: CurrencyConvertorRepoProtocol {
     init(currencySymbolService: CurrencyConvertorRemoteProtocol) {
         self.currencySymbolService = currencySymbolService
     }
-    func getCurrencySymbols() -> Observable<CurrencySympolsEntity> {
+    func getCurrencySymbols() -> Observable<SympolsDataModelProtocol> {
         return currencySymbolService.fetchCurrencySymbols()
+            .map { CurrencySympols(sympol: $0.symbols) }
+            .asObservable()
     }
-    func getLatestCurrencyConvertedRates(from: String, to: String) -> Observable<CurrencyRatesEntity> {
-        return currencySymbolService.fetchLatestCurrencyConverts(from: from, to: to)
+    func getLatestCurrencyConvertedRates(from: String, to: String, ammout: String) -> Observable<ConvertedCurrencyDataModelProtocol> {
+        return currencySymbolService.fetchLatestCurrencyConverts(from: from, to: to, ammout: ammout)
+            .map { ConvertedCurrencyData(convertedCurrencyResult: String($0.result)) }
+            .asObservable()
     }
 }

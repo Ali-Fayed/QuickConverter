@@ -8,5 +8,5 @@ import Foundation
 import RxSwift
 protocol CurrencyConvertorUseCaseProtocol {
     func fetchCurrencySymbols() -> Observable<SympolsDataModelProtocol>
-    func fetchLatestCurrencyRates(from: String, to: String) -> Observable<LatestRatesDataModelProtocol>
+    func fetchLatestCurrencyRates(from: String, to: String, amount: String) -> Observable<ConvertedCurrencyDataModelProtocol>
 }

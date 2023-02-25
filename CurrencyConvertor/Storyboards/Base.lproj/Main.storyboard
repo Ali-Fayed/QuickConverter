@@ -26,93 +26,94 @@
             <point key="canvasLocation" x="30" y="-2"/>
         </scene>
         <!--Currency Convertor View Controller-->
-        <scene sceneID="VoZ-1j-F1N">
+        <scene sceneID="La8-HH-LAI">
             <objects>
-                <viewController storyboardIdentifier="CurrencyConvertorViewController" id="1Qa-IY-y8U" customClass="CurrencyConvertorViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c7v-xX-hCc">
+                <viewController storyboardIdentifier="CurrencyConvertorViewController" id="k2r-Rh-ANO" customClass="CurrencyConvertorViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Fw-36-a0b">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NID-a9-p96">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yyc-5R-4Nc">
                                 <rect key="frame" x="20" y="129.33333333333334" width="353" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EGP" borderStyle="roundedRect" placeholder="From" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2O-Xy-SBl" customClass="CustomTextFieldPicker" customModule="CurrencyConverterApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" borderStyle="roundedRect" placeholder="From" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uc4-pB-gT9" customClass="CustomTextFieldPicker" customModule="CurrencyConvertor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="131.66666666666666" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUd-wO-H0c">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-AB-q2C">
                                         <rect key="frame" x="151.66666666666666" y="0.0" width="50" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Vkq-eA-c8j"/>
-                                            <constraint firstAttribute="height" constant="44" id="aCi-5e-o9V"/>
+                                            <constraint firstAttribute="height" constant="44" id="ISO-Mw-7zu"/>
+                                            <constraint firstAttribute="width" constant="50" id="x6k-cl-pzE"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="fibrechannel" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.left.arrow.right.circle.fill" catalog="system"/>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="INR" borderStyle="roundedRect" placeholder="To" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shd-eH-oi3" customClass="CustomTextFieldPicker" customModule="CurrencyConverterApp" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EGP" borderStyle="roundedRect" placeholder="To" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-LY-V1b" customClass="CustomTextFieldPicker" customModule="CurrencyConvertor" customModuleProvider="target">
                                         <rect key="frame" x="221.66666666666663" y="0.0" width="131.33333333333337" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="h2O-Xy-SBl" firstAttribute="width" secondItem="Shd-eH-oi3" secondAttribute="width" id="Yxp-pi-ZEr"/>
+                                    <constraint firstItem="Uc4-pB-gT9" firstAttribute="width" secondItem="bVx-LY-V1b" secondAttribute="width" id="kiA-5r-EQb"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tyX-ef-Y2H">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P3V-of-NZJ">
                                 <rect key="frame" x="20" y="203.33333333333334" width="131.66666666666666" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDy-n2-I9K">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9MH-IL-QME">
                                 <rect key="frame" x="241.66666666666663" y="203.33333333333334" width="131.33333333333337" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-IQ-mNZ">
-                                <rect key="frame" x="146.66666666666666" y="267.33333333333337" width="100" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hjo-Vg-CRF">
+                                <rect key="frame" x="146.66666666666666" y="267.33333333333331" width="100" height="34.333333333333314"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="aGy-07-ZF6"/>
+                                    <constraint firstAttribute="width" constant="100" id="uoO-Hf-5UL"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Details"/>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="kYp-7H-Afc"/>
+                        <viewLayoutGuide key="safeArea" id="e5C-Uc-Wa9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="width" secondItem="h2O-Xy-SBl" secondAttribute="width" id="42d-hG-LAq"/>
-                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="leading" secondItem="h2O-Xy-SBl" secondAttribute="leading" id="BWI-xr-5fz"/>
-                            <constraint firstItem="tyX-ef-Y2H" firstAttribute="top" secondItem="NID-a9-p96" secondAttribute="bottom" constant="30" id="UYv-fM-ZvG"/>
-                            <constraint firstItem="HAH-IQ-mNZ" firstAttribute="top" secondItem="tyX-ef-Y2H" secondAttribute="bottom" constant="30" id="ZZ9-ee-6f5"/>
-                            <constraint firstItem="kYp-7H-Afc" firstAttribute="trailing" secondItem="NID-a9-p96" secondAttribute="trailing" constant="20" id="cPt-1I-LDe"/>
-                            <constraint firstItem="UDy-n2-I9K" firstAttribute="width" secondItem="tyX-ef-Y2H" secondAttribute="width" id="e4E-Af-IeF"/>
-                            <constraint firstItem="UDy-n2-I9K" firstAttribute="leading" secondItem="Shd-eH-oi3" secondAttribute="leading" id="fcG-KS-ESW"/>
-                            <constraint firstItem="UDy-n2-I9K" firstAttribute="centerY" secondItem="tyX-ef-Y2H" secondAttribute="centerY" id="mp3-z5-h1p"/>
-                            <constraint firstItem="NID-a9-p96" firstAttribute="leading" secondItem="kYp-7H-Afc" secondAttribute="leading" constant="20" id="oJK-Fx-2gJ"/>
-                            <constraint firstItem="HAH-IQ-mNZ" firstAttribute="centerX" secondItem="c7v-xX-hCc" secondAttribute="centerX" id="tbF-pS-gsM"/>
+                            <constraint firstItem="yyc-5R-4Nc" firstAttribute="leading" secondItem="e5C-Uc-Wa9" secondAttribute="leading" constant="20" id="Elx-iX-vCz"/>
+                            <constraint firstItem="P3V-of-NZJ" firstAttribute="top" secondItem="yyc-5R-4Nc" secondAttribute="bottom" constant="30" id="L7h-uF-prn"/>
+                            <constraint firstItem="yyc-5R-4Nc" firstAttribute="top" secondItem="e5C-Uc-Wa9" secondAttribute="top" constant="70.333333333333343" id="R3H-77-GAl"/>
+                            <constraint firstItem="9MH-IL-QME" firstAttribute="leading" secondItem="bVx-LY-V1b" secondAttribute="leading" id="XTh-ek-kk3"/>
+                            <constraint firstItem="P3V-of-NZJ" firstAttribute="leading" secondItem="Uc4-pB-gT9" secondAttribute="leading" id="YvR-OJ-TU3"/>
+                            <constraint firstItem="9MH-IL-QME" firstAttribute="width" secondItem="P3V-of-NZJ" secondAttribute="width" id="bGv-xx-uCd"/>
+                            <constraint firstItem="e5C-Uc-Wa9" firstAttribute="trailing" secondItem="yyc-5R-4Nc" secondAttribute="trailing" constant="20" id="lid-L0-W2g"/>
+                            <constraint firstItem="Hjo-Vg-CRF" firstAttribute="centerX" secondItem="1Fw-36-a0b" secondAttribute="centerX" id="mDC-S6-QQe"/>
+                            <constraint firstItem="9MH-IL-QME" firstAttribute="centerY" secondItem="P3V-of-NZJ" secondAttribute="centerY" id="n5N-V8-Qaa"/>
+                            <constraint firstItem="Hjo-Vg-CRF" firstAttribute="top" secondItem="P3V-of-NZJ" secondAttribute="bottom" constant="30" id="syR-Zn-MTd"/>
+                            <constraint firstItem="P3V-of-NZJ" firstAttribute="width" secondItem="Uc4-pB-gT9" secondAttribute="width" id="wT4-D9-RvV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zyZ-zK-UUR"/>
+                    <navigationItem key="navigationItem" id="8UN-gm-6Lb"/>
                     <connections>
-                        <outlet property="convertedCurrencyTextField" destination="UDy-n2-I9K" id="4MN-20-lSf"/>
-                        <outlet property="detailsButton" destination="HAH-IQ-mNZ" id="Z5B-tX-zRt"/>
-                        <outlet property="fromSympolTextField" destination="h2O-Xy-SBl" id="3vL-WB-usH"/>
-                        <outlet property="inputCurrencyTextField" destination="tyX-ef-Y2H" id="fDF-Ke-o3g"/>
-                        <outlet property="swapRatedButton" destination="xUd-wO-H0c" id="6mN-Ef-22Q"/>
-                        <outlet property="toSympolTextField" destination="Shd-eH-oi3" id="qw6-5N-4zL"/>
+                        <outlet property="convertedCurrencyTextField" destination="9MH-IL-QME" id="1rk-hQ-2sZ"/>
+                        <outlet property="detailsButton" destination="Hjo-Vg-CRF" id="3c5-uG-1UZ"/>
+                        <outlet property="fromSympolTextField" destination="Uc4-pB-gT9" id="ULh-Rp-2IT"/>
+                        <outlet property="inputCurrencyTextField" destination="P3V-of-NZJ" id="OBI-AI-B7k"/>
+                        <outlet property="swapRatedButton" destination="JDL-AB-q2C" id="nbE-gB-C6I"/>
+                        <outlet property="toSympolTextField" destination="bVx-LY-V1b" id="2uh-H9-7jk"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gxJ-Pt-JpV" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Yr-Jz-bjX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873" y="-2"/>
+            <point key="canvasLocation" x="784" y="-2"/>
         </scene>
     </scenes>
     <resources>
-        <image name="fibrechannel" catalog="system" width="128" height="92"/>
+        <image name="arrow.left.arrow.right.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

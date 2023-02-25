@@ -14,8 +14,8 @@ class CurrencyConvertorViewModel {
     private var disposeBag = DisposeBag()
     let loadingIndicatorRelay = BehaviorRelay<Bool>(value: true)
     let currencySympolsSubject = PublishSubject<SympolsDataModelProtocol>()
-    let errorSubject = PublishSubject<APIError>()
-    let latestRatesSubject = PublishSubject<String>()
+    let apiErrorSubject = PublishSubject<APIError>()
+    let convertedCurrencySubject = PublishSubject<String>()
     // MARK: - initalizer
     init(currencySymbolsUseCase: CurrencyConvertorUseCaseProtocol) {
         self.currencyConvertorUseCase = currencySymbolsUseCase
@@ -32,33 +32,21 @@ class CurrencyConvertorViewModel {
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.errorSubject.onError(error)
+                self.apiErrorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func fetchLatestRates(fromSympol: String, toSympol: String, value: String) {
+    func fetchLatestRates(fromSympol: String, toSympol: String, amount: String) {
         loadingIndicatorRelay.accept(true)
-        currencyConvertorUseCase.fetchLatestCurrencyRates(from: fromSympol, to: toSympol)
+        currencyConvertorUseCase.fetchLatestCurrencyRates(from: fromSympol, to: toSympol, amount: amount)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                guard let convertedValue = self.convertedValue(model: model, fromSympol: fromSympol, toSympol: toSympol, value: value) else {return}
-                self.latestRatesSubject.onNext(convertedValue)
+                self.convertedCurrencySubject.onNext(model.convertedCurrencyResult)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.errorSubject.onError(error)
+                self.apiErrorSubject.onError(error)
             }).disposed(by: disposeBag)
-    }
-    func convertedValue(model: LatestRatesDataModelProtocol, fromSympol: String, toSympol: String, value: String) -> String? {
-        guard let fromValue = model.rates[fromSympol] else {return ""}
-        guard let toValue = model.rates[toSympol] else {return ""}
-        guard let value = Double(value) else {return ""}
-        let convertedString = convertCustomValues(fromValue: fromValue, toValue: toValue, valueToConvert: value)
-        return convertedString
-    }
-    func convertCustomValues(fromValue: Double, toValue: Double, valueToConvert: Double) -> String {
-         let convertValue = (toValue * valueToConvert) / fromValue
-        return String(format: "%.3f", convertValue)
     }
 }
