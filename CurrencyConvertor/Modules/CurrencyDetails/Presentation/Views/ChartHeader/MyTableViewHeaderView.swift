@@ -8,16 +8,13 @@ import UIKit
 import SwiftUI
 class MyTableViewHeaderView: UIView {
     var measurements: [Measurement]
-       
     init(frame: CGRect, measurements: [Measurement]) {
            self.measurements = measurements
            super.init(frame: frame)
         let mySwiftUIView = CurrencyChart(measurements: measurements)
         let hostingController = UIHostingController(rootView: mySwiftUIView)
-        
         addSubview(hostingController.view)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             hostingController.view.topAnchor.constraint(equalTo: topAnchor),
             hostingController.view.bottomAnchor.constraint(equalTo: bottomAnchor),

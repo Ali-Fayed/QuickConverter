@@ -30,7 +30,7 @@ class CurrencyDetailsViewModel {
     // MARK: - Methods
     func fetchHistoricalConverts(date: String, symbols: String, base: String) {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchHistoricalDetails(date: date, symbols: symbols, base: base)
+        currencyDetailsUseCase.fetchHistoricalDetails(date: date, symbols: symbols, base: self.fromCurrencyCode)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
               guard let self = self else {return}
@@ -45,7 +45,7 @@ class CurrencyDetailsViewModel {
     }
     func fetchFamousConverts() {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchFamousConvertedCurrency(symbols: Constants.famousCurrencies, base: Constants.euroSymbol)
+        currencyDetailsUseCase.fetchFamousConvertedCurrency(symbols: Constants.famousCurrencies, base: self.fromCurrencyCode)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
@@ -68,7 +68,6 @@ class CurrencyDetailsViewModel {
             dispatchGroup.enter()
             historicalModel.append(HistoricalDataModel(fromCurrencySymbol: fromSymbol, fromCurrencyValue: fromValue, toCurrencySymobl: toSymbol, toCurrencyValue: toValue, dateString: date))
             dispatchGroup.leave()
-            print(historicalModel)
         }
         dispatchGroup.notify(queue: .main) {
             self.convertsLastThreeDaysSubject.onNext(self.historicalModel)
@@ -76,7 +75,7 @@ class CurrencyDetailsViewModel {
     }
     func getLastThreeDaysConverts() {
         let dateStringArray = getLastThreeDays()
-        self.fetchHistoricalConverts(date: dateStringArray[0], symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: Constants.euroSymbol)
+        self.fetchHistoricalConverts(date: dateStringArray[0], symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: self.fromCurrencyCode)
     }
     // MARK: - Other
     func getLastThreeDays() -> [String] {
