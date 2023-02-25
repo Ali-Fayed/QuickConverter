@@ -17,24 +17,17 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(splashViewController, animated: true)
     }
     func showCurrencyViewController() {
-        let remote = CurrencyConvertorRemote()
-        let repository = CurrencyConvertorRepository(currencySymbolService: remote)
-        let useCase = CurrencyConvertorUseCase(currencySymbolRepository: repository)
-        let viewModel = CurrencyConvertorViewModel(currencySymbolsUseCase: useCase)
-        let viewController = CurrencyConvertorViewController.instaintiate(on: .main)
-        viewController.initDependencies(viewModel: viewModel)
+        let viewController = CurrencyConvertorFactory.createCurrencyConvertorViewController(navigationController: navigationController)
         viewController.coordinator = self
-        viewController.title = Constants.currencyViewTitle
-        viewController.navigationItem.hidesBackButton = true
-        viewController.navigationItem.largeTitleDisplayMode = .always
-        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(viewController, animated: true)
     }
-    func showCurrencyDetailsViewController() {
-        let viewModel = CurrencyDetailsViewModel()
-        let viewController = CurrencyDetailsViewController(viewModel: viewModel, nibName: Constants.currencyDetailsViewNib)
+    func showCurrencyDetailsViewController(fromSympol: String, toSympol: String, fromValue: String, toValue: String) {
+        let viewController = CurrencyDetailsFactory.createCurrencyDetailsViewController(navigationController: navigationController)
+        viewController.viewModel?.fromCurrencyCode = fromSympol
+        viewController.viewModel?.toCurrencyCode = toSympol
+        viewController.viewModel?.fromCurrencyValue = fromValue
+        viewController.viewModel?.toCurrencyValue = toValue
         viewController.coordinator = self
-        viewController.title = Constants.currencyDetailsViewtitle
         navigationController.pushViewController(viewController, animated: true)
     }
 }

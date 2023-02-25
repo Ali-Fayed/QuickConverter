@@ -92,7 +92,11 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         detailsButton.rx.tap.bind { [weak self] in
             guard let self = self else {return}
             guard let coordinator = self.coordinator else {return}
-            coordinator.showCurrencyDetailsViewController()
+            let fromSymbol = self.fromSympolTextField.text!
+            let toSymbol = self.toSympolTextField.text!
+            let fromValue = self.inputCurrencyTextField.text!
+            let toValue = self.convertedCurrencyTextField.text!
+            coordinator.showCurrencyDetailsViewController(fromSympol: fromSymbol, toSympol: toSymbol, fromValue: fromValue, toValue: toValue)
         }.disposed(by: disposeBag)
     }
     private func bindInputFromTextField() {
@@ -118,7 +122,8 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     }
     private func subscribeOnError() {
         guard let viewModel = viewModel else {return}
-        viewModel.apiErrorSubject.subscribe(onError: { [weak self] error in
+        viewModel.apiErrorSubject.observe(on: MainScheduler.instance)
+            .subscribe(onError: { [weak self] error in
             guard let self = self else {return}
             guard let error = error as? APIError else {return}
             if error.error?.info != nil {
