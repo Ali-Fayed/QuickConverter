@@ -5,7 +5,7 @@
 //  Created by AliFayed on 24/02/2023.
 //
 import Foundation
-struct CurrencyRatesEntity: Codable {
+struct FamousCurrencyRatesEntity: Codable {
     let success: Bool?
     let timestamp: Int?
     let historical: Bool?

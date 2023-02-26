@@ -1,17 +1,17 @@
 //
-//  MyTableViewHeaderView.swift
+//  CurrencyChatHeaderView.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import UIKit
 import SwiftUI
-class MyTableViewHeaderView: UIView {
-    var measurements: [Measurement]
-    init(frame: CGRect, measurements: [Measurement]) {
+class CurrencyChatHeaderView: UIView {
+    var measurements: [ChartMeasurmentDataModel]
+    init(frame: CGRect, measurements: [ChartMeasurmentDataModel]) {
            self.measurements = measurements
            super.init(frame: frame)
-        let mySwiftUIView = CurrencyChart(measurements: measurements)
+        let mySwiftUIView = CurrencyChartView(measurements: measurements)
         let hostingController = UIHostingController(rootView: mySwiftUIView)
         addSubview(hostingController.view)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false

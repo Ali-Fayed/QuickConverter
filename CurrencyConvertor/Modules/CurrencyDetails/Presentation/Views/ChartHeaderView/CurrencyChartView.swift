@@ -1,13 +1,13 @@
 //
-//  CurrencyChart.swift
+//  CurrencyChartView.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import UIKit
 import SwiftUI
-struct CurrencyChart: View {
-    var measurements: [Measurement]
+struct CurrencyChartView: View {
+    var measurements: [ChartMeasurmentDataModel]
     var body: some View {
         HStack(alignment: .bottom) {
             Spacer()

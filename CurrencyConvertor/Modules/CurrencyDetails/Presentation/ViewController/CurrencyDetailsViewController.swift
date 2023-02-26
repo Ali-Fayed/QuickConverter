@@ -28,8 +28,8 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     }
     func configureViewModel() {
         guard let viewModel = viewModel else{return}
-        viewModel.getLastThreeDaysConverts()
-        viewModel.fetchFamousConverts()
+        viewModel.fetchLastThreeDaysConverts()
+        viewModel.fetchPopularConvertRates()
     }
     // MARK: - TableView
     func historyTableViewConfigure() {
@@ -49,12 +49,12 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         otherCurrenciesTableView.tableFooterView = UIView()
     }
     func addChartHeader() {
-        viewModel?.convertsLastThreeDaysSubject.subscribe(onNext: { model in
-            var measurment = [Measurement]()
-            for mode in model {
-                measurment.append(Measurement(date: mode.dateString, rate: Double(mode.toCurrencyValue)!))
+        viewModel?.convertsLastThreeDaysSubject.subscribe(onNext: { models in
+            var measurment = [ChartMeasurmentDataModel]()
+            for model in models {
+                measurment.append(ChartMeasurmentDataModel(date: model.dateString, rate: Double(model.toCurrencyValue) ?? 1.0))
             }
-            let headerView = MyTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: self.header.bounds.width, height: self.header.bounds.height), measurements: measurment)
+            let headerView = CurrencyChatHeaderView(frame: CGRect(x: 0, y: 0, width: self.header.bounds.width, height: self.header.bounds.height), measurements: measurment)
             self.header.addSubview(headerView)
         }).disposed(by: disposeBag)
     }

@@ -9,9 +9,8 @@ class OtherCurrencyDataTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-    func setData(model: CurrencyModel) {
+    func setData(model: FamousCurrenciesDataModel) {
         self.titleLabel.text = model.currencySymbol + Constants.epsilonString + model.currencyValue
     }
 }
