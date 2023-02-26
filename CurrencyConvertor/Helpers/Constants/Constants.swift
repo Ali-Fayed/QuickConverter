@@ -18,6 +18,9 @@ struct Constants {
     static let epsilonString = " -> "
     static let onKey = "On"
     static let euroSymbol = "EUR"
+    static let error = "Error"
+    static let oK = "OK"
+    static let one = "1"
     static let dateFormatString = "yyyy-MM-dd"
     static let commaString = ","
 }

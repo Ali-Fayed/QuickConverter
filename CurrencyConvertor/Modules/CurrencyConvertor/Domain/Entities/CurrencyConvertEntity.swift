@@ -18,7 +18,6 @@ struct Info: Codable {
     let rate: Double
     let timestamp: Int
 }
-
 // MARK: - Query
 struct Query: Codable {
     let amount: Int

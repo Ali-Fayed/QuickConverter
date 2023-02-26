@@ -1,10 +1,10 @@
 //
-//  LatestRates.swift
+//  ConvertedCurrencyDataModel.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 24/02/2023.
 //
 import Foundation
-struct ConvertedCurrencyData: ConvertedCurrencyDataModelProtocol {
+struct ConvertedCurrencyDataModel {
     var convertedCurrencyResult: String
 }

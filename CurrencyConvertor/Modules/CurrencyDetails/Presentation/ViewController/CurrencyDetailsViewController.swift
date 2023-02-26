@@ -54,7 +54,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     func historicalCurrenciesTableViewDidSelectRow() {
         historicalConvertsTableView.rx.itemSelected.subscribe { [weak self] indexPath in
             guard let self = self else {return}
-            self.famousCurrenciesTableView.deselectRow(at: indexPath, animated: true)
+            self.historicalConvertsTableView.deselectRow(at: indexPath, animated: true)
         }.disposed(by: disposeBag)
     }
     // MARK: - Famous Currencies TableView

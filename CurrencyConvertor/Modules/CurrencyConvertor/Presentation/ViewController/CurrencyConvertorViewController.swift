@@ -7,7 +7,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
 class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewModel> {
     // MARK: - IBOutlets
     @IBOutlet weak var fromSympolTextField: CustomTextFieldPicker!
@@ -21,24 +20,21 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewModel()
-        configureView()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        intiView()
+        initViewModel()
     }
     // MARK: - Main Methods
-    private func configureView() {
-        initStateSubscriptions()
+    private func intiView() {
         initBindings()
+        initState()
     }
-    private func configureViewModel() {
+    private func initViewModel() {
         guard let viewModel = viewModel else {return}
         viewModel.fetchCurrencySympols()
     }
-    private func fetchLatestRates() {
+    private func fetchCurrencyConverts() {
         guard let viewModel = viewModel else {return}
-        viewModel.fetchLatestRates(fromSympol: fromSympolTextField.text!, toSympol: toSympolTextField.text!, amount: inputCurrencyTextField.text!)
+        viewModel.fetchConvertedCurrency(fromSympol: fromSympolTextField.text!, toSympol: toSympolTextField.text!, amount: inputCurrencyTextField.text!)
     }
     // MARK: - Bindings
     private func initBindings() {
@@ -61,7 +57,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.fetchLatestRates()
+                self.fetchCurrencyConverts()
             }).disposed(by: disposeBag)
     }
     private func bindToCurrencySympols() {
@@ -76,7 +72,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.fetchLatestRates()
+                self.fetchCurrencyConverts()
             }).disposed(by: disposeBag)
     }
     private func bindSwapButton() {
@@ -85,8 +81,8 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             let fromSympol = self.fromSympolTextField.text
             self.fromSympolTextField.text = self.toSympolTextField.text
             self.toSympolTextField.text = fromSympol
-            self.inputCurrencyTextField.text = "1"
-            self.fetchLatestRates()
+            self.inputCurrencyTextField.text = Constants.one
+            self.fetchCurrencyConverts()
         }.disposed(by: disposeBag)
     }
     private func bindDetailsButton() {
@@ -106,7 +102,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] text in
                 guard let self = self else {return}
-                self.fetchLatestRates()
+                self.fetchCurrencyConverts()
             }).disposed(by: disposeBag)
     }
     private func bindConvertedTextField() {
@@ -116,14 +112,22 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .bind(to: convertedCurrencyTextField.rx.text)
             .disposed(by: disposeBag)
     }
-    // MARK: - State Subscribtions
-    private func initStateSubscriptions() {
-        subscribeOnError()
-        subscribeOnLoading()
+    // MARK: - State
+    private func initState() {
+        observeOnError()
+        observeOnLoading()
     }
-    private func subscribeOnError() {
+    // MARK: - Loading State
+    private func observeOnLoading() {
         guard let viewModel = viewModel else {return}
-        viewModel.apiErrorSubject.observe(on: MainScheduler.instance)
+        viewModel.loadingIndicatorRelay
+            .bind(to: activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+    }
+    // MARK: - Error State
+    private func observeOnError() {
+        guard let viewModel = viewModel else {return}
+        viewModel.errorSubject.observe(on: MainScheduler.instance)
             .subscribe(onError: { [weak self] error in
             guard let self = self else {return}
             guard let error = error as? APIError else {return}
@@ -135,17 +139,11 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         }).disposed(by: disposeBag)
     }
     private func presentErrorAlert(error: APIError, message: String) {
-        showAlert(title: "Error", message: message, buttonTitle: "OK")
+        showAlert(title: Constants.error, message: message, buttonTitle: Constants.oK)
             .subscribe(onNext: {
-                print("OK button tapped")
+                //
             }, onCompleted: {
-                print("Alert dismissed")
+                //
             }).disposed(by: disposeBag)
-    }
-    private func subscribeOnLoading() {
-        guard let viewModel = viewModel else {return}
-        viewModel.loadingIndicatorRelay
-            .bind(to: activityIndicator.rx.isAnimating)
-            .disposed(by: disposeBag)
     }
 }

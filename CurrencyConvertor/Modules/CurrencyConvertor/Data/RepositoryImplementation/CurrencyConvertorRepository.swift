@@ -7,18 +7,24 @@
 import Foundation
 import RxSwift
 class CurrencyConvertorRepository: CurrencyConvertorRepoProtocol {
+    typealias symbolsReturnType = Observable<CurrencySymbolsDataModel>
+    typealias convertsReturnType = Observable<ConvertedCurrencyDataModel>
     private let currencySymbolService: CurrencyConvertorRemoteProtocol
     init(currencySymbolService: CurrencyConvertorRemoteProtocol) {
         self.currencySymbolService = currencySymbolService
     }
-    func getCurrencySymbols() -> Observable<SympolsDataModelProtocol> {
+    func getCurrencySymbols() -> symbolsReturnType {
         return currencySymbolService.fetchCurrencySymbols()
-            .map { CurrencySympols(sympol: $0.symbols) }
-            .asObservable()
+            .flatMap { result -> Observable<CurrencySymbolsDataModel> in
+                let symbols = result.symbols
+                return Observable.just(CurrencySymbolsDataModel(sympol: symbols))
+            }
     }
-    func getLatestCurrencyConvertedRates(from: String, to: String, ammout: String) -> Observable<ConvertedCurrencyDataModelProtocol> {
-        return currencySymbolService.fetchLatestCurrencyConverts(from: from, to: to, ammout: ammout)
-            .map { ConvertedCurrencyData(convertedCurrencyResult: String($0.result)) }
-            .asObservable()
+    func getConvertedCurrency(from: String, to: String, ammout: String) -> convertsReturnType {
+        return currencySymbolService.fetchCurrencyConverts(from: from, to: to, ammout: ammout)
+            .flatMap { result -> Observable<ConvertedCurrencyDataModel> in
+                let convertedResult = String(format: "%.2f", result.result)
+                return Observable.just(ConvertedCurrencyDataModel(convertedCurrencyResult: convertedResult))
+            }
     }
 }

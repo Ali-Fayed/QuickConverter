@@ -7,5 +7,6 @@
 import Foundation
 import RxSwift
 protocol FetchCurrencySymbolsUseCaseProtocol {
-    func fetchCurrencySymbols() -> Observable<SympolsDataModelProtocol>
+    typealias returnType = Observable<CurrencySymbolsDataModel>
+    func excute() -> returnType
 }
