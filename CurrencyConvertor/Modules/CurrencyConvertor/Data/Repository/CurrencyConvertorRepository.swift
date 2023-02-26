@@ -16,8 +16,8 @@ class CurrencyConvertorRepository: CurrencyConvertorRepoProtocol {
     func getCurrencySymbols() -> symbolsReturnType {
         return currencySymbolService.fetchCurrencySymbols()
             .flatMap { result -> Observable<CurrencySymbolsDataModel> in
-                let symbols = result.symbols
-                return Observable.just(CurrencySymbolsDataModel(sympol: symbols))
+                let symbols = Array(result.symbols.keys)
+                return Observable.just(CurrencySymbolsDataModel(sympols: symbols))
             }
     }
     func getConvertedCurrency(from: String, to: String, ammout: String) -> convertsReturnType {

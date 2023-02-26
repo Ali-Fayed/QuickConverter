@@ -9,7 +9,9 @@ class HistoricalDataTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     func setData(model: HistoricalConvertsDataModel) {
-        self.dateLabel.text = Constants.onKey + Constants.emptySpaceString + model.dateString
-        self.valueLabel.text = model.fromCurrencyValue + Constants.emptySpaceString + model.fromCurrencySymbol + Constants.epsilonString + model.toCurrencyValue + Constants.emptySpaceString + model.toCurrencySymobl
+        dateLabel.numberOfLines = 1
+        dateLabel.lineBreakMode = .byClipping // o
+        dateLabel.text = model.dateString
+        valueLabel.text = model.fromCurrencyValue + Constants.emptySpaceString + model.fromCurrencySymbol + Constants.epsilonString + model.toCurrencyValue + Constants.emptySpaceString + model.toCurrencySymobl
     }
 }

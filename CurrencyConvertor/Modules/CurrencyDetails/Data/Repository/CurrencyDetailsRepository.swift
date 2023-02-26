@@ -20,8 +20,8 @@ class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
                 guard let value = currency.rates?.values.first else {
                     return Observable.just([])
                 }
-                let shortValue = String(format: "%.2f", value)
-                let currencyModels = HistoricalConvertsDataModel(toCurrencyValue: String(shortValue))
+                let shortCurrencyRate = String(format: "%.2f", value)
+                let currencyModels = HistoricalConvertsDataModel(toCurrencyValue: shortCurrencyRate)
                 return Observable.just([currencyModels])
             }
     }

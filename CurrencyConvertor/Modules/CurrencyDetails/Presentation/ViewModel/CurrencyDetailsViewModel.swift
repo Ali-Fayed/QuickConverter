@@ -21,10 +21,9 @@ class CurrencyDetailsViewModel {
     private var historicalModel = [HistoricalConvertsDataModel]()
     private var currencyModel = [FamousCurrenciesDataModel]()
     // MARK: - Passed Currency Data
+    var fromCurrencySymbol: String = ""
+    var toCurrencySymbol: String = ""
     var fromCurrencyValue: String = ""
-    var fromCurrencyCode: String = ""
-    var toCurrencyCode: String = ""
-    var toCurrencyValue: String = ""
     // MARK: - initalizer
     init(historicalConvertsUseCase: HistoricalDetailsUseCaseProtocol, famousCurrenciesConvertsUseCase: FamousCurrenciesUseCaseProtocol) {
         self.historicalConvertsUseCase = historicalConvertsUseCase
@@ -33,7 +32,7 @@ class CurrencyDetailsViewModel {
     // MARK: - Famous Converts
     func fetchFamousTenCurrencyConverts() {
         loadingIndicatorRelay.accept(true)
-        famousCurrenciesConvertsUseCase.excute(symbols: Constants.famousCurrencies, base: Constants.euroSymbol)
+        famousCurrenciesConvertsUseCase.excute(symbols: Constants.famousCurrencies, base: fromCurrencySymbol)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
@@ -46,9 +45,9 @@ class CurrencyDetailsViewModel {
             }).disposed(by: disposeBag)
     }
     // MARK: - Historical Converts
-    func fetchHistoricalConvertsByDate(date: String, symbols: String, base: String) {
+    func fetchHistoricalConvertsByDate(date: String, symbol: String, base: String) {
         loadingIndicatorRelay.accept(true)
-        historicalConvertsUseCase.excute(date: date, symbols: symbols, base: Constants.euroSymbol)
+        historicalConvertsUseCase.excute(date: date, symbols: symbol, base: base)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
@@ -62,14 +61,15 @@ class CurrencyDetailsViewModel {
             }).disposed(by: disposeBag)
     }
     func mapLastThreeDays(model: HistoricalConvertsDataModel, date: String) {
-        self.historicalModel.append(HistoricalConvertsDataModel(fromCurrencySymbol: self.fromCurrencyValue, fromCurrencyValue: self.fromCurrencyCode, toCurrencySymobl: self.toCurrencyCode, toCurrencyValue: model.toCurrencyValue, dateString: date))
+        let toValue = convertBaseRate(Double(fromCurrencyValue) ?? 1.0, by: Double(model.toCurrencyValue) ?? 1.0)
+        historicalModel.append(HistoricalConvertsDataModel(fromCurrencySymbol: fromCurrencyValue, fromCurrencyValue: fromCurrencySymbol, toCurrencySymobl: toCurrencySymbol, toCurrencyValue: toValue, dateString: date))
         if self.historicalModel.count == 3 {
             self.historicalConvertsSubject.onNext(self.historicalModel)
         }
     }
     func fetchLastThreeDaysHistoricalConverts() {
         for date in getLastThreeDays() {
-            self.fetchHistoricalConvertsByDate(date: date, symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: Constants.euroSymbol)
+            self.fetchHistoricalConvertsByDate(date: date, symbol: self.toCurrencySymbol, base: self.fromCurrencySymbol)
         }
     }
     // MARK: - Helper Methods
@@ -79,7 +79,7 @@ class CurrencyDetailsViewModel {
         dateFormatter.dateFormat = Constants.dateFormatString
         for i in 0...2 {
             let lastWeekDate = Calendar.current.date(byAdding: .day, value: -i, to: Date())
-            let dateStr:String = dateFormatter.string(from: lastWeekDate!)
+            let dateStr: String = dateFormatter.string(from: lastWeekDate ?? Date())
             datesData.append(dateStr)
         }
         return datesData
@@ -89,5 +89,9 @@ class CurrencyDetailsViewModel {
     }
     func presenetedDate(dateString: String) -> String {
         return "\(Constants.onKey) \(dateString)"
+    }
+    func convertBaseRate(_ baseRate: Double, by factor: Double) -> String {
+        let convertedRate = baseRate * factor
+        return String(format: "%.2f", convertedRate)
     }
 }

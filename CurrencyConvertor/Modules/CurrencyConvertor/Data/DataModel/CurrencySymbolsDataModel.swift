@@ -6,5 +6,5 @@
 //
 import Foundation
 struct CurrencySymbolsDataModel {
-    var sympol: [String: String]
+    var sympols: [String]
 }

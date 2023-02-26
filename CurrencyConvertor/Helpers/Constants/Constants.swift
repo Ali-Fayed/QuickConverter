@@ -17,7 +17,6 @@ struct Constants {
     static let emptySpaceString = " "
     static let epsilonString = " -> "
     static let onKey = "On"
-    static let euroSymbol = "EUR"
     static let error = "Error"
     static let oK = "OK"
     static let one = "1"

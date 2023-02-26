@@ -21,12 +21,11 @@ class AppCoordinator: Coordinator {
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
-    func showCurrencyDetailsViewController(fromSympol: String, toSympol: String, fromValue: String, toValue: String) {
+    func showCurrencyDetailsViewController(fromSympol: String, toSympol: String, fromValue: String) {
         let viewController = CurrencyDetailsFactory.createCurrencyDetailsViewController(navigationController: navigationController)
-        viewController.viewModel?.fromCurrencyCode = fromSympol
-        viewController.viewModel?.toCurrencyCode = toSympol
+        viewController.viewModel?.fromCurrencySymbol = fromSympol
+        viewController.viewModel?.toCurrencySymbol = toSympol
         viewController.viewModel?.fromCurrencyValue = fromValue
-        viewController.viewModel?.toCurrencyValue = toValue
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }

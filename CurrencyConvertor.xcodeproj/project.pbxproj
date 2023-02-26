@@ -457,7 +457,7 @@
 			children = (
 				EAB21A3229A8EE87007570E3 /* DataModel */,
 				EAB219D229A7A8F2007570E3 /* Remote */,
-				EAB219D029A7A8E4007570E3 /* RepositoryImplementation */,
+				EAB219D029A7A8E4007570E3 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -529,12 +529,12 @@
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
 		};
-		EAB219D029A7A8E4007570E3 /* RepositoryImplementation */ = {
+		EAB219D029A7A8E4007570E3 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				EAB21A2E29A8ED69007570E3 /* CurrencyConvertorRepository.swift */,
 			);
-			path = RepositoryImplementation;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		EAB219D229A7A8F2007570E3 /* Remote */ = {

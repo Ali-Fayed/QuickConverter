@@ -11,6 +11,6 @@ class OtherCurrencyDataTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     func setData(model: FamousCurrenciesDataModel) {
-        self.titleLabel.text = model.currencySymbol + Constants.epsilonString + model.currencyValue
+        titleLabel.text = model.currencySymbol + Constants.epsilonString + model.currencyValue
     }
 }

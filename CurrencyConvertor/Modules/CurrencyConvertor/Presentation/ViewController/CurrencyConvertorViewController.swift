@@ -48,7 +48,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func bindFromCurrencySympols() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
-            .map { Array($0.sympol.keys) }
+        .map { $0.sympols }
         .observe(on: MainScheduler.instance)
         .bind(to: fromSympolTextField.pickerItems)
         .disposed(by: disposeBag)
@@ -57,13 +57,15 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.fetchCurrencyConverts()
+                if !self.inputCurrencyTextField.text!.isEmpty {
+                    self.fetchCurrencyConverts()
+                }
             }).disposed(by: disposeBag)
     }
     private func bindToCurrencySympols() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
-            .map { Array($0.sympol.keys) }
+        .map { $0.sympols }
         .observe(on: MainScheduler.instance)
         .bind(to: toSympolTextField.pickerItems)
         .disposed(by: disposeBag)
@@ -72,7 +74,9 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.fetchCurrencyConverts()
+                if !self.inputCurrencyTextField.text!.isEmpty {
+                    self.fetchCurrencyConverts()
+                }
             }).disposed(by: disposeBag)
     }
     private func bindSwapButton() {
@@ -82,7 +86,9 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             self.fromSympolTextField.text = self.toSympolTextField.text
             self.toSympolTextField.text = fromSympol
             self.inputCurrencyTextField.text = Constants.one
-            self.fetchCurrencyConverts()
+            if !self.inputCurrencyTextField.text!.isEmpty {
+                self.fetchCurrencyConverts()
+            }
         }.disposed(by: disposeBag)
     }
     private func bindDetailsButton() {
@@ -92,17 +98,18 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             let fromSymbol = self.fromSympolTextField.text!
             let toSymbol = self.toSympolTextField.text!
             let fromValue = self.inputCurrencyTextField.text!
-            let toValue = self.convertedCurrencyTextField.text!
-            coordinator.showCurrencyDetailsViewController(fromSympol: fromSymbol, toSympol: toSymbol, fromValue: fromValue, toValue: toValue)
+            coordinator.showCurrencyDetailsViewController(fromSympol: fromSymbol, toSympol: toSymbol, fromValue: fromValue)
         }.disposed(by: disposeBag)
     }
     private func bindInputFromTextField() {
         inputCurrencyTextField.rx.text
             .orEmpty
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] text in
                 guard let self = self else {return}
-                self.fetchCurrencyConverts()
+                if !self.inputCurrencyTextField.text!.isEmpty {
+                    self.fetchCurrencyConverts()
+                }
             }).disposed(by: disposeBag)
     }
     private func bindConvertedTextField() {
@@ -116,6 +123,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func initState() {
         observeOnError()
         observeOnLoading()
+        observeOnViewInteraction()
     }
     // MARK: - Loading State
     private func observeOnLoading() {
@@ -123,6 +131,18 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         viewModel.loadingIndicatorRelay
             .bind(to: activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
+    }
+    private func observeOnViewInteraction() {
+        viewModel?.loadingIndicatorRelay.subscribe(onNext: { [weak self] isLoading in
+            guard let self = self else {return}
+            if isLoading {
+                self.swapRatedButton.isUserInteractionEnabled = false
+                self.detailsButton.isUserInteractionEnabled = false
+            } else {
+                self.swapRatedButton.isUserInteractionEnabled = true
+                self.detailsButton.isUserInteractionEnabled = true
+            }
+        }).disposed(by: disposeBag)
     }
     // MARK: - Error State
     private func observeOnError() {
@@ -140,8 +160,9 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     }
     private func presentErrorAlert(error: APIError, message: String) {
         showAlert(title: Constants.error, message: message, buttonTitle: Constants.oK)
-            .subscribe(onNext: {
-                //
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {return}
+                self.view.isUserInteractionEnabled = false
             }, onCompleted: {
                 //
             }).disposed(by: disposeBag)

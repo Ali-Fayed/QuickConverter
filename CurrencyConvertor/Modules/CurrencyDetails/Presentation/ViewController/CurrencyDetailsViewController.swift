@@ -47,6 +47,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     func bindHistoryTableView() {
         guard let viewModel = viewModel else{return}
         viewModel.historicalConvertsSubject
+            .observe(on: MainScheduler.instance)
             .bind(to: historicalConvertsTableView.rx.items(cellIdentifier: Constants.historicalDataCell, cellType: HistoricalDataTableViewCell.self)) { (row, model , cell) in
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
@@ -61,6 +62,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     func bindFamousCurrenciesTableView() {
         guard let viewModel = viewModel else{return}
         viewModel.famousConvertsSubject
+            .observe(on: MainScheduler.instance)
             .bind(to: famousCurrenciesTableView.rx.items(cellIdentifier: Constants.otherCurrencyDataCell, cellType: OtherCurrencyDataTableViewCell.self)) {  (row, model, cell) in
                 cell.setData(model: model)
             }.disposed(by: disposeBag)

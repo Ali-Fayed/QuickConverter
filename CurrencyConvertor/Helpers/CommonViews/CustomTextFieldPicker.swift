@@ -25,7 +25,7 @@ class CustomTextFieldPicker: UITextField {
             return element
         }.disposed(by: disposeBag)
         let _ = pickerView.rx.itemSelected
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(RxTimeInterval.microseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { (row, value) in
                 self.text = self.pickerItems.value[row]
                 self.resignFirstResponder()
