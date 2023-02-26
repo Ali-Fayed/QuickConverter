@@ -44,7 +44,7 @@ class CurrencyDetailsViewModel {
             }).disposed(by: disposeBag)
     }
     // MARK: - Historical Converts
-    func fetchHistoricalConvertsByDate(startDate: String, endDate: String, base: String, symbols: String) {
+    private func fetchHistoricalConvertsByDate(startDate: String, endDate: String, base: String, symbols: String) {
         loadingIndicatorRelay.accept(true)
         historicalConvertsUseCase.excute(startDate: startDate, endDate: endDate, base: base, symbols: symbols)
             .observe(on: MainScheduler.instance)
@@ -58,7 +58,7 @@ class CurrencyDetailsViewModel {
                 self.errorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func mapHistoricalDetails(model: [HistoricalConvertsDataModel]) -> [HistoricalConvertsDataModel] {
+    private func mapHistoricalDetails(model: [HistoricalConvertsDataModel]) -> [HistoricalConvertsDataModel] {
         self.historicalModel = model.map { [unowned self] data in
             var newData = data
             if newData.fromCurrencyValue.isEmpty {

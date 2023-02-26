@@ -13,7 +13,7 @@ extension BaseRouter {
         return "api.apilayer.com"
     }
     var headers: HttpHeaders? {
-        return ["apikey": "fxNFwhgDoNs5feDkQrMqFCIGdDNd1iAX"]
+        return ["apikey": "X8vlRLdewguVjbOMSHX58py8zfP3OLmf"]
     }
     var method: HttpMethod {
         return .get

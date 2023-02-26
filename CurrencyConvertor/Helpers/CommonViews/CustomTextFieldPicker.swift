@@ -21,6 +21,10 @@ class CustomTextFieldPicker: UITextField {
     }
     func setupBindings() {
         self.inputView = pickerView
+        self.tintColor = UIColor.clear
+        self.inputView?.backgroundColor = UIColor.white
+        self.inputView?.layer.borderWidth = 0
+        
         pickerItems.bind(to: self.pickerView.rx.itemTitles) { (row, element) in
             return element
         }.disposed(by: disposeBag)
@@ -30,5 +34,14 @@ class CustomTextFieldPicker: UITextField {
                 self.text = self.pickerItems.value[row]
                 self.resignFirstResponder()
             })
+    }
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return .zero
+    }
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
+        return []
     }
 }

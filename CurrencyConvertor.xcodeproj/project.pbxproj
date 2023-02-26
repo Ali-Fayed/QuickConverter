@@ -305,15 +305,6 @@
 			path = ConvertedCurrencyUseCase;
 			sourceTree = "<group>";
 		};
-		EAA29DCB29ABC10E00580B53 /* BaseRouter */ = {
-			isa = PBXGroup;
-			children = (
-				EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */,
-				EAB21A0729A8475C007570E3 /* BaseRouter.swift */,
-			);
-			path = BaseRouter;
-			sourceTree = "<group>";
-		};
 		EAB2196529A7A55A007570E3 = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +333,7 @@
 				EAB219B229A7A60E007570E3 /* Storyboards */,
 				EAB219A929A7A5A5007570E3 /* Modules */,
 				EAB219A829A7A595007570E3 /* Helpers */,
+				EAB2197D29A7A55C007570E3 /* Assets.xcassets */,
 				EAB2198229A7A55C007570E3 /* Info.plist */,
 			);
 			path = CurrencyConvertor;
@@ -377,8 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				EAB21A0329A846F6007570E3 /* NetworkingManger.swift */,
-				EAB21A1629A853DA007570E3 /* Error */,
 				EAB21A1529A853D0007570E3 /* RequestRouter */,
+				EAB21A1629A853DA007570E3 /* Error */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -410,7 +402,6 @@
 				EAB219A629A7A577007570E3 /* NavigationLayer */,
 				EAB219A529A7A56E007570E3 /* NetworkLayer */,
 				EAB219A729A7A582007570E3 /* Extensions */,
-				EAB219B429A7A652007570E3 /* Resources */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -470,14 +461,6 @@
 				EAB2197F29A7A55C007570E3 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		EAB219B429A7A652007570E3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EAB2197D29A7A55C007570E3 /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		EAB219C929A7A7A7007570E3 /* ViewController */ = {
@@ -676,7 +659,8 @@
 			isa = PBXGroup;
 			children = (
 				EAB21A0D29A84787007570E3 /* RequestRouter.swift */,
-				EAA29DCB29ABC10E00580B53 /* BaseRouter */,
+				EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */,
+				EAB21A0729A8475C007570E3 /* BaseRouter.swift */,
 				EAB21A0929A84768007570E3 /* RouterTypes.swift */,
 				EAA29DC729ABC0EB00580B53 /* RequestBuilder.swift */,
 			);

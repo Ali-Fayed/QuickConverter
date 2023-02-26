@@ -62,6 +62,13 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         bindInputFromTextField()
         bindConvertedTextField()
     }
+    // MARK: - State
+    private func initState() {
+        observeOnError()
+        observeOnLoading()
+        observeOnViewInteraction()
+    }
+    // MARK: - From and To Currency Symbols
     private func bindFromCurrencySympols() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
@@ -75,7 +82,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let text = self.inputCurrencyTextField.text else {return}
-                if !text.isEmpty {
+                if !text.isEmpty && text.count == 3 {
                     self.fetchCurrencyConverts()
                 }
             }).disposed(by: disposeBag)
@@ -93,11 +100,35 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let text = self.inputCurrencyTextField.text else {return}
-                if !text.isEmpty {
+                if !text.isEmpty && text.count == 3 {
                     self.fetchCurrencyConverts()
                 }
             }).disposed(by: disposeBag)
     }
+    // MARK: - From and To Currency Values
+    private func bindInputFromTextField() {
+        inputCurrencyTextField.rx.text
+            .orEmpty
+            .filter { text in
+                   let nonNumericCharacterSet = CharacterSet.decimalDigits.inverted
+                   return text.rangeOfCharacter(from: nonNumericCharacterSet) == nil
+               }
+             .filter { !$0.isEmpty }
+             .filter { $0.count <= 5 }
+            .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                guard let self = self else {return}
+                self.fetchCurrencyConverts()
+            }).disposed(by: disposeBag)
+    }
+    private func bindConvertedTextField() {
+        convertedCurrencyTextField.isEnabled = false
+        guard let viewModel = viewModel else {return}
+        viewModel.convertedCurrencySubject.observe(on: MainScheduler.instance)
+            .bind(to: convertedCurrencyTextField.rx.text)
+            .disposed(by: disposeBag)
+    }
+    // MARK: - Buttons
     private func bindSwapButton() {
         swapRatesButton.rx.tap.bind { [weak self] in
             guard let self = self else {return}
@@ -120,31 +151,6 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             guard let inputCurrencyText = self.inputCurrencyTextField.text else {return}
             coordinator.showCurrencyDetailsViewController(fromSympol: fromSympolText, toSympol: toSympolText, fromValue: inputCurrencyText)
         }.disposed(by: disposeBag)
-    }
-    private func bindInputFromTextField() {
-        inputCurrencyTextField.rx.text
-            .orEmpty
-            .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] text in
-                guard let self = self else {return}
-                guard let text = self.inputCurrencyTextField.text else {return}
-                if !text.isEmpty {
-                    self.fetchCurrencyConverts()
-                }
-            }).disposed(by: disposeBag)
-    }
-    private func bindConvertedTextField() {
-        convertedCurrencyTextField.isEnabled = false
-        guard let viewModel = viewModel else {return}
-        viewModel.convertedCurrencySubject.observe(on: MainScheduler.instance)
-            .bind(to: convertedCurrencyTextField.rx.text)
-            .disposed(by: disposeBag)
-    }
-    // MARK: - State
-    private func initState() {
-        observeOnError()
-        observeOnLoading()
-        observeOnViewInteraction()
     }
     // MARK: - Loading State
     private func observeOnLoading() {

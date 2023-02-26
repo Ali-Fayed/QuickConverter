@@ -133,7 +133,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="Lxe-Ac-dRj"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" smartInsertDeleteType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -199,7 +199,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="zTQ-rn-UAd"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" smartInsertDeleteType="no"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
