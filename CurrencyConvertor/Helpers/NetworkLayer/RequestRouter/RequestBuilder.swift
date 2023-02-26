@@ -19,7 +19,8 @@ extension BaseRouter {
                 component.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value))
             }
         }
-        var urlRequest = URLRequest(url: component.url!, cachePolicy: shouldCache ? .useProtocolCachePolicy : .reloadIgnoringLocalCacheData)
+        let url = component.url ?? URL(string: "https://google.com")!
+        var urlRequest = URLRequest(url: url, cachePolicy: shouldCache ? .useProtocolCachePolicy : .reloadIgnoringLocalCacheData)
         urlRequest.httpMethod = self.method.rawValue
         if self.method == .post {
             confiqureBody(body: self.parameter, request: &urlRequest)

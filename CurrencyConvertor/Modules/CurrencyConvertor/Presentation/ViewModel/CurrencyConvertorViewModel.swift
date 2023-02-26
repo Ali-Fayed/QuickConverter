@@ -6,7 +6,7 @@
 //
 import Foundation
 import RxSwift
-import RxCocoa
+import RxRelay
 class CurrencyConvertorViewModel {
     // MARK: - Use Case
     private let fetchSymbolsUseCase: FetchCurrencySymbolsUseCaseProtocol

@@ -6,7 +6,7 @@
 //
 import Foundation
 import RxSwift
-import RxCocoa
+import RxRelay
 class CurrencyDetailsViewModel {
     // MARK: - UseCases
     private let historicalConvertsUseCase: HistoricalDetailsUseCaseProtocol
@@ -19,7 +19,6 @@ class CurrencyDetailsViewModel {
     let errorSubject = PublishSubject<APIError>()
     // MARK: - Data Properties
     private var historicalModel = [HistoricalConvertsDataModel]()
-    private var currencyModel = [FamousCurrenciesDataModel]()
     // MARK: - Passed Currency Data
     var fromCurrencySymbol: String = ""
     var toCurrencySymbol: String = ""
@@ -45,35 +44,40 @@ class CurrencyDetailsViewModel {
             }).disposed(by: disposeBag)
     }
     // MARK: - Historical Converts
-    func fetchHistoricalConvertsByDate(date: String, symbol: String, base: String) {
+    func fetchHistoricalConvertsByDate(startDate: String, endDate: String, base: String, symbols: String) {
         loadingIndicatorRelay.accept(true)
-        historicalConvertsUseCase.excute(date: date, symbols: symbol, base: base)
+        historicalConvertsUseCase.excute(startDate: startDate, endDate: endDate, base: base, symbols: symbols)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                guard let convertedCurrency = model.first else {return}
-                self.mapLastThreeDays(model: convertedCurrency, date: date)
+                self.historicalConvertsSubject.onNext(self.mapHistoricalDetails(model: model))
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 self.errorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func mapLastThreeDays(model: HistoricalConvertsDataModel, date: String) {
-        let toValue = convertBaseRate(Double(fromCurrencyValue) ?? 1.0, by: Double(model.toCurrencyValue) ?? 1.0)
-        historicalModel.append(HistoricalConvertsDataModel(fromCurrencySymbol: fromCurrencyValue, fromCurrencyValue: fromCurrencySymbol, toCurrencySymobl: toCurrencySymbol, toCurrencyValue: toValue, dateString: date))
-        if self.historicalModel.count == 3 {
-            self.historicalConvertsSubject.onNext(self.historicalModel)
+    func mapHistoricalDetails(model: [HistoricalConvertsDataModel]) -> [HistoricalConvertsDataModel] {
+        self.historicalModel = model.map { [unowned self] data in
+            var newData = data
+            if newData.fromCurrencyValue.isEmpty {
+                newData.fromCurrencyValue = self.fromCurrencyValue
+            }
+            let fromValue = Double(self.fromCurrencyValue) ?? 1.0
+            let toValue = Double(newData.toCurrencyValue) ?? 1.0
+            newData.toCurrencyValue = self.convertBaseRateToThePassedRate(fromValue, by: toValue)
+            return newData
         }
+        return historicalModel
     }
     func fetchLastThreeDaysHistoricalConverts() {
-        for date in getLastThreeDays() {
-            self.fetchHistoricalConvertsByDate(date: date, symbol: self.toCurrencySymbol, base: self.fromCurrencySymbol)
-        }
+        let startData = getLastThreeDaysRange().0
+        let endDate = getLastThreeDaysRange().1
+        self.fetchHistoricalConvertsByDate(startDate: startData, endDate: endDate, base: fromCurrencySymbol, symbols: toCurrencySymbol)
     }
     // MARK: - Helper Methods
-    func getLastThreeDays() -> [String] {
+    private func getLastThreeDaysRange() -> (String, String) {
         var datesData = [String]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.dateFormatString
@@ -82,15 +86,9 @@ class CurrencyDetailsViewModel {
             let dateStr: String = dateFormatter.string(from: lastWeekDate ?? Date())
             datesData.append(dateStr)
         }
-        return datesData
+        return (datesData[2], datesData[0])
     }
-    func convertRateDetailsString(fromValue: String, fromSymbol: String, toValue: String, toSymbol: String) -> String {
-        return "\(fromValue) \(fromSymbol) -> \(toValue) \(toSymbol)"
-    }
-    func presenetedDate(dateString: String) -> String {
-        return "\(Constants.onKey) \(dateString)"
-    }
-    func convertBaseRate(_ baseRate: Double, by factor: Double) -> String {
+    private func convertBaseRateToThePassedRate(_ baseRate: Double, by factor: Double) -> String {
         let convertedRate = baseRate * factor
         return String(format: "%.2f", convertedRate)
     }

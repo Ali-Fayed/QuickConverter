@@ -1,17 +1,16 @@
 //
-//  CurrencyDetailsRemote.swift
+//  CurrencyDetailsRemoteServices.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import Foundation
 import RxSwift
-import RxCocoa
 class CurrencyDetailsRemoteServices: CurrencyDetailsRemoteProtocol {
     typealias hisotricalRetunType = Observable<HistoricalConvertsEntity>
     typealias famousReturnType = Observable<FamousCurrencyEntity>
-    func fetchHistoricalConverts(date: String, symbols: String, base: String) -> hisotricalRetunType {
-        let router = RequestRouter.currenciesByDate(date: date, symbols: symbols, base: base)
+    func fetchHistoricalConverts(startDate: String, endDate: String, base: String, symbols: String) -> hisotricalRetunType {
+        let router = RequestRouter.timeSeriesCurrencyRates(startDate: startDate, endDate: endDate, base: base, symbols: symbols)
         let model = HistoricalConvertsEntity.self
         let response = NetworkingManger.shared.performRequest(router: router, model: model)
         return response

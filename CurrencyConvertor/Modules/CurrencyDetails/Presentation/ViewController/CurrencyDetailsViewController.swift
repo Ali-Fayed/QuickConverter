@@ -22,7 +22,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     }
     // MARK: - Main Methods
     private func initView() {
-        tableViewConfigure()
+        tableViewsConfigures()
         initCurrencyChartHeader()
     }
     private func initViewModel() {
@@ -31,7 +31,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         viewModel.fetchFamousTenCurrencyConverts()
     }
     // MARK: - TableView
-    private func tableViewConfigure() {
+    private func tableViewsConfigures() {
         historicalConvertsTableView.registerCellNib(cellClass: HistoricalDataTableViewCell.self)
         famousCurrenciesTableView.registerCellNib(cellClass: OtherCurrencyDataTableViewCell.self)
         //
@@ -63,7 +63,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         guard let viewModel = viewModel else{return}
         viewModel.famousConvertsSubject
             .observe(on: MainScheduler.instance)
-            .bind(to: famousCurrenciesTableView.rx.items(cellIdentifier: Constants.otherCurrencyDataCell, cellType: OtherCurrencyDataTableViewCell.self)) {  (row, model, cell) in
+            .bind(to: famousCurrenciesTableView.rx.items(cellIdentifier: Constants.otherCurrencyDataCell, cellType: OtherCurrencyDataTableViewCell.self)) { (row, model, cell) in
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
     }

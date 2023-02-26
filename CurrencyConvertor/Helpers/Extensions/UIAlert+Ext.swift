@@ -6,7 +6,6 @@
 //
 import UIKit
 import RxSwift
-import RxCocoa
 extension UIViewController {
     func showAlert(title: String, message: String, buttonTitle: String) -> Observable<Void> {
         return Observable.create { observer in

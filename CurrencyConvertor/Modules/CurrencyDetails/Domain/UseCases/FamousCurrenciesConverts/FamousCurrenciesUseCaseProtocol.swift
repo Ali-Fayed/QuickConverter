@@ -4,7 +4,6 @@
 //
 //  Created by AliFayed on 25/02/2023.
 //
-import RxCocoa
 import RxSwift
 import Foundation
 protocol FamousCurrenciesUseCaseProtocol {

@@ -6,7 +6,6 @@
 //
 import Foundation
 import RxSwift
-import RxCocoa
 class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
     typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
     typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>
@@ -14,15 +13,32 @@ class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
     init(currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol) {
         self.currencyDetailsRemoteProtocol = currencyDetailsRemoteProtocol
     }
-    func getHistoricalConverts(date: String, symbols: String, base: String) -> hisotricalRetunType{
-        return currencyDetailsRemoteProtocol.fetchHistoricalConverts(date: date, symbols: symbols, base: base)
+    func getHistoricalConverts(startDate: String, endDate: String, base: String, symbols: String) -> hisotricalRetunType {
+        return currencyDetailsRemoteProtocol.fetchHistoricalConverts(startDate: startDate, endDate: endDate, base: base, symbols: symbols)
             .flatMap { currency -> Observable<[HistoricalConvertsDataModel]> in
-                guard let value = currency.rates?.values.first else {
+                guard let values = currency.rates else {
                     return Observable.just([])
                 }
-                let shortCurrencyRate = String(format: "%.2f", value)
-                let currencyModels = HistoricalConvertsDataModel(toCurrencyValue: shortCurrencyRate)
-                return Observable.just([currencyModels])
+                var currencyModels: [HistoricalConvertsDataModel] = []
+                for (dateString, ratesDictionary) in values {
+                    let rates = Array(ratesDictionary.values)
+                    let symbol = Array(ratesDictionary.keys).first ?? ""
+                    for rate in rates {
+                        let formattedRate = String(format: "%.2f", rate)
+                        let model = HistoricalConvertsDataModel(
+                            fromCurrencySymbol: currency.base ?? "",
+                            fromCurrencyValue: "",
+                            toCurrencySymobl: symbol,
+                            toCurrencyValue: formattedRate,
+                            dateString: dateString
+                        )
+                        currencyModels.append(model)
+                    }
+                }
+                currencyModels = currencyModels.sorted { (model1, model2) -> Bool in
+                    return model1.dateString > model2.dateString
+                }
+                return Observable.just(currencyModels)
             }
     }
     func getFamousConvertes(symbols: String, base: String) -> famousReturnType {

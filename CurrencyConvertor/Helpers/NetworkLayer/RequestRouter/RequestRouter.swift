@@ -10,7 +10,7 @@ enum RequestRouter: BaseRouter {
     case currencySymbols
     case convertCurrency(to: String, from: String, amount: String)
     case latestCurrencyRates(symbol: String, base: String)
-    case currenciesByDate(date: String, symbols: String, base: String)
+    case timeSeriesCurrencyRates(startDate: String, endDate: String, base: String, symbols: String)
     //MARK: - Path
     var path: String {
         switch self {
@@ -20,8 +20,8 @@ enum RequestRouter: BaseRouter {
             return "/fixer/convert"
         case .latestCurrencyRates:
             return "/fixer/latest"
-        case .currenciesByDate(let date, _ , _):
-            return "/fixer/\(date)"
+        case .timeSeriesCurrencyRates:
+            return "/fixer/timeseries"
         }
     }
     //MARK: - Parameters or Body
@@ -33,8 +33,8 @@ enum RequestRouter: BaseRouter {
             return ["to": to, "from": from, "amount": amount]
         case .latestCurrencyRates(symbol: let symbol, base: let base):
             return ["base": base, "symbols": symbol]
-        case .currenciesByDate(_ , let symbols, let base):
-            return ["symbols": symbols, "base": base]
+        case .timeSeriesCurrencyRates(startDate: let startDate, endDate: let endDate, base: let base, symbols: let symbols):
+            return ["start_date": startDate, "end_date": endDate, "base": base, "symbols": symbols]
         }
     }
 }

@@ -50,7 +50,7 @@ class NetworkingManger {
             let reponse = try self.jsonDecoder.decode(T.self, from: data)
             return reponse
         } catch {
-            throw APIError(.general)
+            throw decodeError(jsonDecoder: jsonDecoder, data: data)
         }
     }
     // MARK: - Error Decoder

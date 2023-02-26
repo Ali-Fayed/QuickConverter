@@ -6,9 +6,9 @@
 //
 import Foundation
 struct HistoricalConvertsDataModel {
-    var fromCurrencySymbol: String = ""
-    var fromCurrencyValue: String = ""
-    var toCurrencySymobl: String = ""
+    var fromCurrencySymbol: String
+    var fromCurrencyValue: String
+    var toCurrencySymobl: String
     var toCurrencyValue: String
-    var dateString: String = ""
+    var dateString: String
 }

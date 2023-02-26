@@ -6,8 +6,6 @@
 //
 import Foundation
 struct HistoricalConvertsEntity: Codable {
-    let base, date: String?
-    let rates: [String: Double]?
-    let success: Bool?
-    let timestamp: Int?
+    let rates: [String: [String: Double]]?
+    let base: String?
 }

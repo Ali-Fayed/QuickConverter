@@ -23,9 +23,10 @@ class AppCoordinator: Coordinator {
     }
     func showCurrencyDetailsViewController(fromSympol: String, toSympol: String, fromValue: String) {
         let viewController = CurrencyDetailsFactory.createCurrencyDetailsViewController(navigationController: navigationController)
-        viewController.viewModel?.fromCurrencySymbol = fromSympol
-        viewController.viewModel?.toCurrencySymbol = toSympol
-        viewController.viewModel?.fromCurrencyValue = fromValue
+        guard let viewModel = viewController.viewModel else {return}
+        viewModel.fromCurrencySymbol = fromSympol
+        viewModel.toCurrencySymbol = toSympol
+        viewModel.fromCurrencyValue = fromValue
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }

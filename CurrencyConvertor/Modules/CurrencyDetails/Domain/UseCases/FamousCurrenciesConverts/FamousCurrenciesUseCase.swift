@@ -5,7 +5,6 @@
 //  Created by AliFayed on 25/02/2023.
 //
 import Foundation
-import RxCocoa
 import RxSwift
 class FamousCurrenciesUseCase: FamousCurrenciesUseCaseProtocol {
     typealias returnType = Observable<[FamousCurrenciesDataModel]>
