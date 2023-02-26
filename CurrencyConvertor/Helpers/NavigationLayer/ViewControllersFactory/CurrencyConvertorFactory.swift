@@ -15,7 +15,6 @@ class CurrencyConvertorFactory {
         let viewController = CurrencyConvertorViewController.instaintiate(on: .main)
         viewController.initDependencies(viewModel: viewModel)
         viewController.title = Constants.currencyViewTitle
-        viewController.navigationItem.hidesBackButton = true
         viewController.navigationItem.largeTitleDisplayMode = .always
         navigationController.navigationBar.prefersLargeTitles = true
         return viewController

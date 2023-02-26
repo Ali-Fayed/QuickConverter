@@ -1,64 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="landscape" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CiD-fs-fAu">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Splash View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="SplashViewController" id="BYZ-38-t0r" customClass="SplashViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="30" y="-2"/>
-        </scene>
         <!--Currency Details View Controller-->
         <scene sceneID="jBu-0R-8S1">
             <objects>
                 <viewController storyboardIdentifier="CurrencyDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7NV-5X-PQP" customClass="CurrencyDetailsViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g2Q-GF-wCD">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HVb-aa-i4m">
-                                <rect key="frame" x="16" y="77" width="820" height="257"/>
+                                <rect key="frame" x="16" y="77" width="361" height="716"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKn-5i-bjm">
-                                        <rect key="frame" x="0.0" y="0.0" width="820" height="147"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="147"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="147" id="xfC-en-BHg"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ihl-U6-Uuw">
-                                        <rect key="frame" x="0.0" y="157" width="820" height="100"/>
+                                        <rect key="frame" x="0.0" y="157" width="361" height="559"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="um7-v4-W74">
-                                                <rect key="frame" x="0.0" y="0.0" width="820" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="559"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g9d-AT-4RD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="408.66666666666669" height="100"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="179" height="559"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="6uF-qq-hpX"/>
                                                         </constraints>
                                                     </tableView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-AD-OgG">
-                                                        <rect key="frame" x="411.66666666666674" y="0.0" width="408.33333333333326" height="100"/>
+                                                        <rect key="frame" x="182" y="0.0" width="179" height="559"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="IIq-9Q-NYI"/>
@@ -102,20 +86,20 @@
             <objects>
                 <viewController storyboardIdentifier="CurrencyConvertorViewController" id="CiD-fs-fAu" customClass="CurrencyConvertorViewController" customModule="CurrencyConvertor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bwq-VU-VaL">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="C6k-JY-DyS">
-                                <rect key="frame" x="251" y="72" width="350" height="249"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="C6k-JY-DyS">
+                                <rect key="frame" x="27" y="271" width="339" height="310"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Y3S-pk-nwb">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="140"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Y3S-pk-nwb">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-oi-PiY">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="149" height="140"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gko-Bs-6Ph">
-                                                        <rect key="frame" x="10" y="10" width="135" height="60"/>
+                                                        <rect key="frame" x="10" y="10" width="134" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t99-gt-WzV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -144,7 +128,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" placeholder="USD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBL-cM-KVQ" customClass="CustomTextFieldPicker" customModule="CurrencyConvertor" customModuleProvider="target">
-                                                                <rect key="frame" x="70" y="5" width="65" height="50"/>
+                                                                <rect key="frame" x="70" y="5" width="64" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="Lxe-Ac-dRj"/>
                                                                 </constraints>
@@ -154,10 +138,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46j-eh-lay">
-                                                        <rect key="frame" x="20" y="90" width="110" height="25.666666666666671"/>
+                                                        <rect key="frame" x="20" y="90" width="109" height="25.666666666666671"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" name="viewBackground"/>
@@ -169,7 +153,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="gko-Bs-6Ph" secondAttribute="trailing" constant="5" id="jr6-Ru-6kS"/>
                                                     <constraint firstItem="46j-eh-lay" firstAttribute="top" secondItem="gko-Bs-6Ph" secondAttribute="bottom" constant="20" id="mIE-Tv-U4c"/>
                                                     <constraint firstAttribute="trailing" secondItem="46j-eh-lay" secondAttribute="trailing" constant="20" id="mZM-rp-Oh6"/>
-                                                    <constraint firstAttribute="width" constant="150" id="xVj-dP-gfx"/>
+                                                    <constraint firstAttribute="width" constant="149" id="xVj-dP-gfx"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -177,19 +161,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2P-BS-eBu">
-                                                <rect key="frame" x="155" y="0.0" width="39" height="140"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="arrow.left.arrow.right.circle.fill" catalog="system" symbolScale="large"/>
-                                                </state>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTA-fc-pY5">
-                                                <rect key="frame" x="199" y="0.0" width="151" height="140"/>
+                                                <rect key="frame" x="189" y="0.0" width="150" height="140"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Od5-Zz-4oG">
-                                                        <rect key="frame" x="10" y="10" width="136" height="60"/>
+                                                        <rect key="frame" x="10" y="10" width="135" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIO-Ae-ZVr">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -218,7 +194,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EGP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sI4-5M-2El" customClass="CustomTextFieldPicker" customModule="CurrencyConvertor" customModuleProvider="target">
-                                                                <rect key="frame" x="70" y="5" width="66" height="50"/>
+                                                                <rect key="frame" x="70" y="5" width="65" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="zTQ-rn-UAd"/>
                                                                 </constraints>
@@ -228,10 +204,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-An-Rns">
-                                                        <rect key="frame" x="20" y="90" width="111" height="25.666666666666671"/>
+                                                        <rect key="frame" x="20" y="90" width="110" height="25.666666666666671"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" name="viewBackground"/>
@@ -255,11 +231,22 @@
                                             <constraint firstItem="zTA-fc-pY5" firstAttribute="height" secondItem="Kap-oi-PiY" secondAttribute="height" id="W57-pw-Pnx"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYC-gY-IvS">
+                                        <rect key="frame" x="0.0" y="170" width="339" height="55"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.2667144982993197" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="1Wp-Ww-WmW"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.left.arrow.right.square.fill" catalog="system" title="Swap Currencies">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGd-m3-o9u">
-                                        <rect key="frame" x="0.0" y="194" width="350" height="55"/>
+                                        <rect key="frame" x="0.0" y="255" width="339" height="55"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="350" id="P5t-go-QQW"/>
                                             <constraint firstAttribute="height" constant="55" id="z9P-ww-4o7"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -287,9 +274,11 @@
                         <outlet property="convertedCurrencyTextField" destination="LJA-An-Rns" id="k7R-QC-soQ"/>
                         <outlet property="detailsButton" destination="NGd-m3-o9u" id="QEH-CT-BKa"/>
                         <outlet property="fromSympolTextField" destination="QBL-cM-KVQ" id="DmV-gn-iM8"/>
+                        <outlet property="fromView" destination="Kap-oi-PiY" id="ech-YO-1Y8"/>
                         <outlet property="inputCurrencyTextField" destination="46j-eh-lay" id="zN7-d6-SdC"/>
-                        <outlet property="swapRatedButton" destination="P2P-BS-eBu" id="n9s-BU-EnJ"/>
+                        <outlet property="swapRatesButton" destination="FYC-gY-IvS" id="0W8-Nm-c9X"/>
                         <outlet property="toSympolTextField" destination="sI4-5M-2El" id="2QM-1F-Rba"/>
+                        <outlet property="toView" destination="zTA-fc-pY5" id="2EO-5M-VxO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSp-nj-r2v" sceneMemberID="firstResponder"/>
@@ -299,11 +288,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left.arrow.right.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="arrow.left.arrow.right.square.fill" catalog="system" width="128" height="114"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="globe.europe.africa.fill" catalog="system" width="128" height="123"/>
         <namedColor name="background">
-            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.84200000762939453" green="0.84200000762939453" blue="0.84200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="viewBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

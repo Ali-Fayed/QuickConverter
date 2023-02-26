@@ -13,8 +13,10 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     @IBOutlet weak var toSympolTextField: CustomTextFieldPicker!
     @IBOutlet weak var inputCurrencyTextField: UITextField!
     @IBOutlet weak var convertedCurrencyTextField: UITextField!
-    @IBOutlet weak var swapRatedButton: UIButton!
+    @IBOutlet weak var swapRatesButton: UIButton!
     @IBOutlet weak var detailsButton: UIButton!
+    @IBOutlet weak var fromView: UIView!
+    @IBOutlet weak var toView: UIView!
     // MARK: - Properties
     weak var coordinator: AppCoordinator?
     // MARK: - Life Cycle
@@ -39,6 +41,17 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         guard let toSympolText = toSympolTextField.text else {return}
         guard let inputCurrencyText = inputCurrencyTextField.text else {return}
         viewModel.fetchConvertedCurrency(fromSympol: fromSympolText, toSympol: toSympolText, amount: inputCurrencyText)
+    }
+    // MARK: - Configure View
+    private func configureView() {
+        detailsButton.layer.cornerRadius = 20
+        swapRatesButton.layer.cornerRadius = 20
+        swapRatesButton.layer.shadowColor = UIColor.black.cgColor
+        swapRatesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        swapRatesButton.layer.shadowOpacity = 0.5
+        swapRatesButton.layer.shadowRadius = 4
+        fromView.layer.cornerRadius = 10
+        toView.layer.cornerRadius = 10
     }
     // MARK: - Bindings
     private func initBindings() {
@@ -86,7 +99,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             }).disposed(by: disposeBag)
     }
     private func bindSwapButton() {
-        swapRatedButton.rx.tap.bind { [weak self] in
+        swapRatesButton.rx.tap.bind { [weak self] in
             guard let self = self else {return}
             let fromSympol = self.fromSympolTextField.text
             self.fromSympolTextField.text = self.toSympolTextField.text
@@ -127,11 +140,6 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             .bind(to: convertedCurrencyTextField.rx.text)
             .disposed(by: disposeBag)
     }
-    // MARK: - Configure View
-    private func configureView() {
-        detailsButton.layer.cornerRadius = 20
-//        from
-    }
     // MARK: - State
     private func initState() {
         observeOnError()
@@ -150,10 +158,10 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         viewModel.loadingIndicatorRelay.subscribe(onNext: { [weak self] isLoading in
             guard let self = self else {return}
             if isLoading {
-                self.swapRatedButton.isUserInteractionEnabled = false
+                self.swapRatesButton.isUserInteractionEnabled = false
                 self.detailsButton.isUserInteractionEnabled = false
             } else {
-                self.swapRatedButton.isUserInteractionEnabled = true
+                self.swapRatesButton.isUserInteractionEnabled = true
                 self.detailsButton.isUserInteractionEnabled = true
             }
         }).disposed(by: disposeBag)

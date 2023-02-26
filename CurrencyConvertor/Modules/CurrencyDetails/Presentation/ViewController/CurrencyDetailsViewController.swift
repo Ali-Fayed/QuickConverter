@@ -22,7 +22,8 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     }
     // MARK: - Main Methods
     private func initView() {
-        tableViewsConfigures()
+        initState()
+        initTableViews()
         initCurrencyChartHeader()
     }
     private func initViewModel() {
@@ -31,7 +32,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         viewModel.fetchFamousTenCurrencyConverts()
     }
     // MARK: - TableView
-    private func tableViewsConfigures() {
+    private func initTableViews() {
         historicalConvertsTableView.registerCellNib(cellClass: HistoricalDataTableViewCell.self)
         famousCurrenciesTableView.registerCellNib(cellClass: OtherCurrencyDataTableViewCell.self)
         //
@@ -84,5 +85,39 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
             let headerView = CurrencyChatHeaderView(frame: CGRect(x: 0, y: 0, width: self.topChartHeader.bounds.width, height: 150), measurements: measurment)
             self.topChartHeader.addSubview(headerView)
         }).disposed(by: disposeBag)
+    }
+    // MARK: - State
+    private func initState() {
+        observeOnError()
+        observeOnLoading()
+    }
+    // MARK: - Loading State
+    private func observeOnLoading() {
+        guard let viewModel = viewModel else {return}
+        viewModel.loadingIndicatorRelay
+            .bind(to: activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+    }
+    // MARK: - Error State
+    private func observeOnError() {
+        guard let viewModel = viewModel else {return}
+        viewModel.errorSubject.observe(on: MainScheduler.instance)
+            .subscribe(onError: { [weak self] error in
+            guard let self = self else {return}
+            guard let error = error as? APIError else {return}
+            if error.message != nil {
+                self.presentErrorAlert(error: error, message: error.message ?? "")
+            } else {
+                self.presentErrorAlert(error: error, message: error.customError?.errorDescription ?? "")
+            }
+        }).disposed(by: disposeBag)
+    }
+    private func presentErrorAlert(error: APIError, message: String) {
+        showAlert(title: Constants.error, message: message, buttonTitle: Constants.oK)
+            .subscribe(onNext: {
+              //
+            }, onCompleted: {
+                //
+            }).disposed(by: disposeBag)
     }
 }

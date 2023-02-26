@@ -12,11 +12,6 @@ class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     func start() {
-        let splashViewController = SplashViewController.instaintiate(on: .main)
-        splashViewController.coordinator = self
-        navigationController.pushViewController(splashViewController, animated: true)
-    }
-    func showCurrencyViewController() {
         let viewController = CurrencyConvertorFactory.createCurrencyConvertorViewController(navigationController: navigationController)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)

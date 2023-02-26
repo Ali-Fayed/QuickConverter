@@ -40,7 +40,6 @@
 		EAA29DCA29ABC10200580B53 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */; };
 		EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197129A7A55A007570E3 /* AppDelegate.swift */; };
 		EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197329A7A55A007570E3 /* SceneDelegate.swift */; };
-		EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197529A7A55A007570E3 /* SplashViewController.swift */; };
 		EAB2197929A7A55A007570E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2197729A7A55A007570E3 /* Main.storyboard */; };
 		EAB2197E29A7A55C007570E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB2197D29A7A55C007570E3 /* Assets.xcassets */; };
 		EAB2198129A7A55C007570E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2197F29A7A55C007570E3 /* LaunchScreen.storyboard */; };
@@ -128,7 +127,6 @@
 		EAB2196E29A7A55A007570E3 /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB2197129A7A55A007570E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB2197329A7A55A007570E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EAB2197529A7A55A007570E3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		EAB2197829A7A55A007570E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAB2197D29A7A55C007570E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAB2198029A7A55C007570E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 		EAB219A929A7A5A5007570E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EAB219B329A7A61A007570E3 /* SplashScreen */,
 				EAB219AA29A7A5AC007570E3 /* CurrencyConvertor */,
 				EAB219E229A834A5007570E3 /* CurrencyDetails */,
 			);
@@ -473,14 +470,6 @@
 				EAB2197F29A7A55C007570E3 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		EAB219B329A7A61A007570E3 /* SplashScreen */ = {
-			isa = PBXGroup;
-			children = (
-				EAB219FD29A843CD007570E3 /* Presentation */,
-			);
-			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		EAB219B429A7A652007570E3 /* Resources */ = {
@@ -681,22 +670,6 @@
 				EAB219F929A83C5D007570E3 /* Constants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		EAB219FD29A843CD007570E3 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				EAB219FF29A843DD007570E3 /* ViewController */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		EAB219FF29A843DD007570E3 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EAB2197529A7A55A007570E3 /* SplashViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EAB21A1529A853D0007570E3 /* RequestRouter */ = {
@@ -908,7 +881,6 @@
 				EAB219E129A833A8007570E3 /* AppCoordinator.swift in Sources */,
 				EAA29D7D29A9A2B800580B53 /* CurrencyConvertEntity.swift in Sources */,
 				EAB219C729A7A7A2007570E3 /* CurrencyConvertorViewController.swift in Sources */,
-				EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */,
 				EAA29DB929AA94DF00580B53 /* ChartMeasurmentDataModel.swift in Sources */,
 				EAA29DB729AA93E600580B53 /* CurrencyChatHeaderView.swift in Sources */,
 				EAB21A3429A8EE98007570E3 /* CurrencySymbolsDataModel.swift in Sources */,
