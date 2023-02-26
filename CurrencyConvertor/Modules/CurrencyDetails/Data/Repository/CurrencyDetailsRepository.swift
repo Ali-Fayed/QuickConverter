@@ -8,22 +8,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
+    typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
+    typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>
     private let currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol
     init(currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol) {
         self.currencyDetailsRemoteProtocol = currencyDetailsRemoteProtocol
     }
-    func getHistoricalConverts(date: String, symbols: String, base: String) -> Observable<[HistoricalConvertsDataModel]> {
-        return currencyDetailsRemoteProtocol.fetchHistoricalCurrencyConverts(date: date, symbols: symbols, base: base)
+    func getHistoricalConverts(date: String, symbols: String, base: String) -> hisotricalRetunType{
+        return currencyDetailsRemoteProtocol.fetchHistoricalConverts(date: date, symbols: symbols, base: base)
             .flatMap { currency -> Observable<[HistoricalConvertsDataModel]> in
-                guard let values = currency.rates?.values.first else {
+                guard let value = currency.rates?.values.first else {
                     return Observable.just([])
                 }
-                let currencyModels = HistoricalConvertsDataModel(toCurrencyValue: String(values))
+                let shortValue = String(format: "%.2f", value)
+                let currencyModels = HistoricalConvertsDataModel(toCurrencyValue: String(shortValue))
                 return Observable.just([currencyModels])
             }
     }
-    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<[FamousCurrenciesDataModel]> {
-        return currencyDetailsRemoteProtocol.fetchFamousConvertedCurrency(symbols: symbols, base: base)
+    func getFamousConvertes(symbols: String, base: String) -> famousReturnType {
+        return currencyDetailsRemoteProtocol.fetchFamousConvertes(symbols: symbols, base: base)
             .flatMap { currency -> Observable<[FamousCurrenciesDataModel]> in
                 guard let symbols = currency.rates?.keys,
                       let values = currency.rates?.values else {
@@ -31,7 +34,8 @@ class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
                 }
                 var currencyModels: [FamousCurrenciesDataModel] = []
                 for (symbol, value) in zip(symbols, values) {
-                    let model = FamousCurrenciesDataModel(currencySymbol: symbol, currencyValue: String(value))
+                    let shortValue = String(format: "%.2f",value)
+                    let model = FamousCurrenciesDataModel(currencySymbol: symbol, currencyValue: shortValue)
                     currencyModels.append(model)
                 }
                 return Observable.just(currencyModels)

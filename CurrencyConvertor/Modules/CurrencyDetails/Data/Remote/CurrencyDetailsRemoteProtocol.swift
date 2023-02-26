@@ -7,6 +7,8 @@
 import Foundation
 import RxSwift
 protocol CurrencyDetailsRemoteProtocol {
-    func fetchHistoricalCurrencyConverts(date: String, symbols: String, base: String) -> Observable<HistoricalConvertsEntity>
-    func fetchFamousConvertedCurrency(symbols: String, base: String) -> Observable<FamousCurrencyRatesEntity>
+    typealias hisotricalRetunType = Observable<HistoricalConvertsEntity>
+    typealias famousReturnType = Observable<FamousCurrencyEntity>
+    func fetchHistoricalConverts(date: String, symbols: String, base: String) -> hisotricalRetunType
+    func fetchFamousConvertes(symbols: String, base: String) -> famousReturnType
 }

@@ -1,11 +1,11 @@
 //
-//  CurrencyRatesEntity.swift
+//  FamousCurrencyEntity.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 24/02/2023.
 //
 import Foundation
-struct FamousCurrencyRatesEntity: Codable {
+struct FamousCurrencyEntity: Codable {
     let success: Bool?
     let timestamp: Int?
     let historical: Bool?

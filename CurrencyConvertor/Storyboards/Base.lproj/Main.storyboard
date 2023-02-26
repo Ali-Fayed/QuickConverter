@@ -173,14 +173,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="header" destination="UKn-5i-bjm" id="l44-aw-Zz7"/>
-                        <outlet property="historyTableView" destination="g9d-AT-4RD" id="MP0-2u-wZo"/>
-                        <outlet property="otherCurrenciesTableView" destination="kRY-AD-OgG" id="zhc-Wp-5jj"/>
+                        <outlet property="famousCurrenciesTableView" destination="kRY-AD-OgG" id="zhc-Wp-5jj"/>
+                        <outlet property="historicalConvertsTableView" destination="g9d-AT-4RD" id="MP0-2u-wZo"/>
+                        <outlet property="topChartHeader" destination="UKn-5i-bjm" id="l44-aw-Zz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1E-Vj-y94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591.6030534351144" y="12.67605633802817"/>
+            <point key="canvasLocation" x="1509" y="-2"/>
         </scene>
     </scenes>
     <resources>

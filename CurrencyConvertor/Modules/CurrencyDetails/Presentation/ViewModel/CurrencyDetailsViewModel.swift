@@ -8,67 +8,71 @@ import Foundation
 import RxSwift
 import RxCocoa
 class CurrencyDetailsViewModel {
-    // MARK: - Properties
-    private let currencyDetailsUseCase: CurrencyDetailsUseCaseProtocol
+    // MARK: - UseCases
+    private let historicalConvertsUseCase: HistoricalDetailsUseCaseProtocol
+    private let famousCurrenciesConvertsUseCase: FamousCurrenciesUseCaseProtocol
     // MARK: - Rx Properties
     private var disposeBag = DisposeBag()
     let loadingIndicatorRelay = BehaviorRelay<Bool>(value: true)
-    let currencyModelSubject = PublishSubject<[FamousCurrenciesDataModel]>()
-    let convertsLastThreeDaysSubject = PublishSubject<[HistoricalConvertsDataModel]>()
-    let apiErrorSubject = PublishSubject<APIError>()
-    // MARK: - Properties
-    var historicalModel = [HistoricalConvertsDataModel]()
-    var currencyModel = [FamousCurrenciesDataModel]()
+    let famousConvertsSubject = PublishSubject<[FamousCurrenciesDataModel]>()
+    let historicalConvertsSubject = PublishSubject<[HistoricalConvertsDataModel]>()
+    let errorSubject = PublishSubject<APIError>()
+    // MARK: - Data Properties
+    private var historicalModel = [HistoricalConvertsDataModel]()
+    private var currencyModel = [FamousCurrenciesDataModel]()
+    // MARK: - Passed Currency Data
     var fromCurrencyValue: String = ""
     var fromCurrencyCode: String = ""
     var toCurrencyCode: String = ""
     var toCurrencyValue: String = ""
     // MARK: - initalizer
-    init(currencyDetailsUseCase: CurrencyDetailsUseCaseProtocol) {
-        self.currencyDetailsUseCase = currencyDetailsUseCase
+    init(historicalConvertsUseCase: HistoricalDetailsUseCaseProtocol, famousCurrenciesConvertsUseCase: FamousCurrenciesUseCaseProtocol) {
+        self.historicalConvertsUseCase = historicalConvertsUseCase
+        self.famousCurrenciesConvertsUseCase = famousCurrenciesConvertsUseCase
     }
-    // MARK: - Methods
-    func fetchPopularConvertRates() {
+    // MARK: - Famous Converts
+    func fetchFamousTenCurrencyConverts() {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchFamousConvertedCurrency(symbols: Constants.famousCurrencies, base: Constants.euroSymbol)
+        famousCurrenciesConvertsUseCase.excute(symbols: Constants.famousCurrencies, base: Constants.euroSymbol)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.currencyModelSubject.onNext(model)
+                self.famousConvertsSubject.onNext(model)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.apiErrorSubject.onError(error)
+                self.errorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func fetchHistoricalConverts(date: String, symbols: String, base: String) {
+    // MARK: - Historical Converts
+    func fetchHistoricalConvertsByDate(date: String, symbols: String, base: String) {
         loadingIndicatorRelay.accept(true)
-        currencyDetailsUseCase.fetchHistoricalDetails(date: date, symbols: symbols, base: self.fromCurrencyCode)
+        historicalConvertsUseCase.excute(date: date, symbols: symbols, base: Constants.euroSymbol)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
                 guard let convertedCurrency = model.first else {return}
-                self.mapLastThreeDaysConverts(model: convertedCurrency, date: date)
+                self.mapLastThreeDays(model: convertedCurrency, date: date)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
                 self.loadingIndicatorRelay.accept(false)
-                self.apiErrorSubject.onError(error)
+                self.errorSubject.onError(error)
             }).disposed(by: disposeBag)
     }
-    func mapLastThreeDaysConverts(model: HistoricalConvertsDataModel, date: String) {
+    func mapLastThreeDays(model: HistoricalConvertsDataModel, date: String) {
         self.historicalModel.append(HistoricalConvertsDataModel(fromCurrencySymbol: self.fromCurrencyValue, fromCurrencyValue: self.fromCurrencyCode, toCurrencySymobl: self.toCurrencyCode, toCurrencyValue: model.toCurrencyValue, dateString: date))
         if self.historicalModel.count == 3 {
-            self.convertsLastThreeDaysSubject.onNext(self.historicalModel)
+            self.historicalConvertsSubject.onNext(self.historicalModel)
         }
     }
-    func fetchLastThreeDaysConverts() {
+    func fetchLastThreeDaysHistoricalConverts() {
         for date in getLastThreeDays() {
-            self.fetchHistoricalConverts(date: date, symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: Constants.euroSymbol)
+            self.fetchHistoricalConvertsByDate(date: date, symbols: "\(self.fromCurrencyCode),\(self.toCurrencyCode)", base: Constants.euroSymbol)
         }
     }
-    // MARK: - Other
+    // MARK: - Helper Methods
     func getLastThreeDays() -> [String] {
         var datesData = [String]()
         let dateFormatter = DateFormatter()

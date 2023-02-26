@@ -7,10 +7,11 @@
 import UIKit
 class CurrencyDetailsFactory {
     static func createCurrencyDetailsViewController(navigationController: UINavigationController) -> CurrencyDetailsViewController {
-        let remote = CurrencyDetailsRemote()
+        let remote = CurrencyDetailsRemoteServices()
         let repository = CurrencyDetailsRepository(currencyDetailsRemoteProtocol: remote)
-        let useCase = CurrencyDetailsUseCase(currencyDetailsRepoProtocol: repository)
-        let viewModel = CurrencyDetailsViewModel(currencyDetailsUseCase: useCase)
+        let historicalUseCase = HistoricalConvertsUseCase(currencyDetailsRepoProtocol: repository)
+        let famousConvertsUseCase = FamousCurrenciesUseCase(currencyDetailsRepoProtocol: repository)
+        let viewModel = CurrencyDetailsViewModel(historicalConvertsUseCase: historicalUseCase, famousCurrenciesConvertsUseCase: famousConvertsUseCase)
         let viewController = CurrencyDetailsViewController.instaintiate(on: .main)
         viewController.initDependencies(viewModel: viewModel)
         viewController.title = Constants.currencyDetailsViewtitle
