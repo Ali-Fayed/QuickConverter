@@ -36,6 +36,8 @@
 		EAA29DBE29AB71B900580B53 /* HistoricalDetailsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DBD29AB71B900580B53 /* HistoricalDetailsUseCaseProtocol.swift */; };
 		EAA29DC229AB7FDD00580B53 /* FetchConvertedCurrencyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DC129AB7FDD00580B53 /* FetchConvertedCurrencyUseCaseProtocol.swift */; };
 		EAA29DC429AB7FE000580B53 /* FetchConvertedCurrencyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DC329AB7FE000580B53 /* FetchConvertedCurrencyUseCase.swift */; };
+		EAA29DC829ABC0EB00580B53 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DC729ABC0EB00580B53 /* RequestBuilder.swift */; };
+		EAA29DCA29ABC10200580B53 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */; };
 		EAB2197229A7A55A007570E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197129A7A55A007570E3 /* AppDelegate.swift */; };
 		EAB2197429A7A55A007570E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197329A7A55A007570E3 /* SceneDelegate.swift */; };
 		EAB2197629A7A55A007570E3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2197529A7A55A007570E3 /* SplashViewController.swift */; };
@@ -64,7 +66,6 @@
 		EAB21A0829A8475C007570E3 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A0729A8475C007570E3 /* BaseRouter.swift */; };
 		EAB21A0A29A84768007570E3 /* RouterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A0929A84768007570E3 /* RouterTypes.swift */; };
 		EAB21A0E29A84787007570E3 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A0D29A84787007570E3 /* RequestRouter.swift */; };
-		EAB21A1429A8516A007570E3 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1329A8516A007570E3 /* EmptyResponse.swift */; };
 		EAB21A1929A85EC6007570E3 /* CurrencySymbolsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1829A85EC6007570E3 /* CurrencySymbolsEntity.swift */; };
 		EAB21A1B29A85EE5007570E3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1A29A85EE4007570E3 /* APIError.swift */; };
 		EAB21A1E29A8D1D2007570E3 /* TableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB21A1D29A8D1D2007570E3 /* TableView+Ext.swift */; };
@@ -124,6 +125,8 @@
 		EAA29DBD29AB71B900580B53 /* HistoricalDetailsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalDetailsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		EAA29DC129AB7FDD00580B53 /* FetchConvertedCurrencyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConvertedCurrencyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		EAA29DC329AB7FE000580B53 /* FetchConvertedCurrencyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConvertedCurrencyUseCase.swift; sourceTree = "<group>"; };
+		EAA29DC729ABC0EB00580B53 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterProtocol.swift; sourceTree = "<group>"; };
 		EAB2196E29A7A55A007570E3 /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB2197129A7A55A007570E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB2197329A7A55A007570E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,7 +159,6 @@
 		EAB21A0729A8475C007570E3 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		EAB21A0929A84768007570E3 /* RouterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTypes.swift; sourceTree = "<group>"; };
 		EAB21A0D29A84787007570E3 /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
-		EAB21A1329A8516A007570E3 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		EAB21A1829A85EC6007570E3 /* CurrencySymbolsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbolsEntity.swift; sourceTree = "<group>"; };
 		EAB21A1A29A85EE4007570E3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		EAB21A1D29A8D1D2007570E3 /* TableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Ext.swift"; sourceTree = "<group>"; };
@@ -309,6 +311,15 @@
 			path = ConvertedCurrencyUseCase;
 			sourceTree = "<group>";
 		};
+		EAA29DCB29ABC10E00580B53 /* BaseRouter */ = {
+			isa = PBXGroup;
+			children = (
+				EAA29DC929ABC10200580B53 /* BaseRouterProtocol.swift */,
+				EAB21A0729A8475C007570E3 /* BaseRouter.swift */,
+			);
+			path = BaseRouter;
+			sourceTree = "<group>";
+		};
 		EAB2196529A7A55A007570E3 = {
 			isa = PBXGroup;
 			children = (
@@ -372,11 +383,8 @@
 			isa = PBXGroup;
 			children = (
 				EAB21A0329A846F6007570E3 /* NetworkingManger.swift */,
-				EAB21A0D29A84787007570E3 /* RequestRouter.swift */,
-				EAB21A0529A8474C007570E3 /* NetworkReachability.swift */,
 				EAB21A1629A853DA007570E3 /* Error */,
-				EAB21A1529A853D0007570E3 /* RouterBuilder */,
-				EAB21A1C29A868D4007570E3 /* Others */,
+				EAB21A1529A853D0007570E3 /* RequestRouter */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -705,30 +713,25 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		EAB21A1529A853D0007570E3 /* RouterBuilder */ = {
+		EAB21A1529A853D0007570E3 /* RequestRouter */ = {
 			isa = PBXGroup;
 			children = (
-				EAB21A0729A8475C007570E3 /* BaseRouter.swift */,
+				EAB21A0D29A84787007570E3 /* RequestRouter.swift */,
+				EAA29DCB29ABC10E00580B53 /* BaseRouter */,
 				EAB21A0929A84768007570E3 /* RouterTypes.swift */,
+				EAA29DC729ABC0EB00580B53 /* RequestBuilder.swift */,
 			);
-			path = RouterBuilder;
+			path = RequestRouter;
 			sourceTree = "<group>";
 		};
 		EAB21A1629A853DA007570E3 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				EAB21A0529A8474C007570E3 /* NetworkReachability.swift */,
 				EAB21A1A29A85EE4007570E3 /* APIError.swift */,
 				EAB21A0129A846E7007570E3 /* CustomError.swift */,
 			);
 			path = Error;
-			sourceTree = "<group>";
-		};
-		EAB21A1C29A868D4007570E3 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				EAB21A1329A8516A007570E3 /* EmptyResponse.swift */,
-			);
-			path = Others;
 			sourceTree = "<group>";
 		};
 		EAB21A2129A8E472007570E3 /* CommonViews */ = {
@@ -927,13 +930,13 @@
 				EAB21A2729A8E973007570E3 /* FetchCurrencySymbolsUseCase.swift in Sources */,
 				EAB21A2929A8E9C8007570E3 /* CurrencyConvertorRemoteService.swift in Sources */,
 				EAB219F329A8356D007570E3 /* CurrencyDetailsViewModel.swift in Sources */,
+				EAA29DC829ABC0EB00580B53 /* RequestBuilder.swift in Sources */,
 				EAA29DA829AA3EA000580B53 /* HistoricalConvertsDataModel.swift in Sources */,
 				EAB21A0429A846F6007570E3 /* NetworkingManger.swift in Sources */,
 				EAA29DA129AA3AEB00580B53 /* OtherCurrencyDataTableViewCell.swift in Sources */,
 				EAA29DBE29AB71B900580B53 /* HistoricalDetailsUseCaseProtocol.swift in Sources */,
 				EAA29D8C29A9A87100580B53 /* CurrencyDetailsRepository.swift in Sources */,
 				EAA29D8229A9A7E200580B53 /* FamousCurrenciesUseCase.swift in Sources */,
-				EAB21A1429A8516A007570E3 /* EmptyResponse.swift in Sources */,
 				EAB21A0829A8475C007570E3 /* BaseRouter.swift in Sources */,
 				EAB21A0629A8474C007570E3 /* NetworkReachability.swift in Sources */,
 				EAA29DC229AB7FDD00580B53 /* FetchConvertedCurrencyUseCaseProtocol.swift in Sources */,
@@ -962,6 +965,7 @@
 				EAA29D4229A90F7800580B53 /* CustomTextFieldPicker.swift in Sources */,
 				EAB219DD29A8338E007570E3 /* Storyboarded.swift in Sources */,
 				EAA29D9529A9AB8600580B53 /* CurrencyDetailsFactory.swift in Sources */,
+				EAA29DCA29ABC10200580B53 /* BaseRouterProtocol.swift in Sources */,
 				EAB219F029A8355A007570E3 /* CurrencyDetailsViewController.swift in Sources */,
 				EAA29DB529AA91FD00580B53 /* CurrencyChartView.swift in Sources */,
 				EAA29D9D29AA3AD500580B53 /* HistoricalDataTableViewCell.swift in Sources */,

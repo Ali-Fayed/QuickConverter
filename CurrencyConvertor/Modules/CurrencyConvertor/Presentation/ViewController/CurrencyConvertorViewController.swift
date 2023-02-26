@@ -27,6 +27,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func intiView() {
         initBindings()
         initState()
+        configureView()
     }
     private func initViewModel() {
         guard let viewModel = viewModel else {return}
@@ -35,6 +36,9 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func fetchCurrencyConverts() {
         guard let viewModel = viewModel else {return}
         viewModel.fetchConvertedCurrency(fromSympol: fromSympolTextField.text!, toSympol: toSympolTextField.text!, amount: inputCurrencyTextField.text!)
+    }
+    private func configureView() {
+        detailsButton.layer.cornerRadius = 20
     }
     // MARK: - Bindings
     private func initBindings() {

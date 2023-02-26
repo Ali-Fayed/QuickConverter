@@ -6,14 +6,8 @@
 //
 struct APIError: Error, Codable {
     var message: String?
-//    var error: Errors?
     var customError: CustomError?
     init(_ customError: CustomError?) {
         self.customError = customError
     }
 }
-//// MARK: - Errors
-//struct Errors: Codable {
-//    let code: Int
-//    let type, info: String?
-//}

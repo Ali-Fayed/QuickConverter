@@ -11,6 +11,7 @@ enum CustomError: String, Codable {
     case serverError
     case decodingError
     case emptyResponse
+    case tooManyRequests
 }
 extension CustomError {
     var errorDescription: String? {
@@ -23,6 +24,8 @@ extension CustomError {
             return "Response is empty."
         case .decodingError:
             return "Decoding error."
+        case .tooManyRequests:
+            return "Too many requests please change your API key."
         default:
             return "Error occured please try again later."
         }

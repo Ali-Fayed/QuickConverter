@@ -21,17 +21,17 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         initViewModel()
     }
     // MARK: - Main Methods
-    func initView() {
+    private func initView() {
         tableViewConfigure()
         initCurrencyChartHeader()
     }
-    func initViewModel() {
+    private func initViewModel() {
         guard let viewModel = viewModel else{return}
         viewModel.fetchLastThreeDaysHistoricalConverts()
         viewModel.fetchFamousTenCurrencyConverts()
     }
     // MARK: - TableView
-    func tableViewConfigure() {
+    private func tableViewConfigure() {
         historicalConvertsTableView.registerCellNib(cellClass: HistoricalDataTableViewCell.self)
         famousCurrenciesTableView.registerCellNib(cellClass: OtherCurrencyDataTableViewCell.self)
         //
@@ -44,7 +44,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         historicalCurrenciesTableViewDidSelectRow()
     }
     // MARK: - Historical Currencies TableView
-    func bindHistoryTableView() {
+    private func bindHistoryTableView() {
         guard let viewModel = viewModel else{return}
         viewModel.historicalConvertsSubject
             .observe(on: MainScheduler.instance)
@@ -52,14 +52,14 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
     }
-    func historicalCurrenciesTableViewDidSelectRow() {
+    private func historicalCurrenciesTableViewDidSelectRow() {
         historicalConvertsTableView.rx.itemSelected.subscribe { [weak self] indexPath in
             guard let self = self else {return}
             self.historicalConvertsTableView.deselectRow(at: indexPath, animated: true)
         }.disposed(by: disposeBag)
     }
     // MARK: - Famous Currencies TableView
-    func bindFamousCurrenciesTableView() {
+    private func bindFamousCurrenciesTableView() {
         guard let viewModel = viewModel else{return}
         viewModel.famousConvertsSubject
             .observe(on: MainScheduler.instance)
@@ -67,14 +67,14 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
     }
-    func famousCurrenciesTableViewDidSelectRow() {
+    private func famousCurrenciesTableViewDidSelectRow() {
         famousCurrenciesTableView.rx.itemSelected.subscribe { [weak self] indexPath in
             guard let self = self else {return}
             self.famousCurrenciesTableView.deselectRow(at: indexPath, animated: true)
         }.disposed(by: disposeBag)
     }
     // MARK: - Chart Header
-    func initCurrencyChartHeader() {
+    private func initCurrencyChartHeader() {
         guard let viewModel = viewModel else{return}
         viewModel.historicalConvertsSubject.subscribe(onNext: { models in
             var measurment = [ChartMeasurmentDataModel]()

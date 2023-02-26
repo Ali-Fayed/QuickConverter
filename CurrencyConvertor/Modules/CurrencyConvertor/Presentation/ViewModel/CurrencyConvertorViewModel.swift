@@ -38,16 +38,13 @@ class CurrencyConvertorViewModel {
             }).disposed(by: disposeBag)
     }
     func fetchConvertedCurrency(fromSympol: String, toSympol: String, amount: String) {
-        loadingIndicatorRelay.accept(true)
         convertCurrencyUseCase.excute(from: fromSympol, to: toSympol, amount: amount)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}
-                self.loadingIndicatorRelay.accept(false)
                 self.convertedCurrencySubject.onNext(model.convertedCurrencyResult)
             }, onError: { [weak self] error in
                 guard let self = self else {return}
-                self.loadingIndicatorRelay.accept(false)
                 self.errorSubject.onError(error)
             }).disposed(by: disposeBag)
     }

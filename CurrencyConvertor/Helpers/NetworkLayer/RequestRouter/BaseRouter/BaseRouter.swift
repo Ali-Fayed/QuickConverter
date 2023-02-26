@@ -5,15 +5,6 @@
 //  Created by AliFayed on 24/02/2023.
 //
 import Foundation
-protocol BaseRouter {
-    var baseURL: String {get}
-    var scheme: String {get}
-    var path: String {get}
-    var method: HttpMethod { get }
-    var headers: HttpHeaders? { get }
-    var parameter: HttpParameters? { get}
-}
-
 extension BaseRouter {
     var scheme: String {
         return "https"
@@ -22,6 +13,9 @@ extension BaseRouter {
         return "api.apilayer.com"
     }
     var headers: HttpHeaders? {
-        return ["apikey": "MvT5ptBM1nc9Ccdo76ShjgfIMwz3hLFN"]
+        return ["apikey": "6fWe5aCb8TBNzO3xIWNrZB9aNI1QvPZD"]
+    }
+    var method: HttpMethod {
+        return .get
     }
 }
