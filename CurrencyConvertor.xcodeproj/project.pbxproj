@@ -42,7 +42,6 @@
 		EAA29DD329AC289200580B53 /* CurrencyConvertsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DD229AC289200580B53 /* CurrencyConvertsViewModelTests.swift */; };
 		EAA29DDB29AC28F900580B53 /* HistoricalConvertsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DDA29AC28F900580B53 /* HistoricalConvertsUseCaseTests.swift */; };
 		EAA29DE929AC298E00580B53 /* CurrencyDetailsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DE829AC298E00580B53 /* CurrencyDetailsMocks.swift */; };
-		EAA29DEF29AC29C600580B53 /* FetchConvertedCurrencyUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DEE29AC29C600580B53 /* FetchConvertedCurrencyUseCaseMock.swift */; };
 		EAA29DF329AC29E500580B53 /* CurrencyConvertorMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DF229AC29E500580B53 /* CurrencyConvertorMocks.swift */; };
 		EAA29DF729AC3D3F00580B53 /* DetailsStubGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA29DF629AC3D3F00580B53 /* DetailsStubGenerator.swift */; };
 		EAA29DFE29AC518300580B53 /* ConvertsStub.json in Resources */ = {isa = PBXBuildFile; fileRef = EAA29DFC29AC518300580B53 /* ConvertsStub.json */; };
@@ -93,6 +92,7 @@
 		EAFA6A1729ACD0D2004848B0 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA6A1629ACD0D2004848B0 /* MockError.swift */; };
 		EAFA6A1929ACE0C2004848B0 /* FamousCurrencyConvertsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA6A1829ACE0C2004848B0 /* FamousCurrencyConvertsUseCaseTests.swift */; };
 		EAFA6A1B29ACEAF8004848B0 /* FetchConvertedCurrencyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA6A1A29ACEAF8004848B0 /* FetchConvertedCurrencyUseCaseTests.swift */; };
+		EAFA6A1F29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA6A1E29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +143,6 @@
 		EAA29DD229AC289200580B53 /* CurrencyConvertsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertsViewModelTests.swift; sourceTree = "<group>"; };
 		EAA29DDA29AC28F900580B53 /* HistoricalConvertsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalConvertsUseCaseTests.swift; sourceTree = "<group>"; };
 		EAA29DE829AC298E00580B53 /* CurrencyDetailsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsMocks.swift; sourceTree = "<group>"; };
-		EAA29DEE29AC29C600580B53 /* FetchConvertedCurrencyUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConvertedCurrencyUseCaseMock.swift; sourceTree = "<group>"; };
 		EAA29DF229AC29E500580B53 /* CurrencyConvertorMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertorMocks.swift; sourceTree = "<group>"; };
 		EAA29DF629AC3D3F00580B53 /* DetailsStubGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStubGenerator.swift; sourceTree = "<group>"; };
 		EAA29DFC29AC518300580B53 /* ConvertsStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConvertsStub.json; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		EAFA6A1629ACD0D2004848B0 /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		EAFA6A1829ACE0C2004848B0 /* FamousCurrencyConvertsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousCurrencyConvertsUseCaseTests.swift; sourceTree = "<group>"; };
 		EAFA6A1A29ACEAF8004848B0 /* FetchConvertedCurrencyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConvertedCurrencyUseCaseTests.swift; sourceTree = "<group>"; };
+		EAFA6A1E29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConvertedCurrencyUseCaseMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,8 +351,8 @@
 		EAA29DE529AC294700580B53 /* ViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA29E0229AC51FA00580B53 /* Tests */,
-				EAA29E0329AC51FF00580B53 /* Mock */,
+				EAFA6A2029AD0203004848B0 /* Mocks */,
+				EAA29DD229AC289200580B53 /* CurrencyConvertsViewModelTests.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -375,23 +375,6 @@
 				EAFA6A1A29ACEAF8004848B0 /* FetchConvertedCurrencyUseCaseTests.swift */,
 			);
 			path = UseCaseTests;
-			sourceTree = "<group>";
-		};
-		EAA29E0229AC51FA00580B53 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				EAA29DD229AC289200580B53 /* CurrencyConvertsViewModelTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		EAA29E0329AC51FF00580B53 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				EAA29DEE29AC29C600580B53 /* FetchConvertedCurrencyUseCaseMock.swift */,
-				EAFA6A0F29AC56CE004848B0 /* FetchCurrencySymbolsUseCaseMock.swift */,
-			);
-			path = Mock;
 			sourceTree = "<group>";
 		};
 		EAA29E0829AC527100580B53 /* UseCaseTests */ = {
@@ -832,6 +815,15 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		EAFA6A2029AD0203004848B0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				EAFA6A0F29AC56CE004848B0 /* FetchCurrencySymbolsUseCaseMock.swift */,
+				EAFA6A1E29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1048,7 +1040,6 @@
 			files = (
 				EAA29DE929AC298E00580B53 /* CurrencyDetailsMocks.swift in Sources */,
 				EAA29DD329AC289200580B53 /* CurrencyConvertsViewModelTests.swift in Sources */,
-				EAA29DEF29AC29C600580B53 /* FetchConvertedCurrencyUseCaseMock.swift in Sources */,
 				EAFA6A1929ACE0C2004848B0 /* FamousCurrencyConvertsUseCaseTests.swift in Sources */,
 				EAA29DDB29AC28F900580B53 /* HistoricalConvertsUseCaseTests.swift in Sources */,
 				EAA29DCD29AC23C200580B53 /* FetchCurrencySymbolsUseCaseTests.swift in Sources */,
@@ -1058,6 +1049,7 @@
 				EAFA6A1029AC56CE004848B0 /* FetchCurrencySymbolsUseCaseMock.swift in Sources */,
 				EAFA6A1729ACD0D2004848B0 /* MockError.swift in Sources */,
 				EAA29DF729AC3D3F00580B53 /* DetailsStubGenerator.swift in Sources */,
+				EAFA6A1F29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

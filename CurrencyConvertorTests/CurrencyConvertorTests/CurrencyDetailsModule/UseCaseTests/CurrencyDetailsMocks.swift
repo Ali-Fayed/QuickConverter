@@ -1,5 +1,5 @@
 //
-//  CurrencyDetailsRepoMocks.swift
+//  CurrencyDetailsMocks.swift
 //  CurrencyConvertorTests
 //
 //  Created by AliFayed on 27/02/2023.
@@ -7,7 +7,7 @@
 import XCTest
 import RxSwift
 @testable import CurrencyConvertor
-class CurrencyDetailsUseCaseMocks: CurrencyDetailsRepoProtocol {
+class CurrencyDetailsMocks: CurrencyDetailsRepoProtocol {
     typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
     typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>
     

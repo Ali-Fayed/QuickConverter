@@ -1,5 +1,5 @@
 //
-//  CurrencyConvertorRepositoryMocks.swift
+//  CurrencyConvertorMocks.swift
 //  CurrencyConvertorTests
 //
 //  Created by AliFayed on 27/02/2023.
@@ -7,7 +7,7 @@
 import XCTest
 import RxSwift
 @testable import CurrencyConvertor
-class CurrencyConvertorRemoteServiceMock: CurrencyConvertorRepoProtocol {
+class CurrencyConvertorMocks: CurrencyConvertorRepoProtocol {
     typealias symbolsReturnType = Observable<CurrencySymbolsDataModel>
     typealias convertsReturnType = Observable<ConvertedCurrencyDataModel>
     
@@ -21,7 +21,7 @@ class CurrencyConvertorRemoteServiceMock: CurrencyConvertorRepoProtocol {
         return CurrencyConvertorStubGenerator().stubSymbols()
             .flatMap { result -> Observable<CurrencySymbolsDataModel> in
             let symbols = Array(result.symbols.keys)
-                symbolResult = symbols
+                    symbolResult = symbols
                 fetchSymbolsCalled = true
             return Observable.just(CurrencySymbolsDataModel(symbols: symbols))}!
     }
