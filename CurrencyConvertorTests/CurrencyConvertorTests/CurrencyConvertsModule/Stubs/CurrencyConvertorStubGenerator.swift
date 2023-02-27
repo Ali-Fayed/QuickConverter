@@ -6,7 +6,7 @@
 //
 import XCTest
 @testable import CurrencyConvertor
-class RepoStubGenerator {
+class CurrencyConvertorStubGenerator {
     func stubSymbols() -> CurrencySymbolsEntity? {
         guard let path = Bundle.symbolUnitTest.path(forResource: "SymbolsStub", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
@@ -30,9 +30,9 @@ class RepoStubGenerator {
 }
 extension Bundle {
     public class var symbolUnitTest: Bundle {
-        return Bundle(for: CurrencyConvertorRepositoryTests.self)
+        return Bundle(for: FetchCurrencySymbolsUseCaseTests.self)
     }
     public class var convertsUnitTest: Bundle {
-        return Bundle(for: CurrencyConvertorRepositoryTests.self)
+        return Bundle(for: FetchConvertedCurrencyUseCaseTests.self)
     }
 }

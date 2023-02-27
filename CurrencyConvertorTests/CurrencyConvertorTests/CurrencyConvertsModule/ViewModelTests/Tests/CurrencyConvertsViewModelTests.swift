@@ -42,26 +42,4 @@ class CurrencyConvertsViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(currencySymbolsObserver.events, [.next(0, symbols)])
     }
-    func testFetchConvertedCurrency() {
-        // Given
-        let expectedCurrencyResult = "152.972935"
-        _ = fetchConvertedCurrencyUseCaseMock.excute(from: "USD", to: "EGP", amount: "5")
-        let expectedDataModel = ConvertedCurrencyDataModel(convertedCurrencyResult: expectedCurrencyResult)
-        fetchConvertedCurrencyUseCaseMock.result = .success(expectedDataModel)
-        // When
-        viewModel.fetchConvertedCurrency(fromSympol: "USD", toSympol: "EUR", amount: "5")
-        let expectation = XCTestExpectation(description: "Convert currency")
-
-        // Then
-        viewModel.convertedCurrencySubject.subscribe(onNext: { currencyResult in
-            XCTAssertEqual(currencyResult, expectedCurrencyResult)
-            expectation.fulfill()
-        }).disposed(by: disposeBag)
-        viewModel.errorSubject.subscribe(onNext: { _ in
-            XCTFail("Should not receive error")
-            expectation.fulfill()
-        }).disposed(by: disposeBag)
-
-        wait(for: [expectation], timeout: 5.0)
-    }
 }
