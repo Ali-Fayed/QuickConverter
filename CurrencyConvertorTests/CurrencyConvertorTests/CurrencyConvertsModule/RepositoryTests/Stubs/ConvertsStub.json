@@ -1,0 +1,14 @@
+{
+  "date": "2023-02-27",
+  "info": {
+    "rate": 30.594587,
+    "timestamp": 1677463623
+  },
+  "query": {
+    "amount": 5,
+    "from": "USD",
+    "to": "EGP"
+  },
+  "result": 152.972935,
+  "success": true
+}

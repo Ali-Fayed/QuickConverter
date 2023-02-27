@@ -72,7 +72,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func bindFromCurrencySympols() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
-        .map { $0.sympols }
+        .map { $0.symbols }
         .observe(on: MainScheduler.instance)
         .bind(to: fromSympolTextField.pickerItems)
         .disposed(by: disposeBag)
@@ -90,7 +90,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     private func bindToCurrencySympols() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
-        .map { $0.sympols }
+        .map { $0.symbols }
         .observe(on: MainScheduler.instance)
         .bind(to: toSympolTextField.pickerItems)
         .disposed(by: disposeBag)
