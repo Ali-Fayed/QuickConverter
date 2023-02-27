@@ -370,7 +370,7 @@
 		EAA29E0029AC519400580B53 /* UseCaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA29DF229AC29E500580B53 /* CurrencyConvertorMocks.swift */,
+				EAFA6A2229AD47A0004848B0 /* Mocks */,
 				EAA29DCC29AC23C200580B53 /* FetchCurrencySymbolsUseCaseTests.swift */,
 				EAFA6A1A29ACEAF8004848B0 /* FetchConvertedCurrencyUseCaseTests.swift */,
 			);
@@ -380,7 +380,7 @@
 		EAA29E0829AC527100580B53 /* UseCaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA29DE829AC298E00580B53 /* CurrencyDetailsMocks.swift */,
+				EAFA6A2129AD4794004848B0 /* Mocks */,
 				EAA29DDA29AC28F900580B53 /* HistoricalConvertsUseCaseTests.swift */,
 				EAFA6A1829ACE0C2004848B0 /* FamousCurrencyConvertsUseCaseTests.swift */,
 			);
@@ -820,6 +820,22 @@
 			children = (
 				EAFA6A0F29AC56CE004848B0 /* FetchCurrencySymbolsUseCaseMock.swift */,
 				EAFA6A1E29AD01EC004848B0 /* FetchConvertedCurrencyUseCaseMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		EAFA6A2129AD4794004848B0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				EAA29DE829AC298E00580B53 /* CurrencyDetailsMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		EAFA6A2229AD47A0004848B0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				EAA29DF229AC29E500580B53 /* CurrencyConvertorMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";

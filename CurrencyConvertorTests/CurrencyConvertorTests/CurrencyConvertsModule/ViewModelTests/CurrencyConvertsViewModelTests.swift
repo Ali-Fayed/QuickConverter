@@ -17,7 +17,7 @@ class CurrencyConvertsViewModelTests: XCTestCase {
         super.setUp()
         fetchSymbolsUseCaseMock = FetchCurrencySymbolsUseCaseMock()
         fetchConvertedCurrencyUseCaseMock = FetchConvertedCurrencyUseCaseMock()
-        viewModel = CurrencyConvertorViewModel(convertCurrencyUseCase: fetchConvertedCurrencyUseCaseMock, fetchSymbolsUseCase: fetchSymbolsUseCaseMock)
+        viewModel = CurrencyConvertorViewModel(convertCurrencyUseCase: fetchConvertedCurrencyUseCaseMock, currencySymbolsUseCase: fetchSymbolsUseCaseMock)
         disposeBag = DisposeBag()
     }
     override func tearDown() {
@@ -37,7 +37,7 @@ class CurrencyConvertsViewModelTests: XCTestCase {
         // When
         viewModel.currencySympolsSubject.bind(to: currencySymbolsObserver).disposed(by: disposeBag)
         viewModel.errorSubject.bind(to: errorObserver).disposed(by: disposeBag)
-        viewModel.fetchCurrencySympols()
+        viewModel.fetchCurrencySymbols()
         scheduler.start()
         // Then
         XCTAssertEqual(currencySymbolsObserver.events, [.next(0, symbols)])
