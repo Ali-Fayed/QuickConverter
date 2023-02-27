@@ -4,7 +4,7 @@
 //
 //  Created by AliFayed on 25/02/2023.
 //
-import Foundation
+/// - Description: The model used in the UI presentation
 struct FamousCurrenciesDataModel {
     var currencySymbol: String
     var currencyValue: String

@@ -11,7 +11,7 @@ class CurrencyChatHeaderView: UIView {
     init(frame: CGRect, measurements: [ChartMeasurmentDataModel]) {
            self.measurements = measurements
            super.init(frame: frame)
-        let mySwiftUIView = CurrencyChartView(measurements: measurements)
+        let mySwiftUIView = CurrencyChartView(chartMeasurments: measurements)
         let hostingController = UIHostingController(rootView: mySwiftUIView)
         addSubview(hostingController.view)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false

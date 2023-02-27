@@ -13,7 +13,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     @IBOutlet weak var toSympolTextField: CustomTextFieldPicker!
     @IBOutlet weak var inputCurrencyTextField: UITextField!
     @IBOutlet weak var convertedCurrencyTextField: UITextField!
-    @IBOutlet weak var swapRatesButton: UIButton!
+    @IBOutlet weak var swapSymbolsButton: UIButton!
     @IBOutlet weak var detailsButton: UIButton!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var toView: UIView!
@@ -26,90 +26,100 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         initViewModel()
     }
     // MARK: - Main Methods
+    /// - Description: here the main section in the view controller every method related to the UI, bindings, states called here
     private func intiView() {
+        configureView()
         initBindings()
         initState()
-        configureView()
     }
+    /// - Description: here the main section in the view controller every method related to data called here
     private func initViewModel() {
         guard let viewModel = viewModel else {return}
-        viewModel.fetchCurrencySympols()
-    }
-    private func fetchCurrencyConverts() {
-        guard let viewModel = viewModel else {return}
-        guard let fromSympolText = fromSympolTextField.text else {return}
-        guard let toSympolText = toSympolTextField.text else {return}
-        guard let inputCurrencyText = inputCurrencyTextField.text else {return}
-        viewModel.fetchConvertedCurrency(fromSympol: fromSympolText, toSympol: toSympolText, amount: inputCurrencyText)
+        viewModel.fetchCurrencySymbols()
     }
     // MARK: - Configure View
+    /// - Description: configure here every UI component like shadows, corner radius fonts, etc ..
     private func configureView() {
+        swapSymbolsButton.layer.cornerRadius = 20
+        swapSymbolsButton.layer.shadowColor = UIColor.black.cgColor
+        swapSymbolsButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        swapSymbolsButton.layer.shadowOpacity = 0.5
+        swapSymbolsButton.layer.shadowRadius = 4
+        //
         detailsButton.layer.cornerRadius = 20
-        swapRatesButton.layer.cornerRadius = 20
-        swapRatesButton.layer.shadowColor = UIColor.black.cgColor
-        swapRatesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        swapRatesButton.layer.shadowOpacity = 0.5
-        swapRatesButton.layer.shadowRadius = 4
+        //
         fromView.layer.cornerRadius = 10
         toView.layer.cornerRadius = 10
     }
     // MARK: - Bindings
+    /// - Description: All view controller components bindings called here like textfields, pickers, etc ...
     private func initBindings() {
-        bindFromCurrencySympols()
-        bindToCurrencySympols()
+        bindFromCurrencySympolsToPicker()
+        observeOnFromCurrencySymbolsChanged()
+        //
+        bindToCurrencySympolsToPicker()
+        observeOnToCurrencySymbolsChanged()
+        //
         bindDetailsButton()
         bindSwapButton()
-        bindInputFromTextField()
-        bindConvertedTextField()
+        //
+        bindCurrencyInputTextField()
+        bindConvertedCurrencyTextField()
     }
     // MARK: - State
+    /// - Description: All view controller states called here like loading, error, etc ..
     private func initState() {
         observeOnError()
         observeOnLoading()
         observeOnViewInteraction()
     }
-    // MARK: - From and To Currency Symbols
-    private func bindFromCurrencySympols() {
+    // MARK: - From Currency Symbols
+    private func bindFromCurrencySympolsToPicker() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
         .map { $0.symbols }
         .observe(on: MainScheduler.instance)
         .bind(to: fromSympolTextField.pickerItems)
         .disposed(by: disposeBag)
-        // value changed
+    }
+    private func observeOnFromCurrencySymbolsChanged() {
         fromSympolTextField.rx.controlEvent([.editingDidEnd])
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let text = self.inputCurrencyTextField.text else {return}
+                /// validation
+                guard let text = self.fromSympolTextField.text else {return}
                 if !text.isEmpty && text.count == 3 {
                     self.fetchCurrencyConverts()
                 }
             }).disposed(by: disposeBag)
     }
-    private func bindToCurrencySympols() {
+    // MARK: - To Currency Symbols
+    private func bindToCurrencySympolsToPicker() {
         guard let viewModel = viewModel else {return}
         viewModel.currencySympolsSubject
         .map { $0.symbols }
         .observe(on: MainScheduler.instance)
         .bind(to: toSympolTextField.pickerItems)
         .disposed(by: disposeBag)
-        // value changed
+    }
+    private func observeOnToCurrencySymbolsChanged() {
         toSympolTextField.rx.controlEvent([.editingDidEnd])
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let text = self.inputCurrencyTextField.text else {return}
+                guard let text = self.toSympolTextField.text else {return}
                 if !text.isEmpty && text.count == 3 {
                     self.fetchCurrencyConverts()
                 }
             }).disposed(by: disposeBag)
     }
-    // MARK: - From and To Currency Values
-    private func bindInputFromTextField() {
+    // MARK: - From Currency Values
+    private func bindCurrencyInputTextField() {
         inputCurrencyTextField.rx.text
             .orEmpty
             .filter { text in
+                /// validation
                    let nonNumericCharacterSet = CharacterSet.decimalDigits.inverted
                    return text.rangeOfCharacter(from: nonNumericCharacterSet) == nil
                }
@@ -121,7 +131,8 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
                 self.fetchCurrencyConverts()
             }).disposed(by: disposeBag)
     }
-    private func bindConvertedTextField() {
+    // MARK: - To Currency Values
+    private func bindConvertedCurrencyTextField() {
         convertedCurrencyTextField.isEnabled = false
         guard let viewModel = viewModel else {return}
         viewModel.convertedCurrencySubject.observe(on: MainScheduler.instance)
@@ -130,7 +141,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
     }
     // MARK: - Buttons
     private func bindSwapButton() {
-        swapRatesButton.rx.tap.bind { [weak self] in
+        swapSymbolsButton.rx.tap.bind { [weak self] in
             guard let self = self else {return}
             let fromSympol = self.fromSympolTextField.text
             self.fromSympolTextField.text = self.toSympolTextField.text
@@ -153,6 +164,7 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         }.disposed(by: disposeBag)
     }
     // MARK: - Loading State
+    /// - Description: show and hide the loading indictor
     private func observeOnLoading() {
         guard let viewModel = viewModel else {return}
         viewModel.loadingIndicatorRelay
@@ -164,10 +176,10 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
         viewModel.loadingIndicatorRelay.subscribe(onNext: { [weak self] isLoading in
             guard let self = self else {return}
             if isLoading {
-                self.swapRatesButton.isUserInteractionEnabled = false
+                self.swapSymbolsButton.isUserInteractionEnabled = false
                 self.detailsButton.isUserInteractionEnabled = false
             } else {
-                self.swapRatesButton.isUserInteractionEnabled = true
+                self.swapSymbolsButton.isUserInteractionEnabled = true
                 self.detailsButton.isUserInteractionEnabled = true
             }
         }).disposed(by: disposeBag)
@@ -186,15 +198,24 @@ class CurrencyConvertorViewController: BaseViewController<CurrencyConvertorViewM
             }
         }).disposed(by: disposeBag)
     }
+    /// - Description: present alert when there is an error
     private func presentErrorAlert(error: APIError, message: String) {
         showAlert(title: Constants.error, message: message, buttonTitle: Constants.oK)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else {return}
                 guard let viewModel = self.viewModel else {return}
-                viewModel.fetchCurrencySympols()
+                viewModel.fetchCurrencySymbols()
                 self.fetchCurrencyConverts()
             }, onCompleted: {
                 //
             }).disposed(by: disposeBag)
+    }
+    // MARK: - Currency Convertor Method
+    private func fetchCurrencyConverts() {
+        guard let viewModel = viewModel else {return}
+        guard let fromSympolText = fromSympolTextField.text else {return}
+        guard let toSympolText = toSympolTextField.text else {return}
+        guard let inputCurrencyText = inputCurrencyTextField.text else {return}
+        viewModel.fetchConvertedCurrency(fromSympol: fromSympolText, toSympol: toSympolText, amount: inputCurrencyText)
     }
 }

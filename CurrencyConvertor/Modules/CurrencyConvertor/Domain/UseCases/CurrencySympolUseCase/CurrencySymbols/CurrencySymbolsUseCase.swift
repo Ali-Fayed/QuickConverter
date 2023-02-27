@@ -6,12 +6,16 @@
 //
 import Foundation
 import RxSwift
-class FetchCurrencySymbolsUseCase: FetchCurrencySymbolsUseCaseProtocol {
+class CurrencySymbolsUseCase: CurrencySymbolsUseCaseInterface {
+    // MARK: - Properties
     typealias returnType = Observable<CurrencySymbolsDataModel>
-    private let currencySymbolRepository: CurrencyConvertorRepoProtocol
-    init(currencySymbolRepository: CurrencyConvertorRepoProtocol) {
+    private let currencySymbolRepository: CurrencyConvertorRepositoryInterface
+    // MARK: - Intializer
+    init(currencySymbolRepository: CurrencyConvertorRepositoryInterface) {
         self.currencySymbolRepository = currencySymbolRepository
     }
+    // MARK: - Use Case Excution Method
+    /// - Description: Send Use Case Value to The Repository
     func excute() -> returnType {
         return currencySymbolRepository.getCurrencySymbols()
     }

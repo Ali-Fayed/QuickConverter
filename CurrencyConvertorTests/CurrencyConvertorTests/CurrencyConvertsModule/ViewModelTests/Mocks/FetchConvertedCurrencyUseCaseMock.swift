@@ -7,7 +7,7 @@
 import XCTest
 import RxSwift
 @testable import CurrencyConvertor
-class FetchConvertedCurrencyUseCaseMock: FetchConvertedCurrencyUseCaseProtocol {
+class FetchConvertedCurrencyUseCaseMock: ConvertedCurrencyUseCaseInterface {
     typealias returnType = Observable<ConvertedCurrencyDataModel>
     enum Result {
         case success(ConvertedCurrencyDataModel)

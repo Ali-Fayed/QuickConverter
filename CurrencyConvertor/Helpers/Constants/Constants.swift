@@ -21,4 +21,5 @@ struct Constants {
     static let oK = "OK"
     static let one = "1"
     static let dateFormatString = "yyyy-MM-dd"
+    static let twoNumbersDouble = "%.2f"
 }

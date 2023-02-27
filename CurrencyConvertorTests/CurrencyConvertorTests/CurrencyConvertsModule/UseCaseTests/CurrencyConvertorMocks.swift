@@ -7,7 +7,7 @@
 import XCTest
 import RxSwift
 @testable import CurrencyConvertor
-class CurrencyConvertorMocks: CurrencyConvertorRepoProtocol {
+class CurrencyConvertorMocks: CurrencyConvertorRepositoryInterface {
     typealias symbolsReturnType = Observable<CurrencySymbolsDataModel>
     typealias convertsReturnType = Observable<ConvertedCurrencyDataModel>
     
@@ -25,7 +25,7 @@ class CurrencyConvertorMocks: CurrencyConvertorRepoProtocol {
                 fetchSymbolsCalled = true
             return Observable.just(CurrencySymbolsDataModel(symbols: symbols))}!
     }
-    func getConvertedCurrency(from: String, to: String, ammout: String) -> convertsReturnType {
+    func getConvertedCurrencyValue(from: String, to: String, ammout: String) -> convertsReturnType {
         return CurrencyConvertorStubGenerator().stubCurrencyConverts()
             .flatMap { result -> Observable<ConvertedCurrencyDataModel> in
              let convertedResult = String(format: "%.2f", result.result)

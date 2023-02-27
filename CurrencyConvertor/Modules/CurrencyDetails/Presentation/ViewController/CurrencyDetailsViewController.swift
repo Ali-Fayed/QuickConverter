@@ -21,17 +21,20 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         initViewModel()
     }
     // MARK: - Main Methods
+    /// here the main section in the view controller every method related to the UI, bindings, states called here
     private func initView() {
         initState()
         initTableViews()
         initCurrencyChartHeader()
     }
+    /// here the main section in the view controller every method related to data called here
     private func initViewModel() {
         guard let viewModel = viewModel else{return}
         viewModel.fetchLastThreeDaysHistoricalConverts()
         viewModel.fetchFamousTenCurrencyConverts()
     }
     // MARK: - TableView
+    /// - Description:TableView Configure here
     private func initTableViews() {
         historicalConvertsTableView.registerCellNib(cellClass: HistoricalDataTableViewCell.self)
         famousCurrenciesTableView.registerCellNib(cellClass: OtherCurrencyDataTableViewCell.self)
@@ -43,6 +46,12 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         bindFamousCurrenciesTableView()
         famousCurrenciesTableViewDidSelectRow()
         historicalCurrenciesTableViewDidSelectRow()
+    }
+    // MARK: - State
+    /// - Description: All view controller states called here like loading, error, etc ..
+    private func initState() {
+        observeOnError()
+        observeOnLoading()
     }
     // MARK: - Historical Currencies TableView
     private func bindHistoryTableView() {
@@ -80,18 +89,14 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         viewModel.historicalConvertsSubject.subscribe(onNext: { models in
             var measurment = [ChartMeasurmentDataModel]()
             for model in models {
-                measurment.append(ChartMeasurmentDataModel(date: model.dateString, rate: Double(model.toCurrencyValue) ?? 1.0))
+                measurment.append(ChartMeasurmentDataModel(date: model.dateString, convertedValue: Double(model.toCurrencyValue) ?? 1.0))
             }
             let headerView = CurrencyChatHeaderView(frame: CGRect(x: 0, y: 0, width: self.topChartHeader.bounds.width, height: 150), measurements: measurment)
             self.topChartHeader.addSubview(headerView)
         }).disposed(by: disposeBag)
     }
-    // MARK: - State
-    private func initState() {
-        observeOnError()
-        observeOnLoading()
-    }
     // MARK: - Loading State
+    /// - Description: show and hide the loading indictor
     private func observeOnLoading() {
         guard let viewModel = viewModel else {return}
         viewModel.loadingIndicatorRelay
@@ -112,6 +117,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
             }
         }).disposed(by: disposeBag)
     }
+    /// - Description: present alert when there is an error
     private func presentErrorAlert(error: APIError, message: String) {
         showAlert(title: Constants.error, message: message, buttonTitle: Constants.oK)
             .subscribe(onNext: {

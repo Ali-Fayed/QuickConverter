@@ -10,13 +10,13 @@ import RxSwift
 class FetchCurrencySymbolsUseCaseTests: XCTestCase {
     var disposeBag: DisposeBag!
     /// Sut = System Under Test
-    var sut: FetchCurrencySymbolsUseCase!
+    var sut: CurrencySymbolsUseCase!
     /// Mock = Fake injection
     var mocks: CurrencyConvertorMocks!
     override func setUp() {
         super.setUp()
         mocks = CurrencyConvertorMocks()
-        sut = FetchCurrencySymbolsUseCase(currencySymbolRepository: mocks)
+        sut = CurrencySymbolsUseCase(currencySymbolRepository: mocks)
         disposeBag = DisposeBag()
     }
     override func tearDown() {

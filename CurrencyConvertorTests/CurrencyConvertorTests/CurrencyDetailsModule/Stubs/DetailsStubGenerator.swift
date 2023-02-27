@@ -17,14 +17,14 @@ class DetailsStubGenerator {
         let symbolsModel = try? decoder.decode(HistoricalConvertsEntity.self, from: data)
         return symbolsModel
     }
-    func stubFamousCurrencyConverts() -> FamousCurrencyEntity? {
+    func stubFamousCurrencyConverts() -> FamousCurrenciesEntity? {
         guard let path = Bundle.famousCurrenciesUnitTests.path(forResource: "FamousCurrenciesStubs", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             return nil
         }
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let symbolsModel = try? decoder.decode(FamousCurrencyEntity.self, from: data)
+        let symbolsModel = try? decoder.decode(FamousCurrenciesEntity.self, from: data)
         return symbolsModel
     }
 }

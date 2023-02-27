@@ -4,11 +4,17 @@
 //
 //  Created by AliFayed on 25/02/2023.
 //
-import Foundation
 import RxSwift
 class CurrencyDetailsRemoteServices: CurrencyDetailsRemoteProtocol {
+    // MARK: - Properties
     typealias hisotricalRetunType = Observable<HistoricalConvertsEntity>
-    typealias famousReturnType = Observable<FamousCurrencyEntity>
+    typealias famousReturnType = Observable<FamousCurrenciesEntity>
+    // MARK: - Remote Services Methods
+    /// Explain for this two methods : ->
+    ///   - router: Request router contain the url, headers, path that combine together to build a request
+    ///   - model: the return model beacause it's generic type
+    ///   - response: Call the network layer singelton
+    /// - Returns: Observable off the expected  decodable entity
     func fetchHistoricalConverts(startDate: String, endDate: String, base: String, symbols: String) -> hisotricalRetunType {
         let router = RequestRouter.timeSeriesCurrencyRates(startDate: startDate, endDate: endDate, base: base, symbols: symbols)
         let model = HistoricalConvertsEntity.self
@@ -17,7 +23,7 @@ class CurrencyDetailsRemoteServices: CurrencyDetailsRemoteProtocol {
     }
     func fetchFamousConvertes(symbols: String, base: String) -> famousReturnType {
         let router = RequestRouter.latestCurrencyRates(symbol: symbols, base: base)
-        let model = FamousCurrencyEntity.self
+        let model = FamousCurrenciesEntity.self
         let response = NetworkingManger.shared.performRequest(router: router, model: model)
         return response
     }

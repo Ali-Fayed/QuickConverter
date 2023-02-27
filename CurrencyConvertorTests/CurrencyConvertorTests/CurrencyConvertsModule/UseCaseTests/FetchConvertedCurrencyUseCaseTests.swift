@@ -10,13 +10,13 @@ import RxSwift
 class FetchConvertedCurrencyUseCaseTests: XCTestCase {
     var disposeBag: DisposeBag!
     /// Sut = System Under Test
-    var sut: FetchConvertedCurrencyUseCase!
+    var sut: ConvertedCurrencyUseCase!
     /// Mock = Fake injection
     var mockRemoteService: CurrencyConvertorMocks!
     override func setUp() {
         super.setUp()
         mockRemoteService = CurrencyConvertorMocks()
-        sut = FetchConvertedCurrencyUseCase(currencySymbolRepository: mockRemoteService)
+        sut = ConvertedCurrencyUseCase(currencySymbolRepository: mockRemoteService)
         disposeBag = DisposeBag()
     }
     override func tearDown() {
@@ -27,7 +27,7 @@ class FetchConvertedCurrencyUseCaseTests: XCTestCase {
     }
     func testFetchConvertedCurrency() {
         // Given
-         _ = mockRemoteService.getConvertedCurrency(from: "USD", to: "EGP", ammout: "5")
+         _ = mockRemoteService.getConvertedCurrencyValue(from: "USD", to: "EGP", ammout: "5")
         guard let convertedResults = mockRemoteService.convertedResults else {return}
         let promise = XCTestExpectation(description: "converted currencies is fetched")
         // When

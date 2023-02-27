@@ -1,11 +1,11 @@
 //
-//  FamousCurrencyEntity.swift
+//  FamousCurrenciesEntity.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 24/02/2023.
 //
-import Foundation
-struct FamousCurrencyEntity: Codable {
+/// - Description:Famous Currencies Entity Stores The Remote Service Response
+struct FamousCurrenciesEntity: Codable {
     let success: Bool?
     let timestamp: Int?
     let historical: Bool?

@@ -4,7 +4,7 @@
 //
 //  Created by AliFayed on 24/02/2023.
 //
-import Foundation
+/// - Description: Currency Symbols Data Model Stores Only Needed Data
 struct CurrencySymbolsDataModel: Equatable {
     var symbols: [String]
 }

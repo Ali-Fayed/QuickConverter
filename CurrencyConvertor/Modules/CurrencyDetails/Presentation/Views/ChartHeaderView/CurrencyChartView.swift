@@ -7,21 +7,21 @@
 import UIKit
 import SwiftUI
 struct CurrencyChartView: View {
-    var measurements: [ChartMeasurmentDataModel]
+    var chartMeasurments: [ChartMeasurmentDataModel]
     var body: some View {
         HStack(alignment: .bottom) {
             Spacer()
-            ForEach(measurements, id: \.self) { measurement in
+            ForEach(chartMeasurments, id: \.self) { measurement in
                 VStack {
                     Spacer()
-                    Text(String(format: "%.1f", measurement.rate))
-                        .font(.system(size: min(12, CGFloat(measurement.rate) * 4.0 / 3)))
+                    Text(String(format: "%.1f", measurement.convertedValue))
+                        .font(.system(size: min(12, CGFloat(measurement.convertedValue) * 4.0 / 3)))
                         .rotationEffect(.degrees(-90))
-                        .offset(y: measurement.rate < 2.4 ? 0 : 35)
+                        .offset(y: measurement.convertedValue < 2.4 ? 0 : 35)
                         .zIndex(1)
                     Rectangle()
                         .fill(Color.gray)
-                        .frame(width: 20, height: min(CGFloat(measurement.rate) * 4.0, 90))
+                        .frame(width: 20, height: min(CGFloat(measurement.convertedValue) * 4.0, 90))
                     Text(measurement.date)
                         .font(.footnote)
                         .frame(height: 20)
