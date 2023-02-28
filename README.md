@@ -16,12 +16,13 @@
 
 ## App Screenshots Preview: 
 
-![Untitled design](https://user-images.githubusercontent.com/72504852/221663354-e26a6ba8-970b-438a-a01b-ec082d7e569c.png)
+![Untitled design-2](https://user-images.githubusercontent.com/72504852/221730352-7acb9b53-4370-4abc-9e94-e5022eb4d374.png)
+
 
  ## App Technologies:
 
 - Uncle Bob Clean Architecture.
-- UIKit
+- UIKit with iOS 13 Deployment Target.
 - MVVM with [RxSwift][RxSwift] & [RxCocoa][RxSwift] in Presentation Layer.
 - Dependency Injection.
 - Generic Networking Manger Module.
@@ -29,6 +30,7 @@
 - Unit Testing with Mocks and Stubs.
 - SwiftUI in UIView Example (Chart Header)
 - High Performance Code Without Memory Leaks.
+- Swift Package Manger.
 - Well Documented Code with Comments and Explanation For Every Layer.
 
 ## App Layers: 
@@ -43,10 +45,10 @@
 
 ## Video Preview Portrait and Landscape:
 
-https://user-images.githubusercontent.com/72504852/221665784-c20fc634-e149-4777-a21e-c7151d24fddf.mp4
+https://user-images.githubusercontent.com/72504852/221730394-0ec7db0b-ab10-441c-a3bd-74b1b5392c0d.mp4
 
 
-https://user-images.githubusercontent.com/72504852/221667204-ee3ab20a-60bc-4816-85eb-6baba051eb5c.mov
+https://user-images.githubusercontent.com/72504852/221730446-e3b47d17-7103-48f0-a4aa-0ff935403e00.mov
 
 
 ## Important Notes:
