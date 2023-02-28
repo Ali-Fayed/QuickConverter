@@ -1,4 +1,4 @@
-![Git](https://user-images.githubusercontent.com/72504852/221733070-0e4866d1-acaf-4b23-a219-9cda02909102.png)
+![Git-3](https://user-images.githubusercontent.com/72504852/221733360-d1827664-3730-4e08-b3f5-a88212c0d0a7.png)
 
 ### This is Quick Converter - iOS Native App Written in [Swift][Swift] and Based on [Fixer REST API][Fixer REST API] 👋
 
