@@ -5,7 +5,7 @@
 //  Created by AliFayed on 25/02/2023.
 //
 import RxSwift
-class CurrencyDetailsRemoteServices: CurrencyDetailsRemoteProtocol {
+class CurrencyDetailsRemoteServices: CurrencyDetailsRemoteInterface {
     // MARK: - Properties
     typealias hisotricalRetunType = Observable<HistoricalConvertsEntity>
     typealias famousReturnType = Observable<FamousCurrenciesEntity>

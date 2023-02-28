@@ -1,12 +1,12 @@
 //
-//  CurrencyDetailsRemoteProtocol.swift
+//  CurrencyDetailsRemoteInterface.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import RxSwift
 /// - Description: Interface For Remote Layer Contains The Must Implement Methods
-protocol CurrencyDetailsRemoteProtocol {
+protocol CurrencyDetailsRemoteInterface {
     /// Return Type ->  Store The Return Value in a Well Written Convention
     typealias hisotricalRetunType = Observable<HistoricalConvertsEntity>
     typealias famousReturnType = Observable<FamousCurrenciesEntity>

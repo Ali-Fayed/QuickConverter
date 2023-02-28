@@ -19,7 +19,7 @@ extension BaseRouter {
                 component.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value))
             }
         }
-        let url = component.url ?? URL(string: "https://google.com")!
+        let url = component.url ?? URL(string: Constants.defaultValueURL)!
         var urlRequest = URLRequest(url: url, cachePolicy: shouldCache ? .useProtocolCachePolicy : .reloadIgnoringLocalCacheData)
         urlRequest.httpMethod = self.method.rawValue
         if self.method == .post {

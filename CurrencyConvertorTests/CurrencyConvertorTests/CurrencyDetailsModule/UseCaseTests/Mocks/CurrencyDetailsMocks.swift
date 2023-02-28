@@ -7,7 +7,7 @@
 import XCTest
 import RxSwift
 @testable import CurrencyConvertor
-class CurrencyDetailsMocks: CurrencyDetailsRepoProtocol {
+class CurrencyDetailsMocks: CurrencyDetailsRepositoryInterface {
     typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
     typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>
     
@@ -29,7 +29,7 @@ class CurrencyDetailsMocks: CurrencyDetailsRepoProtocol {
                     let rates = Array(ratesDictionary.values)
                     let symbol = Array(ratesDictionary.keys).first ?? ""
                     for rate in rates {
-                        let formattedRate = String(format: "%.2f", rate)
+                        let formattedRate = String(format: Constants.twoNumbersDouble, rate)
                         let model = HistoricalConvertsDataModel(
                             fromCurrencySymbol: currency.base ?? "",
                             fromCurrencyValue: "",
@@ -56,7 +56,7 @@ class CurrencyDetailsMocks: CurrencyDetailsRepoProtocol {
                 }
                 var currencyModels: [FamousCurrenciesDataModel] = []
                 for (symbol, value) in zip(symbols, values) {
-                    let shortValue = String(format: "%.2f",value)
+                    let shortValue = String(format: Constants.twoNumbersDouble,value)
                     let model = FamousCurrenciesDataModel(currencySymbol: symbol, currencyValue: shortValue)
                     currencyModels.append(model)
                 }

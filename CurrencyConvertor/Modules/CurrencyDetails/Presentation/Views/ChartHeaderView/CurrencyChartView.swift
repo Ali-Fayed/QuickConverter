@@ -14,7 +14,7 @@ struct CurrencyChartView: View {
             ForEach(chartMeasurments, id: \.self) { measurement in
                 VStack {
                     Spacer()
-                    Text(String(format: "%.1f", measurement.convertedValue))
+                    Text(String(format: Constants.oneNumberDouble, measurement.convertedValue))
                         .font(.system(size: min(12, CGFloat(measurement.convertedValue) * 4.0 / 3)))
                         .rotationEffect(.degrees(-90))
                         .offset(y: measurement.convertedValue < 2.4 ? 0 : 35)

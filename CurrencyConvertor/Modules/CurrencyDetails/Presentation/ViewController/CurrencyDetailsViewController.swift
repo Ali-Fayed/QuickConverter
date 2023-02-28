@@ -37,10 +37,18 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
     /// - Description:TableView Configure here
     private func initTableViews() {
         historicalConvertsTableView.registerCellNib(cellClass: HistoricalDataTableViewCell.self)
-        famousCurrenciesTableView.registerCellNib(cellClass: OtherCurrencyDataTableViewCell.self)
+        famousCurrenciesTableView.registerCellNib(cellClass: FamousCurrencyTableViewCell.self)
         //
         famousCurrenciesTableView.tableFooterView = UIView()
         historicalConvertsTableView.tableFooterView = UIView()
+        //
+        famousCurrenciesTableView.layer.cornerRadius = 10
+        famousCurrenciesTableView.layer.borderWidth = 1
+        famousCurrenciesTableView.layer.borderColor = UIColor.lightGray.cgColor.copy(alpha: 0.5)
+        //
+        historicalConvertsTableView.layer.cornerRadius = 10
+        historicalConvertsTableView.layer.borderWidth = 1
+        historicalConvertsTableView.layer.borderColor = UIColor.lightGray.cgColor.copy(alpha: 0.5)
         //
         bindHistoryTableView()
         bindFamousCurrenciesTableView()
@@ -58,7 +66,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         guard let viewModel = viewModel else{return}
         viewModel.historicalConvertsSubject
             .observe(on: MainScheduler.instance)
-            .bind(to: historicalConvertsTableView.rx.items(cellIdentifier: Constants.historicalDataCell, cellType: HistoricalDataTableViewCell.self)) { (row, model , cell) in
+            .bind(to: historicalConvertsTableView.rx.items(cellIdentifier: HistoricalDataTableViewCell.identifer, cellType: HistoricalDataTableViewCell.self)) { (row, model , cell) in
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
     }
@@ -73,7 +81,7 @@ class CurrencyDetailsViewController: BaseViewController<CurrencyDetailsViewModel
         guard let viewModel = viewModel else{return}
         viewModel.famousConvertsSubject
             .observe(on: MainScheduler.instance)
-            .bind(to: famousCurrenciesTableView.rx.items(cellIdentifier: Constants.otherCurrencyDataCell, cellType: OtherCurrencyDataTableViewCell.self)) { (row, model, cell) in
+            .bind(to: famousCurrenciesTableView.rx.items(cellIdentifier: FamousCurrencyTableViewCell.identifer, cellType: FamousCurrencyTableViewCell.self)) { (row, model, cell) in
                 cell.setData(model: model)
             }.disposed(by: disposeBag)
     }

@@ -17,3 +17,8 @@ extension UITableView {
         return cell
     }
 }
+extension UITableViewCell {
+    static var identifer: String {
+        return String(describing: self)
+    }
+}

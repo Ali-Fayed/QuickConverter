@@ -14,7 +14,7 @@ class CurrencyConvertorFactory {
         let viewModel = CurrencyConvertorViewModel(convertCurrencyUseCase: convertCurrencyUseCase, currencySymbolsUseCase: symbolsUseCase)
         let viewController = CurrencyConvertorViewController.instaintiate(on: .main)
         viewController.initDependencies(viewModel: viewModel)
-        viewController.title = Constants.currencyViewTitle
+        viewController.title = CoordinatorConstants.currencyViewTitle
         viewController.navigationItem.largeTitleDisplayMode = .always
         navigationController.navigationBar.prefersLargeTitles = true
         return viewController

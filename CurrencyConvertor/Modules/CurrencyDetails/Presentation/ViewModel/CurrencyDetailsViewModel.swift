@@ -32,7 +32,7 @@ class CurrencyDetailsViewModel {
     /// - Description:fetch famous converts to the right tableView in the view controller
     func fetchFamousTenCurrencyConverts() {
         loadingIndicatorRelay.accept(true)
-        famousCurrenciesConvertsUseCase.excute(symbols: Constants.famousCurrencies, base: fromCurrencySymbol)
+        famousCurrenciesConvertsUseCase.excute(symbols: Constants.famousRates, base: fromCurrencySymbol)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] model in
                 guard let self = self else {return}

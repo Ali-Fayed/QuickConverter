@@ -6,14 +6,7 @@
 //
 import Foundation
 struct Constants {
-    static let currencyViewNib = "CurrencyConvertorViewController"
-    static let currencyDetailsViewNib = "CurrencyDetailsViewController"
-    static let currencyViewTitle = "Currency Convertor"
-    static let currencyDetailsViewtitle =  "Currency Details"
-    static let famousCurrencies = "EGP,USD,GBP,EGP,EUR,CAD,INR,AUD,USD,JPY,CNY,QAR,AED,CHF"
-    static let historicalDataCell = "HistoricalDataTableViewCell"
-    static let otherCurrencyDataCell = "OtherCurrencyDataTableViewCell"
-    static let emptyString = ""
+    static let famousRates = "USD,EGP,GBP,EUR,CAD,INR,AUD,JPY,CNY,QAR,AED,CHF"
     static let emptySpaceString = " "
     static let epsilonString = " -> "
     static let onKey = "On"
@@ -22,4 +15,6 @@ struct Constants {
     static let one = "1"
     static let dateFormatString = "yyyy-MM-dd"
     static let twoNumbersDouble = "%.2f"
+    static let oneNumberDouble = "%.1f"
+    static let defaultValueURL = "https://google.com"
 }

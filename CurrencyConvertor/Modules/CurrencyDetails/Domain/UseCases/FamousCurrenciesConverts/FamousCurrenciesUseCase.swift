@@ -8,9 +8,9 @@ import RxSwift
 class FamousCurrenciesUseCase: FamousCurrenciesUseCaseInterface {
     // MARK: - Properties
     typealias returnType = Observable<[FamousCurrenciesDataModel]>
-    private let currencyDetailsRepoProtocol: CurrencyDetailsRepoProtocol
+    private let currencyDetailsRepoProtocol: CurrencyDetailsRepositoryInterface
     // MARK: - Intializer
-    init(currencyDetailsRepoProtocol: CurrencyDetailsRepoProtocol) {
+    init(currencyDetailsRepoProtocol: CurrencyDetailsRepositoryInterface) {
         self.currencyDetailsRepoProtocol = currencyDetailsRepoProtocol
     }
     // MARK: - Use Case Excution Method

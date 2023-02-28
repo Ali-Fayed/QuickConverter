@@ -28,7 +28,7 @@ class CurrencyConvertorMocks: CurrencyConvertorRepositoryInterface {
     func getConvertedCurrencyValue(from: String, to: String, ammout: String) -> convertsReturnType {
         return CurrencyConvertorStubGenerator().stubCurrencyConverts()
             .flatMap { result -> Observable<ConvertedCurrencyDataModel> in
-             let convertedResult = String(format: "%.2f", result.result)
+                let convertedResult = String(format: Constants.twoNumbersDouble, result.result)
                 convertedResults = convertedResult
                 fetchConvertedCalled = true
              return Observable.just(ConvertedCurrencyDataModel(convertedCurrencyResult: convertedResult))}!

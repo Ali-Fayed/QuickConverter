@@ -14,7 +14,7 @@ class CurrencyDetailsFactory {
         let viewModel = CurrencyDetailsViewModel(historicalConvertsUseCase: historicalUseCase, famousCurrenciesConvertsUseCase: famousConvertsUseCase)
         let viewController = CurrencyDetailsViewController.instaintiate(on: .main)
         viewController.initDependencies(viewModel: viewModel)
-        viewController.title = Constants.currencyDetailsViewtitle
+        viewController.title = CoordinatorConstants.currencyDetailsViewtitle
         return viewController
     }
 }

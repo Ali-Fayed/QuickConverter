@@ -1,12 +1,12 @@
 //
-//  CurrencyDetailsRepoProtocol.swift
+//  CurrencyDetailsRepositoryInterface.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import RxSwift
 /// - Description:Repository Interface contatins the necessary logic
-protocol CurrencyDetailsRepoProtocol {
+protocol CurrencyDetailsRepositoryInterface {
     /// Return Type ->  Store The Return Value in a Well Written Convention
     typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
     typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>

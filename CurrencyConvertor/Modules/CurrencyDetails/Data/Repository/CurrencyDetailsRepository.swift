@@ -6,13 +6,13 @@
 //
 import Foundation
 import RxSwift
-class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
+class CurrencyDetailsRepository: CurrencyDetailsRepositoryInterface {
     // MARK: - Properties
     typealias hisotricalRetunType = Observable<[HistoricalConvertsDataModel]>
     typealias famousReturnType = Observable<[FamousCurrenciesDataModel]>
     // MARK: - Initializer
-    private let currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol
-    init(currencyDetailsRemoteProtocol: CurrencyDetailsRemoteProtocol) {
+    private let currencyDetailsRemoteProtocol: CurrencyDetailsRemoteInterface
+    init(currencyDetailsRemoteProtocol: CurrencyDetailsRemoteInterface) {
         self.currencyDetailsRemoteProtocol = currencyDetailsRemoteProtocol
     }
     // MARK: - Repository Methods
@@ -65,7 +65,7 @@ class CurrencyDetailsRepository: CurrencyDetailsRepoProtocol {
                 }
                 var currencyModels: [FamousCurrenciesDataModel] = []
                 for (symbol, value) in zip(symbols, values) {
-                    let shortValue = String(format: "%.2f",value)
+                    let shortValue = String(format: Constants.twoNumbersDouble,value)
                     let model = FamousCurrenciesDataModel(currencySymbol: symbol, currencyValue: shortValue)
                     currencyModels.append(model)
                 }

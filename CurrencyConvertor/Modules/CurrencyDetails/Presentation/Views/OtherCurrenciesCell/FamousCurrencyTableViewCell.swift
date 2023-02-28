@@ -1,11 +1,11 @@
 //
-//  OtherCurrencyDataTableViewCell.swift
+//  FamousCurrencyTableViewCell.swift
 //  CurrencyConvertor
 //
 //  Created by AliFayed on 25/02/2023.
 //
 import UIKit
-class OtherCurrencyDataTableViewCell: UITableViewCell {
+class FamousCurrencyTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     // MARK: - Methods
