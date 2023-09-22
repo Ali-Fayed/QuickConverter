@@ -22,7 +22,6 @@
 
 - Uncle Bob Clean Architecture.
 - UIKit with iOS 13 Deployment Target.
-- MVVM with [RxSwift][RxSwift] & [RxCocoa][RxSwift] in Presentation Layer.
 - Dependency Injection.
 - Generic Networking Manger Module.
 - Design Patterns (Builder, Factory, Coordinator, Singelton) 
@@ -45,10 +44,6 @@
 ## Video Preview Portrait and Landscape:
 
 https://user-images.githubusercontent.com/72504852/221730394-0ec7db0b-ab10-441c-a3bd-74b1b5392c0d.mp4
-
-
-https://user-images.githubusercontent.com/72504852/221730446-e3b47d17-7103-48f0-a4aa-0ff935403e00.mov
-
 
 ## Important Notes:
 
